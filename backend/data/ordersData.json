@@ -1,0 +1,236 @@
+[
+    {
+        "user":{
+            "userId":"5fba8ff738c36325a4015991",
+            "userName":"Ege",
+            "userEmail":"legemutlu@gmail.com"
+        },
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":50.00
+    },
+    {
+        "user":{
+            "userId":"5fba8ff738c36325a4015991",
+            "userName":"Ege",
+            "userEmail":"legemutlu@gmail.com"
+        },
+        
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":53.00
+    },
+    {
+        "user":{
+            "userId":"5fba8ff738c36325a4015991",
+            "userName":"Ege",
+            "userEmail":"legemutlu@gmail.com"
+        },
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":10.00
+    },
+    {
+        "user":{
+            "userId":"5fba8ff738c36325a4015991",
+            "userName":"Ege",
+            "userEmail":"legemutlu@gmail.com"
+        },
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":30.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":23.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":11.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":43.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+            {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":22.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+             {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":44.00
+    },
+    {
+        "user":{
+            "userId":"5fba8ff738c36325a4015991",
+            "userName":"Ege",
+            "userEmail":"legemutlu@gmail.com"
+        },
+        "foods":
+        [
+             {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":44.00
+    },
+    {"user":{
+        "userId":"5fba8ff738c36325a4015991",
+        "userName":"Ege",
+        "userEmail":"legemutlu@gmail.com"
+    },
+        
+        "foods":
+        [
+             {
+                "foodId":"5fbfa5df8721553790ee9e61",
+                 "foodName":"Cheese Burger" ,
+                 "foodCategory":"Hamburger"
+             },{
+                 "foodId":"5fbfa5df8721553790ee9e79",
+                "foodName":"Istanbul Burger",
+                "foodCategory":"Hamburger"
+            }
+          ],
+        "description":"Hamburgerin içinde domates olmasın",
+        "price":44.00
+    }
+   
+]
+

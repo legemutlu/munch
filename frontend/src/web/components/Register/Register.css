@@ -1,0 +1,248 @@
+.register-page {
+  background-color: white;
+  position: fixed;
+  height: 100vh;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+
+.register-body {
+  background-image: url(../../images/apple_.jpg);
+  background-repeat: no-repeat;
+  height: 10vh;
+  width: 100%;
+  text-align: center;
+}
+
+.register-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #1d1e2c;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 70px;
+}
+
+.register-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  font-size: 40px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.register-form {
+  margin-top: 25px;
+  background-color: #1d1e2c;
+  width: 100%;
+  height: 53%;
+}
+
+.register-form-header {
+  color: white;
+  font-size: 35px;
+  text-transform: uppercase;
+  padding-top: 15px;
+}
+
+.register-form-container {
+  top: 40%;
+  width: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.register-form-item {
+  margin-top: 50px;
+  height: 40px;
+  width: 43%;
+  border-radius: 6px;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: -webkit-inline-box;
+  text-align: center;
+  color: white;
+  background-color: #1d1e2c;
+  border: 3px solid rgba(131, 192, 253, 0.5);
+}
+
+::placeholder {
+  font-size: 15px !important;
+  color: white !important;
+}
+
+.register-form-item:focus {
+  outline: none;
+  border: 3px solid #c1e0fe;
+  color: white;
+}
+
+.register-form-item:active {
+  color: white;
+}
+
+.register-form-item:focus::placeholder {
+  color: transparent;
+}
+
+.register-button {
+  color: rgba(255, 255, 255, 0.877);
+  letter-spacing: 0.1em;
+  font-size: 23px;
+  background-color: #b3812b;
+  width: 30%;
+  font-family: Barlow;
+  margin: 35px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  height: 40px;
+  font-weight: 400;
+}
+
+.register-button:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+  color: #c1e0fe;
+}
+
+.register-button:focus {
+  outline: 0;
+}
+
+.register-button:active {
+  transform: translateY(-0.5px);
+}
+
+.register-footer {
+  background-image: url(../../images/apple_.jpg);
+  height: 100vh;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  .register-header {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #1d1e2c;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 50px;
+  }
+
+  .register-body {
+    background-image: url(../../images/apple_.jpg);
+    background-repeat: no-repeat;
+    height: 8vh;
+    width: 100%;
+    text-align: center;
+  }
+
+  .register-form {
+    margin-top: 25px;
+    background-color: #1d1e2c;
+    width: 100%;
+    height: 60%;
+  }
+  .register-form-header {
+    padding-top: 2px;
+  }
+}
+
+@media (max-width: 1225px) {
+  .register-form-container {
+    width: 75%;
+    position: relative;
+  }
+  .register-form-container {
+    top: 40%;
+  }
+}
+
+@media (max-width: 860px) {
+  .register-header {
+    display: none;
+  }
+  .register-form form {
+    width: 100%;
+  }
+  .register-form {
+    background-color: #1d1e2c;
+    height: 70%;
+  }
+  .register-form-container {
+    width: 55%;
+    position: relative;
+  }
+  .register-form-item {
+    margin-top: 10px;
+    height: 40px;
+    width: 65%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .register-button {
+    width: 60%;
+    height: 60px;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .register-form {
+    height: 75%;
+  }
+  .register-form-container {
+    top: 40%;
+  }
+  .register-form-item {
+    width: 70%;
+    height: 45px;
+  }
+
+  .register-button {
+    width: 40%;
+    height: 40px;
+    margin-top: 25px;
+    margin-bottom: auto;
+  }
+  .register-text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .register-form-container {
+    top: 35%;
+  }
+  .register-form-item {
+    width: 70%;
+    height: 30px;
+  }
+
+  .register-button {
+    width: 60%;
+    height: 40px;
+    margin: 10px 0;
+  }
+  .register-text {
+    font-size: 20px;
+  }
+}
+
+.register-footer {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+  font-family: Barlow;
+}
+
+.register-footer:hover {
+  color: #c1e0fe;
+}

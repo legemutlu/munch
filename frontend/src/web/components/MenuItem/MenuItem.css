@@ -1,0 +1,98 @@
+.menu-item-page {
+  text-align: center;
+  display: inline;
+}
+
+.row {
+  margin-top: 35px;
+}
+
+.menu-item-header {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.item {
+  margin: 20px;
+  width: 800px;
+  height: 300px;
+  border: 6px solid #506f95;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: #1d1e2c;
+}
+
+.item-header {
+  margin-top: 5px;
+  font-size: 25px;
+}
+
+.item-name {
+  cursor: pointer;
+  color: white;
+}
+.item-name:hover {
+  color: #506f95;
+}
+
+.item-description {
+  margin-top: 10px;
+  width: 90%;
+}
+
+.fas.fa-star {
+  display: absolute;
+  margin-left: 30px;
+  margin-top: 20px;
+  color: #b3812b;
+}
+
+.item-image {
+  object-fit: cover;
+  width: 113%;
+  height: 100%;
+}
+
+.item-rate {
+  padding: 2px;
+}
+
+.item-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.item-overlay:hover {
+  opacity: 0.2;
+}
+
+@media (max-width: 1450px) {
+  .item {
+    width: 600px;
+    height: 250px;
+  }
+  .item-header {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  .item-description {
+    font-size: 14px;
+    width: 90%;
+  }
+}

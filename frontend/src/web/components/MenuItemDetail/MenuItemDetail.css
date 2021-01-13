@@ -1,0 +1,109 @@
+.detail-page {
+  text-align: center;
+  display: inline;
+  font-weight: 400;
+}
+
+.detail-page .row {
+  margin-top: 55px;
+  margin-left: 55px;
+}
+
+.detail-header {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.detail-container {
+  width: 100%;
+  height: 80%;
+}
+
+.detail-description {
+  margin-top: -17px;
+}
+
+.detail-description span {
+  font-size: 25px;
+  font-weight: 500;
+  top: 0;
+}
+
+.ingredient {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.detail-ingredient .row {
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.fas.fa-utensils {
+  margin-right: 5px;
+  font-size: 13px;
+}
+
+.detail-time-cal {
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.detail-time {
+  color: rgb(150, 33, 33);
+}
+
+.detail-cal {
+  color: rgb(150, 33, 33);
+}
+
+.detail-price {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.detail-price-val {
+  color: rgb(150, 33, 33);
+}
+
+.fas.fa-plus {
+  letter-spacing: 0px;
+  margin-right: 8px;
+  font-size: 15px;
+  border: 1px solid #c1e0fe;
+  border-radius: 5px;
+  background-color: white;
+  color: #1d1e2c;
+}
+
+@media (max-width: 900px) {
+  .order-button {
+    margin-top: 80px;
+    width: 15%;
+  }
+}
+
+@media (max-width: 450px) {
+  .detail-header {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  .detail-page .row {
+    text-align: center;
+    margin-top: 55px;
+    margin-left: 0px;
+  }
+  .order-button {
+    right: 32%;
+    margin-top: 20%;
+    padding: 4px;
+    width: 35%;
+  }
+  .detail-description {
+    margin-top: 10px;
+  }
+}

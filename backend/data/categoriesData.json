@@ -1,0 +1,48 @@
+[
+    {
+        
+        "name":"Hamburger",
+        "topCategory":"main",
+        "foods":[
+            "5fc18551204e073f74275802","5fc18551204e073f74275801"
+        ],
+        "imageCover":"hamburger-2.jpg"
+    },
+    {
+        
+        "name":"Pizza",
+        "topCategory":"main",
+        "foods":[
+            "5fc18551204e073f7427580d","5fc18551204e073f7427580e"
+        ],
+        "imageCover":"pizza-2.jpg"
+    },
+    {
+        
+        "name":"Pasta",
+        "topCategory":"main",
+        "foods":[
+            "5fd893733e2841293cdeec56"
+        ],
+        "imageCover":"pasta-2.jpg"
+    },
+    {
+        
+        "name":"Desserts",
+        "topCategory":"desserts",
+        "foods":[
+            "5fd8940f3e2841293cdeec57"
+        ],
+        "imageCover":"desert-2.jpg"
+    },
+    {
+        
+        "name":"Cold Drink",
+        "topCategory":"drinks",
+        "foods":[
+            "5fd8957f1014de0c7c041c3f"
+        ],
+        "imageCover":"cold-drink-2.jpg"
+    }
+    
+]

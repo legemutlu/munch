@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;900&family=Roboto&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Barlow, Muli, Roboto, 'Helvetica', Arial, sans-serif;
+  line-height: 1.7;
+  box-sizing: border-box;
+  font-weight: 400;
+  /* background-color: rgba(32, 55, 75, 0.664); */
+}
+
+a {
+  text-decoration: none !important;
+}
+
+li {
+  list-style-type: none;
+}

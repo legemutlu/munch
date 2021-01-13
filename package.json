@@ -1,0 +1,47 @@
+{
+  "name": "munch",
+  "version": "1.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "debug": "ndb server.js",
+    "heroku-postbuild": "NODE_ENV=production npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "concurrently": "^5.3.0",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.1",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.2.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.7",
+    "morgan": "^1.10.0",
+    "ndb": "^1.1.5",
+    "nexmo": "^2.9.1",
+    "nodemailer": "^6.4.17",
+    "path": "^0.12.7",
+    "react-chartjs-2": "^2.11.1",
+    "slugify": "^1.4.6",
+    "socket.io": "^3.0.4",
+    "utils": "^0.3.1",
+    "validator": "^13.5.2",
+    "xss-clean": "^0.1.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+.footer {
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(20, 56, 75, 0.856);
+  color: white;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 4rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  float: left;
+}
+
+.footer-text {
+  font-size: 25px;
+  text-align: start;
+}

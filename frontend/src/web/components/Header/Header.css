@@ -1,0 +1,70 @@
+.header {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-align: center;
+  color: #1d1e2c;
+}
+
+.go-back-button {
+  font-size: 20px;
+  text-transform: uppercase;
+  position: absolute;
+  margin-left: 140px;
+  padding: 1px 11px;
+  color: white;
+  background: #b3812b;
+  border-radius: 6px;
+}
+
+.go-back-button:hover {
+  transform: translateY(-3px);
+  color: #1d1e2c;
+}
+
+.go-back-button:focus {
+  outline: 0;
+}
+
+.go-back-button:active {
+  transform: translateY(-0.5px);
+}
+
+.order-button {
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  position: absolute;
+  right: 0;
+  margin-right: 110px;
+  padding: 1px 11px;
+  color: white;
+  background: #1d1e2c;
+  border-radius: 6px;
+}
+
+.order-button:hover {
+  transform: translateY(-3px);
+  color: #c1e0fe;
+}
+
+.order-button:focus {
+  outline: 0;
+}
+
+.order-button:active {
+  transform: translateY(-0.5px);
+}
+
+@media (max-width: 800px) {
+  .go-back-button {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 450px) {
+  .go-back-button {
+    display: none;
+  }
+}

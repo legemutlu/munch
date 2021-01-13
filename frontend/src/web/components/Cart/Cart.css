@@ -1,0 +1,162 @@
+.cart-page {
+  font-weight: 400;
+  font-family: Barlow;
+  font-size: 15px;
+}
+
+.cart-row {
+  justify-content: center;
+}
+.cart-col {
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 60%;
+}
+
+.cart {
+  margin: auto;
+  height: 180px;
+  text-align: center;
+}
+
+.cart-table {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #c1e0fe;
+}
+
+.cart-table td,
+.cart-table th {
+  padding: 8px;
+}
+
+.cart-table th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #1d1e2c;
+  color: white;
+  text-transform: uppercase;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.cart-table tr:hover {
+  background-color: #ddd;
+}
+
+.far.fa-times-circle {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-quantity {
+  width: 20%;
+}
+.cart-quantity-input {
+  width: 50px;
+  border-radius: 5px;
+  border: 3px solid rgba(131, 192, 253, 0.5);
+  color: #1d1e2c;
+  text-align: center;
+  font-weight: 900;
+  font-size: 22px;
+  background-color: white;
+  padding: 7px;
+  margin: 5px;
+}
+.cart-quantity-input:focus {
+  outline: none;
+  border: 3px solid #c1e0fe;
+}
+
+.cart-note {
+  width: 60%;
+  border: 3px solid rgba(131, 192, 253, 0.5);
+  height: 90px;
+  padding: 4px;
+  background-color: #1d1e2c;
+}
+
+.cart-note-text {
+  float: left;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+}
+
+.cart-note-input {
+  width: 90%;
+  height: 100%;
+  color: #1d1e2c;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.cart-address {
+  float: center;
+  padding: 5px;
+  width: 40%;
+  border: 3px solid rgba(131, 192, 253, 0.5);
+  height: 100px;
+  background-color: #1d1e2c;
+}
+.cart-address-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+}
+.cart-time {
+  float: left;
+  padding: 10px;
+  width: 60%;
+  border: 3px solid rgba(131, 192, 253, 0.5);
+  height: 150px;
+}
+
+.cart-time-now {
+  float: left;
+}
+
+.css-2b097c-container {
+  width: 80% !important;
+}
+
+.cart-time-items {
+  position: absolute;
+  float: left;
+  list-style: none;
+}
+
+.cart-time-items input {
+  position: relative;
+  margin-right: 5px;
+}
+
+.cart-time-items span {
+  margin: 5px;
+}
+
+.cart-actions-col {
+  max-width: 20%;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.empty-col {
+  max-width: 20%;
+}
+
+.delete-all-button {
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 2px;
+  color: white;
+  background: red;
+  border-radius: 6px;
+}

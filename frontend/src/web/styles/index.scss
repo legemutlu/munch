@@ -1,0 +1,24 @@
+$color-primary: #468888;
+$color-secondary: #deb887;
+
+$white-color: #fff;
+$black-color: #333;
+$danger-color: #dc3545;
+
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;900&family=Roboto&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Barlow, Muli, Roboto, "Helvetica", Arial, sans-serif;
+  line-height: 1.7;
+  box-sizing: border-box;
+  font-weight: 400;
+}

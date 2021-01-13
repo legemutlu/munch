@@ -1,0 +1,50 @@
+[
+    {
+        
+        "name":"Meet",
+        "category":"meet",
+        "quantity":200,
+        "imageCover":"meet.jpg",
+        "unitPrice":25
+    },
+    {
+        
+        "name":"Bread",
+        "category":"bread",
+        "quantity":2,
+        "imageCover":"bread.jpg",
+        "unitPrice":2
+    },
+    {
+        
+        "name":"Tomato",
+        "category":"vegitables",
+        "quantity":1500,
+        "imageCover":"tomato.jpg",
+        "unitPrice":5
+    },
+    {
+        
+        "name":"Patato",
+        "category":"vegitables",
+        "quantity":2000,
+        "imageCover":"Patato.jpg",
+        "unitPrice":8
+    },
+    {
+        
+        "name":"Sprite",
+        "category":"cold drink",
+        "quantity":15,
+        "imageCover":"Sprite.jpg",
+        "unitPrice":3
+    },
+    {
+        
+        "name":"Cola",
+        "category":"cold drink",
+        "quantity":10,
+        "imageCover":"Cola.jpg",
+        "unitPrice":3
+    }
+]

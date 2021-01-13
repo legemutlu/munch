@@ -1,0 +1,686 @@
+[{
+  "_id": {
+    "$oid": "5fc18551204e073f74275802"
+  },
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Vegan Burger",
+  "preparationTime": 15,
+  "price": 15,
+  "calorie": 391,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "vegan-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275801"
+  },
+  "ratingsAverage": 2,
+  "ratingsQuantity": 4,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Cheese Burger",
+  "preparationTime": 15,
+  "price": 25,
+  "calorie": 390,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "cheese-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275803"
+  },
+  "ratingsAverage": 7.2,
+  "ratingsQuantity": 40,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Mushroom Burger",
+  "preparationTime": 15,
+  "price": 33,
+  "calorie": 393,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "mushroom-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275804"
+  },
+  "ratingsAverage": 5.1,
+  "ratingsQuantity": 15,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Garlic Burger",
+  "preparationTime": 15,
+  "price": 28,
+  "calorie": 334,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "garlic-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275805"
+  },
+  "ratingsAverage": 8.8,
+  "ratingsQuantity": 27,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "BBQ Burger",
+  "preparationTime": 15,
+  "price": 69,
+  "calorie": 123,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "bbq-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275806"
+  },
+  "ratingsAverage": 8.2,
+  "ratingsQuantity": 28,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Just Meet Burger",
+  "preparationTime": 15,
+  "price": 19,
+  "calorie": 432,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "just-meet-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275807"
+  },
+  "ratingsAverage": 9.7,
+  "ratingsQuantity": 69,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Istanbul Burger",
+  "preparationTime": 15,
+  "price": 49,
+  "calorie": 344,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "istanbul-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275808"
+  },
+  "ratingsAverage": 1.7,
+  "ratingsQuantity": 39,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "American Burger",
+  "preparationTime": 15,
+  "price": 39,
+  "calorie": 564,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "american-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f74275809"
+  },
+  "ratingsAverage": 6.7,
+  "ratingsQuantity": 22,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Hamburg Burger",
+  "preparationTime": 15,
+  "price": 59,
+  "calorie": 666,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "hamburg-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f7427580a"
+  },
+  "ratingsAverage": 7.7,
+  "ratingsQuantity": 5,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Vegi Burger",
+  "preparationTime": 15,
+  "price": 29,
+  "calorie": 333,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "ingredientQuantity": 120
+    },
+    {
+      "ingredientQuantity": 25
+    },
+    {
+      "ingredientQuantity": 15
+    }
+  ],
+  "secretFood": false,
+  "slug": "vegi-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f7427580c"
+  },
+  "ratingsAverage": 7.8,
+  "ratingsQuantity": 21,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Hurricane Pizza",
+  "preparationTime": 15,
+  "price": 49,
+  "calorie": 333,
+  "category": {
+    "$oid": "5fd89602a718061f087140fb"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "hurricane-pizza",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f7427580b"
+  },
+  "ratingsAverage": 8,
+  "ratingsQuantity": 11,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Tornado Burger",
+  "preparationTime": 15,
+  "price": 89,
+  "calorie": 333,
+  "category": {
+    "$oid": "5fd89602a718061f087140fa"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "tornado-burger",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f7427580d"
+  },
+  "ratingsAverage": 7,
+  "ratingsQuantity": 11,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Ankara Pizza",
+  "preparationTime": 15,
+  "price": 59,
+  "calorie": 333,
+  "category": {
+    "$oid": "5fd89602a718061f087140fb"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "ankara-pizza",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fc18551204e073f7427580e"
+  },
+  "ratingsAverage": 8.5,
+  "ratingsQuantity": 10,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-11-27T23:01:32.063Z"
+  },
+  "name": "Izmır Pizza",
+  "preparationTime": 15,
+  "price": 89,
+  "calorie": 333,
+  "category": {
+    "$oid": "5fd89602a718061f087140fb"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "tour-1-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6e"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab6f"
+      },
+      "ingredientQuantity": 10
+    },
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab70"
+      },
+      "ingredientQuantity": 10
+    }
+  ],
+  "secretFood": false,
+  "slug": "izmir-pizza",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd893733e2841293cdeec56"
+  },
+  "ratingsAverage": 4.5,
+  "ratingsQuantity": 0,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-12-15T10:31:25.967Z"
+  },
+  "name": "Fettuccine Alfredo",
+  "preparationTime": 10,
+  "price": 15,
+  "calorie": 120,
+  "category": {
+    "$oid": "5fd89602a718061f087140fc"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "alfredo-cover.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fd8923e3e2841293cdeec51"
+      },
+      "ingredientQuantity": 200
+    },
+    {
+      "_id": {
+        "$oid": "5fd8926b3e2841293cdeec52"
+      },
+      "ingredientQuantity": 0.1
+    }
+  ],
+  "secretFood": false,
+  "slug": "fettuccine-alfredo",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd8940f3e2841293cdeec57"
+  },
+  "ratingsAverage": 4.5,
+  "ratingsQuantity": 0,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-12-15T10:31:25.967Z"
+  },
+  "name": "Chocolate Cookie",
+  "preparationTime": 1,
+  "price": 5,
+  "calorie": 220,
+  "category": {
+    "$oid": "5fd89602a718061f087140fd"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "c-cookie.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fd8918a3e2841293cdeec4f"
+      },
+      "ingredientQuantity": 200
+    },
+    {
+      "_id": {
+        "$oid": "5fd8926b3e2841293cdeec52"
+      },
+      "ingredientQuantity": 0.1
+    },
+    {
+      "_id": {
+        "$oid": "5fd891b83e2841293cdeec50"
+      },
+      "ingredientQuantity": 0.2
+    }
+  ],
+  "secretFood": false,
+  "slug": "chocolate-cookie",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd8957f1014de0c7c041c3f"
+  },
+  "ratingsAverage": 4.5,
+  "ratingsQuantity": 0,
+  "images": [],
+  "createdAt": {
+    "$date": "2020-12-15T10:47:49.304Z"
+  },
+  "name": "Cola",
+  "preparationTime": 1,
+  "price": 1,
+  "calorie": 220,
+  "category": {
+    "$oid": "5fd8960fe18247058c657519"
+  },
+  "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "imageCover": "cola.jpg",
+  "ingredient": [
+    {
+      "_id": {
+        "$oid": "5fc119e96aad6b334805ab73"
+      },
+      "ingredientQuantity": 1
+    }
+  ],
+  "secretFood": false,
+  "slug": "cola",
+  "__v": 0
+}]

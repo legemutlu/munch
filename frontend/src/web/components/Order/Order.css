@@ -1,0 +1,227 @@
+.order-page {
+  font-weight: 400;
+  font-family: Barlow;
+  font-size: 15px;
+}
+
+.full-row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin-top: 45px;
+  margin-bottom: 30px;
+  padding: 0px 60px;
+}
+
+.full-row .row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-65 {
+  -ms-flex: 65%; /* IE10 */
+  flex: 65%;
+}
+
+.col-25,
+.col-50,
+.col-65 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #2f3149;
+  color: white;
+  padding: 5px 20px 15px 20px;
+  border: 4px solid #c1e0fe;
+  border-radius: 5px;
+}
+
+.container-text {
+  background-color: #2f3149;
+  color: white;
+  padding: 5px 20px 15px 20px;
+  border: 4px solid #c1e0fe;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.container-tip {
+  background-color: #2f3149;
+  color: white;
+  padding: 5px 20px 15px 20px;
+  border: 4px solid #c1e0fe;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.container-now {
+  background-color: #2f3149;
+  color: white;
+  padding: 2px 1px 1px 5px;
+}
+
+.container-future {
+  background-color: #2f3149;
+  color: white;
+  padding: 2px 1px 1px 5px;
+}
+
+h3,
+h4,
+h5 {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5rem;
+}
+
+.order-input {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 45px;
+}
+
+.order-text {
+  width: 100%;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.delivery-text {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 2px 0;
+  font-size: 24px;
+  color: white;
+}
+
+.icon-container i {
+  margin-left: 5px;
+  font-size: 45px;
+}
+
+.btn {
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 1px 11px;
+  color: white;
+  background: #b3812b;
+  border-radius: 6px;
+  margin: auto;
+  width: 50%;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  color: #1d1e2c;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  transform: translateY(-0.5px);
+}
+
+a {
+  color: #c1e0fe;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: white;
+}
+
+::placeholder {
+  color: black;
+}
+
+/* .MuiInputBase-root {
+  background-color: white;
+  margin-left: 15px;
+  height: 60%;
+  width: 100%;
+  font-family: Barlow !important;
+  align-items: inherit !important;
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+  border: none;
+  height: 0%;
+  text-align: center;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-formControl {
+  height: 45px;
+} */
+
+.css-1hb7zxy-IndicatorsContainer {
+  height: 45px;
+}
+
+.css-2b097c-container {
+  width: 100% !important;
+  margin-bottom: 30px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .full-row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+  .col-50 {
+    margin-top: 10px;
+  }
+  .MuiInputBase-input.MuiOutlinedInput-input {
+    padding: 10px 10px;
+  }
+  .MuiInputBase-root {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 700px) {
+  .btn {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .MuiInputBase-root {
+    margin-left: 0px;
+  }
+}
