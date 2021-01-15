@@ -40,7 +40,7 @@ const FoodDetail = ({ food ,className, ...rest }) => {
     reviews: [],
     ratingsQuantity: 0,
     ratingsAverage:0,
-    ingredient:[],
+    ingredients:[],
     preparationTime:0,
     price:0,
     secretFood: false,
@@ -48,10 +48,7 @@ const FoodDetail = ({ food ,className, ...rest }) => {
     calorie:0
   });
 
-  console.log(food)
-
   const foodData = () =>{
-    if(typeof food !== 'undefined') {
       setValues({
         ...values,
         name: food.name,
@@ -64,12 +61,11 @@ const FoodDetail = ({ food ,className, ...rest }) => {
         price: food.price,
         secretFood: food.secretFood,
         description: food.description,
+        ingredients: food.ingredient,
         calorie: food.calorie
       });
-    }
   }
 
-  console.log(values)
 
   const handleChange = event => {
     setValues({
@@ -182,6 +178,18 @@ const FoodDetail = ({ food ,className, ...rest }) => {
                   onChange={handleChange}
                   required
                   value={values.preparationTime  || ''}
+                  variant="outlined"
+                />
+              </Grid>
+
+              <Grid item md={6} xs={12}>
+                <TextField
+                  fullWidth
+                  label="Ingredients"
+                  name="ingredients"
+                  onChange={handleChange}
+                  required
+                  value={values.ingredients  || ''}
                   variant="outlined"
                 />
               </Grid>

@@ -32,7 +32,7 @@ const Food = ({ food, className, ...rest }) => {
         <>
       <CardContent>
         <Box alignItems="center" display="flex" flexDirection="column">
-          <Avatar className={classes.avatar} src={food.imageCover} />
+          <img src={food.imageCover} />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {food.name}
           </Typography>

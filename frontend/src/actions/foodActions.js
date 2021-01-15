@@ -1,56 +1,71 @@
 import * as api from '../api/index.js';
 import {
-  GET_ALL_FOODS,
-  GET_FOOD,
-  CREATE_FOOD,
-  UPDATE_FOOD,
-  DELETE_FOOD,
+  GET_FOODS_REQUEST,
+  GET_FOODS_SUCCESS,
+  GET_FOODS_FAIL,
+  GET_FOODS_RESET,
+  GET_FOOD_REQUEST,
+  GET_FOOD_SUCCESS,
+  GET_FOOD_FAIL,
+  GET_FOOD_RESET,
+  CREATE_FOOD_REQUEST,
+  CREATE_FOOD_SUCCESS,
+  CREATE_FOOD_FAIL,
+  CREATE_FOOD_RESET,
+  UPDATE_FOOD_REQUEST,
+  UPDATE_FOOD_SUCCESS,
+  UPDATE_FOOD_FAIL,
+  UPDATE_FOOD_RESET,
+  DELETE_FOOD_REQUEST,
+  DELETE_FOOD_SUCCESS,
+  DELETE_FOOD_FAIL,
+  DELETE_FOOD_RESET,
   GET_FOODS_STATS,
   GET_FOODS_BY_CATEGORY
 } from '../constants/foodConstants';
 
-export const getFoods = () => async dispatch => {
+export const getFoodsAction = () => async (dispatch) => {
   try {
+
+    dispatch({ type: GET_FOODS_REQUEST })
+
     const { data } = await api.getFoods();
 
-    dispatch({ type: GET_ALL_FOODS, payload: data });
+    dispatch({ type: GET_FOODS_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    dispatch({
+      type: GET_FOODS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
   }
 };
 
-export const getFood = id => async dispatch => {
+export const getFoodAction = (id) => async (dispatch) => {
   try {
+    dispatch({ type: GET_FOOD_REQUEST })
     const { data } = await api.getFood(id);
 
-    dispatch({ type: GET_FOOD, payload: data });
+    dispatch({ type: GET_FOOD_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({
+      type: GET_FOOD_FAIL,
+      payload: message
+    })
   }
 };
 
-export const createFood = post => async dispatch => {
+export const createFoodAction = (food) => async (dispatch, getState) => {
   try {
-    const { data } = await api.createFood(post);
 
-    dispatch({ type: CREATE_FOOD, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-export const updateFood = (id, post) => async dispatch => {
-  try {
-    const { data } = await api.updateFood(id, post);
-
-    dispatch({ type: UPDATE_FOOD, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-export const deleteFood = id => async (dispatch, getState) => {
-  try {
+    dispatch({ type: CREATE_FOOD_REQUEST })
 
     const {
       login: { userInfo }
@@ -63,15 +78,91 @@ export const deleteFood = id => async (dispatch, getState) => {
       }
     };
 
-    await api.deleteFood(id,config);
+    const { data } = await api.createFood(food, config);
 
-    dispatch({ type: DELETE_FOOD, payload: id });
+    dispatch({ type: CREATE_FOOD_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: CREATE_FOOD_FAIL,
+      payload: message,
+    })
   }
 };
 
-export const getFoodStats = id => async dispatch => {
+export const updateFoodAction = (id, food) => async (dispatch, getState) => {
+  try {
+
+    dispatch({ type: UPDATE_FOOD_REQUEST })
+    const {
+      login: { userInfo }
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+    const { data } = await api.updateFood(id, food, config);
+
+    dispatch({ type: UPDATE_FOOD_SUCCESS, payload: data });
+
+    dispatch({type: GET_FOOD_SUCCESS, payload:data})
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: UPDATE_FOOD_FAIL,
+      payload: message,
+    })
+  }
+};
+
+export const deleteFoodAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: DELETE_FOOD_REQUEST })
+
+    const {
+      login: { userInfo },
+      foodList: {foods}
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+
+    const filteredData ={
+      data: foods.filter(food => food._id !== id)
+    }
+
+    dispatch({ type: GET_FOODS_SUCCESS, payload: filteredData });
+
+    await api.deleteFood(id, config);
+    dispatch({ type: DELETE_FOOD_SUCCESS, payload: id });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: DELETE_FOOD_FAIL,
+      payload: message,
+    })
+  }
+};
+
+export const getFoodStatsAction = (id) => async (dispatch) => {
   try {
     const { data } = api.getFoodStats(id);
 
@@ -81,15 +172,3 @@ export const getFoodStats = id => async dispatch => {
   }
 };
 
-export const getFoodsByCategory = categoryId => async dispatch => {
-  try {
-    const { data } = await api.getFoods();
-    let dataByCategory = [];
-    data.data.map(
-      el => el.category._id === categoryId && dataByCategory.push(el)
-    );
-    dispatch({ type: GET_FOODS_BY_CATEGORY, payload: dataByCategory });
-  } catch (error) {
-    console.log(error.message);
-  }
-};

@@ -26,8 +26,6 @@ const AccountView = () => {
   const userDetail = useSelector(state => state.userDetails);
   const { user, loading } = userDetail;
 
-  console.log(userDetail)
-
   useEffect(()=>{
     getCurrentUser();
   },[]);

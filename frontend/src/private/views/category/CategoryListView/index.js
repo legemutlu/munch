@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
 import Toolbar from './Toolbar';
-import CategoryCard from './CategoryCard';
+import Result from './Result';
 
-import { getCategories } from '../../../../actions/categoryActions';
+import { getCategoriesAction } from '../../../../actions/categoryActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,20 +24,19 @@ const ProductList = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [state, setState] = useState({
-    selectedValue: 'all'
+    selectedValue: 'drinks',
   });
 
   const getCategoriesData = () => {
-    dispatch(getCategories());
+    dispatch(getCategoriesAction());
   };
 
-  const categoriesData = useSelector((state) => state.category.categories);
-  const { data, result, status } = categoriesData;
+  const categoryListData = useSelector((state) => state.categoryList);
+  const { categories } = categoryListData;
 
   let uniqueTopCategory;
-  if (data) {
-    uniqueTopCategory = [...new Set(data.map((el) => el.topCategory))];
-    uniqueTopCategory.unshift("all");
+  if (categories) {
+    uniqueTopCategory = [...new Set(categories.map((el) => el.topCategory))];
   }
 
   const handleChange = (event) => {
@@ -63,44 +62,16 @@ const ProductList = () => {
           value={state.selectedValue}
           onChange={handleChange}
         >
-          {data &&
+          {categories &&
             uniqueTopCategory.map((element) => (
               <option key={element} value={element}>
                 {element.toUpperCase()}
               </option>
             ))}
         </Select>
-        {data && (
-          <>
-            <Box mt={3}>
-              <Grid container spacing={3}>
-                {data.map(
-                  (element) =>
-                    state.selectedValue !== 'all' ? element.topCategory === state.selectedValue && (
-                        <Grid item key={element._id} lg={4} md={6} xs={12}>
-                          <CategoryCard
-                            className={classes.productCard}
-                            element={element}
-                          />
-                        </Grid>
-                      )
-                    :
-                    (
-                      <Grid item key={element._id} lg={4} md={6} xs={12}>
-                        <CategoryCard
-                          className={classes.productCard}
-                          element={element}
-                        />
-                      </Grid>
-                    )
-                )}
-              </Grid>
-            </Box>
-            <Box mt={3} display="flex" justifyContent="center">
-              <Pagination color="primary" count={3} size="small" />
-            </Box>
-          </>
-        )}
+        <Box mt={3}>
+          <Result category={state.selectedValue} />
+        </Box>
       </Container>
     </Page>
   );

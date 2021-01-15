@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const validator = require('validator');
+const Category = require('./categoryModel');
 
 const foodSchema = new mongoose.Schema(
   {
@@ -63,7 +64,6 @@ const foodSchema = new mongoose.Schema(
     },
     imageCover: {
       type: String,
-      required: [true, 'A food must have a image'],
     },
     images: [String],
     createdAt: {
@@ -124,6 +124,15 @@ foodSchema.pre(/^find/, function (next) {
     select: '-__v -category -costOf -createdAt -quantity -imageCover -id',
   });
 
+  next();
+});
+
+foodSchema.pre('save', async function (next) {
+  if(this.category){
+    await Category.findByIdAndUpdate({_id :this.category}, {
+      $push: { foods: this._id }
+    })
+  }
   next();
 });
 

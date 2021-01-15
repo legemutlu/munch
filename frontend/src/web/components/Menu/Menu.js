@@ -6,21 +6,21 @@ import Header from '../Header/Header';
 import './Menu.css';
 import burger from '../../images/RedDot_Burger.jpg';
 
-import { getFoods } from '../../../actions/foodActions';
+import { getFoodsAction } from '../../../actions/foodActions';
 
 const Menu = () => {
   const dispatch = useDispatch();
 
   const getFoodsData = () => {
-    dispatch(getFoods());
+    dispatch(getFoodsAction());
   };
 
-  const foodsData = useSelector(state => state.food.foods);
-  const { result, data, success } = foodsData;
+  const foodListData = useSelector(state => state.foodList);
+  const { foods } = foodListData;
 
   let uniqueCategory;
-  if (foodsData.length !== 0) {
-    const foodCategory = data.map(food => food.category);
+  if (foods && foods.length > 0) {
+    const foodCategory = foods.map(food => food.category);
     uniqueCategory = [...new Set(foodCategory.map(el => el.name))];
   }
 

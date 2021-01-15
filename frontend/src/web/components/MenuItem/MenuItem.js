@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 import './MenuItem.css';
 import burger from '../../images/RedDot_Burger.jpg';
 
-import { getFoods } from '../../../actions/foodActions';
+import { getFoodsAction } from '../../../actions/foodActions';
 
 const MenuItem = () => {
   const location = useLocation();
@@ -15,15 +15,15 @@ const MenuItem = () => {
   const path = location.pathname.split('/')[1];
 
   const getFoodData = () => {
-    dispatch(getFoods());
+    dispatch(getFoodsAction());
   };
 
-  const foods = useSelector(state => state.food.foods);
-
+  const foodListData = useSelector(state => state.foodList);
+  const {foods}= foodListData;
   let getFoodsByCategorySlug = [];
 
-  if (foods.data) {
-    foods.data.map(
+  if (foods) {
+    foods.map(
       el => el.category.slug === path && getFoodsByCategorySlug.push(el)
     );
   }

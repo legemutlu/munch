@@ -15,8 +15,16 @@ exports.aliasTopFoods = (req, res, next) => {
 // Food Routes
 exports.getAllFoods = factory.getAll(Food);
 exports.getFoodById = factory.getOne(Food, { path: 'reviews' });
-exports.createFood = factory.createOne(Food);
 exports.updateFood = factory.updateOne(Food);
+
+exports.createFood = catchAsync(async (req, res, next) => {
+    const doc = await Food.create(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: doc,
+    });
+  });
 
 exports.deleteFood = catchAsync(async (req, res, next) => {
 
@@ -27,13 +35,12 @@ exports.deleteFood = catchAsync(async (req, res, next) => {
       if(getCategory.foods.length > 0){
         for (let j = 0; j < getCategory.foods.length; j++) {
           if(getCategory.foods[j].toString() === req.params.id){
-            await Category.update( { _id: getCategory._id  }, { $pull: { foods: getCategory.foods[j]  } } )
+            await Category.findByIdAndUpdate( { _id: getCategory._id  }, { $pull: { foods: getCategory.foods[j]  } } )
           }
         }
       }
     }
   }
-
 
   const food = await Food.findByIdAndDelete(req.params.id);
   if (!food) {

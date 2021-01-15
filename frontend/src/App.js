@@ -49,7 +49,9 @@ const App = () => {
         { path: 'foods', element: <FoodListView /> },
         { path: 'foods/create', element: <FoodCreate /> },
         { path: 'foods/:id', element: <FoodDetails /> },
-        { path: 'category', element: <CategoryListView /> },
+        { path: 'categories', element: <CategoryListView /> },
+        { path: 'categories/:id', element: <CategoryListView /> },
+        { path: 'categories/create', element: <CategoryListView /> },
         { path: 'inventory', element: <RegisterView /> },
         { path: '404', element: <NotFoundView /> },
         { path: '*', element: <Navigate to="/business/404" /> }

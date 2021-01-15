@@ -115,6 +115,7 @@ const ProfileDetails = ({userData, className, ...rest }) => {
                   helperText="Please specify the first name"
                   label="First name"
                   name="firstName"
+                  disabled
                   onChange={handleChange}
                   required
                   value={values.firstName || ''}
@@ -127,6 +128,7 @@ const ProfileDetails = ({userData, className, ...rest }) => {
                   label="Last name"
                   name="lastName"
                   onChange={handleChange}
+                  disabled
                   required
                   value={values.lastName || ''}
                   variant="outlined"
@@ -138,6 +140,7 @@ const ProfileDetails = ({userData, className, ...rest }) => {
                   label="Email Address"
                   name="email"
                   onChange={handleChange}
+                  disabled
                   required
                   value={values.email || ''}
                   variant="outlined"

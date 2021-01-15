@@ -79,7 +79,7 @@ const items = [
     title: 'Food'
   },
   {
-    href: '/business/category',
+    href: '/business/categories',
     icon: AlertCircleIcon,
     title: 'Category'
   },
@@ -165,7 +165,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           title: 'Food'
         },
         {
-          href: '/business/category',
+          href: '/business/categories',
           icon: AlertCircleIcon,
           title: 'Category'
         },
@@ -219,7 +219,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           title: 'Food'
         },
         {
-          href: '/business/category',
+          href: '/business/categories',
           icon: AlertCircleIcon,
           title: 'Category'
         },

@@ -32,10 +32,8 @@ const Toolbar = ({ className, ...rest }) => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Box display="flex" justifyContent="flex-end">
-        <Button className={classes.importButton}>Import</Button>
-        <Button className={classes.exportButton}>Export</Button>
         <Button color="primary" variant="contained">
-          Add product
+          Create Category
         </Button>
       </Box>
       <Box mt={3}>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {useDispatch}  from 'react-redux';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
   Badge,
   Box,
+  Button,
   Hidden,
   IconButton,
   Toolbar,
@@ -15,6 +17,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from '../../components/Logo';
+import {logout} from "../../../actions/authActions";
+import { useNavigate } from 'react-router-dom';
+
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -26,16 +31,30 @@ const useStyles = makeStyles(() => ({
 
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [notifications] = useState([]);
+
+  const logoutUser = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
+  const navigatePublic = () =>{
+    navigate(`/`, { replace: true })
+  }
 
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
-        <RouterLink to="/">
+        <Link to="/business">
           <Logo />
-        </RouterLink>
+        </Link>
         <Box flexGrow={1} />
         <Hidden mdDown>
+          <Button style={{ color: "white"}} onClick={navigatePublic}>
+            Go to Munch Public
+          </Button>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
@@ -45,7 +64,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={logoutUser}>
             <InputIcon />
           </IconButton>
         </Hidden>

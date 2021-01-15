@@ -9,31 +9,28 @@ import Snackbars from '../../../global/Snackbar/Snackbars';
 import './MenuItemDetail.css';
 import 'swiper/swiper.scss';
 
-import { getFood } from '../../../actions/foodActions';
+import { getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 
 const MenuItemDetail = () => {
   const [open, setOpen] = useState(false);
-  const [quantity, setQuantiy] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname.split('/')[3];
   const backPath = location.pathname.split('/')[1];
 
   const getFoodData = () => {
-    dispatch(getFood(path));
+    dispatch(getFoodAction(path));
   };
 
-  const food = useSelector(state => state.food.food);
+  const foodDetailData = useSelector(state => state.foodDetails);
+  const {food, loading }= foodDetailData;
   const user = useSelector(state => state.login);
 
-  let foodData;
-  if (food && food.data) {
-    foodData = food.data;
-  }
 
   const addItemHandler = id => {
-    setQuantiy(quantity + 1);
+    setQuantity(quantity + 1);
     dispatch(addToCart(id, quantity));
     setOpen(true);
   };
@@ -56,16 +53,16 @@ const MenuItemDetail = () => {
         message="Item Added to Cart"
       ></Snackbars>
       <Header
-        name={foodData && foodData.name}
+        name={food.name}
         addBasketButton={user.userInfo ? true : false}
         onClickAdd={e => {
           e.preventDefault();
-          addItemHandler(foodData._id);
+          addItemHandler(food._id);
         }}
         goBackButton={true}
         link={`/${backPath}`}
       />
-      {foodData && (
+      {loading === false && (
         <div className="detail-container">
           <Row>
             <Col md={8} lg={12} xl={4}>
@@ -88,12 +85,12 @@ const MenuItemDetail = () => {
             <Col>
               <div className="detail-description">
                 <span>Description</span>
-                <p>{foodData.description}</p>
+                <p>{food.description}</p>
               </div>
               <div className="detail-ingredient">
                 <span className="ingredient">Ingredients</span>
                 <Row>
-                  {foodData.ingredient.map(el => (
+                  {food.ingredient.map(el => (
                     <Col sm={12} md={12} lg={4} xl={4} key={el._id.id}>
                       <i className="fas fa-utensils"></i>
                       <span>{el._id.name}</span>
@@ -105,17 +102,17 @@ const MenuItemDetail = () => {
                 <span style={{ marginRight: '25px' }}>
                   Preparation Time :{' '}
                   <span className="detail-time">
-                    {foodData.preparationTime} min
+                    {food.preparationTime} min
                   </span>
                 </span>
                 <span>
                   Calorie :{' '}
-                  <span className="detail-cal">{foodData.calorie} kcal</span>
+                  <span className="detail-cal">{food.calorie} kcal</span>
                 </span>
               </div>
               <div className="detail-price">
                 Price :{' '}
-                <span className="detail-price-val">{foodData.price} TL</span>
+                <span className="detail-price-val">{food.price} TL</span>
               </div>
             </Col>
           </Row>

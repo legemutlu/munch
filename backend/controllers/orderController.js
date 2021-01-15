@@ -90,7 +90,6 @@ exports.updateOrder = catchAsync(async (req, res, next) => {
 
 // Stats and history
 exports.getMyOrders = catchAsync(async (req, res, next) => {
-  console.log(req.user.id);
   const orders = await Order.find({ user: req.user.id });
   res.status(200).json({
     status: 'success',
