@@ -13,7 +13,7 @@ import {
   Grid
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -33,7 +33,9 @@ const Toolbar = ({ className, ...rest }) => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Box display="flex" justifyContent="flex-end">
         <Button color="primary" variant="contained">
+          <Link to="/business/categories/create">
           Create Category
+          </Link>
         </Button>
       </Box>
       <Box mt={3}>

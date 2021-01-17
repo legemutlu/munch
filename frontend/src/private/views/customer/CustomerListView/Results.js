@@ -139,6 +139,7 @@ const Results = ({ className, ...rest }) => {
             <TableBody>
               {users &&
                 users.slice(0, limit).map(user => (
+                  user.role !== "admin" &&
                   <TableRow
                     key={user._id}
                     hover

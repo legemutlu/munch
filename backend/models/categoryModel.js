@@ -20,9 +20,7 @@ const categorySchema = new mongoose.Schema({
   ],
   imageCover: {
     type: String,
-    required: [true, 'A category must have a image'],
   },
-  images: [String],
   createdAt: {
     type: Date,
     default: Date.now(),

@@ -6,48 +6,70 @@ import Header from '../Header/Header';
 import './Menu.css';
 import burger from '../../images/RedDot_Burger.jpg';
 
-import { getFoodsAction } from '../../../actions/foodActions';
+import { getCategoriesAction } from '../../../actions/categoryActions';
 
 const Menu = () => {
   const dispatch = useDispatch();
 
-  const getFoodsData = () => {
-    dispatch(getFoodsAction());
+  const getCategoryData = () => {
+    dispatch(getCategoriesAction());
   };
 
-  const foodListData = useSelector(state => state.foodList);
-  const { foods } = foodListData;
+  const categoryListData = useSelector((state) => state.categoryList);
+  const { categories } = categoryListData;
 
-  let uniqueCategory;
-  if (foods && foods.length > 0) {
-    const foodCategory = foods.map(food => food.category);
-    uniqueCategory = [...new Set(foodCategory.map(el => el.name))];
+  console.log(categories);
+
+  let uniqueTopCategory;
+  if (categories && categories.length > 0 ) {
+    uniqueTopCategory = [...new Set(categories.map((el) =>
+      el.foods.length > 0 && el.topCategory
+    ))];
   }
 
   useEffect(() => {
-    getFoodsData();
+    getCategoryData();
   }, []);
 
   return (
     <section className="menu-page">
       <Header name="menu" addBasketButton={false} goBackButton={false} />
-      <Row>
-        {uniqueCategory &&
-          uniqueCategory.map(category => (
-            <Col sm={12} md={6} lg={4} xl={4} align="center" key={category}>
-              <div className="menu-item">
-                <Link to={`/${category.replace(/\s+/g, '-').toLowerCase()}`}>
-                  <div className="menu-item-overlay"></div>
-                  <img className="menu-item-image" src={burger} alt={burger} />
-                  <div className="menu-item-details fadeIn-top">
-                    <h3>{category}</h3>
-                  </div>
-                </Link>
-              </div>
-              <span className="menu-item-span">{category}</span>
-            </Col>
-          ))}
-      </Row>
+      {uniqueTopCategory &&
+        uniqueTopCategory.map((el) => typeof el !== "boolean" && (
+          <div key={el}>
+            <h4 style={{ marginTop: '45px' }}>{el}</h4>
+            <hr style={{ width: '50%', margin: '0 auto' }} />
+            {categories &&
+              categories.map(
+                (category) =>
+                  category.foods.length > 0 &&
+                  el === category.topCategory && (
+                    <Row key={category._id}>
+                      <Col sm={12} md={6} lg={4} xl={4} align="center">
+                        <div className="menu-item">
+                          <Link
+                            to={`/${category.name
+                              .replace(/\s+/g, '-')
+                              .toLowerCase()}`}
+                          >
+                            <div className="menu-item-overlay" />
+                            <img
+                              className="menu-item-image"
+                              src={burger}
+                              alt={burger}
+                            />
+                            <div className="menu-item-details fadeIn-top">
+                              <h3>{category.name}</h3>
+                            </div>
+                          </Link>
+                        </div>
+                        <span className="menu-item-span">{category.name}</span>
+                      </Col>
+                    </Row>
+                  )
+              )}
+          </div>
+        ))}
     </section>
   );
 };

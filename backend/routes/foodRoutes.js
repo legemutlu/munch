@@ -1,10 +1,10 @@
 const express = require('express');
-const authContorller = require('../controllers/authController');
+const authController = require('../controllers/authController');
 const foodController = require('../controllers/foodController');
 const reviewRouter = require('./reviewRoutes');
 const router = express.Router();
 
-const { protect, restrictTo } = authContorller;
+const { protect, restrictTo } = authController;
 
 const {
   getAllFoods,

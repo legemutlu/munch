@@ -24,10 +24,7 @@ import {
 
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 
-import {
-  deleteCategoryAction,
-  getCategoryAction
-} from '../../../../actions/categoryActions';
+import { deleteCategoryAction } from '../../../../actions/categoryActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +68,7 @@ const Result = ({ className, category, ...rest }) => {
                 <TableRow>
                   <TableCell>Name</TableCell>
                   <TableCell>Top Category</TableCell>
+                  <TableCell>Foods</TableCell>
                   <TableCell>Image</TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>
@@ -88,6 +86,13 @@ const Result = ({ className, category, ...rest }) => {
                           </Box>
                         </TableCell>
                         <TableCell>{element.topCategory}</TableCell>
+                        <TableCell>
+                          <FastfoodIcon
+                            className={classes.statsIcon}
+                            color="action"
+                          />
+                          {element.foods.length} Foods
+                        </TableCell>
                         <TableCell>
                           <img src={element.imageCover} />
                         </TableCell>

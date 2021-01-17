@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Row, Col } from 'react-bootstrap';
 import Header from '../Header/Header';
@@ -12,10 +12,12 @@ import 'swiper/swiper.scss';
 import { getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 
+
 const MenuItemDetail = () => {
   const [open, setOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname.split('/')[3];
   const backPath = location.pathname.split('/')[1];
@@ -51,13 +53,18 @@ const MenuItemDetail = () => {
         open={open}
         error="false"
         message="Item Added to Cart"
-      ></Snackbars>
+      />
       <Header
         name={food.name}
-        addBasketButton={user.userInfo ? true : false}
+        addBasketButton={true}
         onClickAdd={e => {
           e.preventDefault();
-          addItemHandler(food._id);
+          if(user.userInfo){
+            addItemHandler(food._id);
+          }else{
+            navigate(`/login`, { replace: true })
+          }
+
         }}
         goBackButton={true}
         link={`/${backPath}`}
@@ -92,7 +99,7 @@ const MenuItemDetail = () => {
                 <Row>
                   {food.ingredient.map(el => (
                     <Col sm={12} md={12} lg={4} xl={4} key={el._id.id}>
-                      <i className="fas fa-utensils"></i>
+                      <i className="fas fa-utensils" />
                       <span>{el._id.name}</span>
                     </Col>
                   ))}

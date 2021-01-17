@@ -48,10 +48,23 @@ export const getCategoryAction = (id) => async (dispatch) => {
   }
 };
 
-export const createCategoryAction = (post) => async (dispatch) => {
+export const createCategoryAction = (post) => async (dispatch,getState) => {
   try {
     dispatch({ type: CREATE_CATEGORY_REQUEST });
-    const { data } = await api.createCategory(post);
+
+    const {
+      login: { userInfo },
+      foodList: {foods}
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+    const { data } = await api.createCategory(post,config);
 
     dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
@@ -59,10 +72,22 @@ export const createCategoryAction = (post) => async (dispatch) => {
   }
 };
 
-export const updateCategoryAction = (id, post) => async (dispatch) => {
+export const updateCategoryAction = (id, post) => async (dispatch,getState) => {
   try {
     dispatch({ type: UPDATE_CATEGORY_REQUEST });
-    const { data } = await api.updateCategory(id, post);
+    const {
+      login: { userInfo },
+      foodList: {foods}
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+    const { data } = await api.updateCategory(id, post,config);
 
     dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: data });
   } catch (error) {
@@ -70,10 +95,29 @@ export const updateCategoryAction = (id, post) => async (dispatch) => {
   }
 };
 
-export const deleteCategoryAction = (id) => async (dispatch) => {
+export const deleteCategoryAction = (id) => async (dispatch,getState) => {
   try {
     dispatch({ type: DELETE_CATEGORY_REQUEST });
-    await api.deleteCategory(id);
+
+    const {
+      login: { userInfo },
+      categoryList: {categories}
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+    const filteredData ={
+      data: categories.filter(category => category._id !== id)
+    }
+
+    dispatch({ type: GET_CATEGORIES_SUCCESS, payload: filteredData });
+
+    await api.deleteCategory(id,config);
 
     dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: id });
   } catch (error) {

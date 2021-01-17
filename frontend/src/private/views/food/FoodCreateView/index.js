@@ -64,11 +64,11 @@ const FoodCreate = ({ className, ...rest }) => {
     });
   }
 
-  const categoryData = useSelector((state) => state.category.categories);
-  const { data } = categoryData;
+  const categoryData = useSelector((state) => state.categoryList);
+  const { categories } = categoryData;
   let categorySelectArray = [];
-  if (typeof data !== 'undefined') {
-    data.map((el) =>
+  if (typeof categories !== 'undefined') {
+    categories.map((el) =>
       categorySelectArray.push({
         label: el.name,
         value: el._id

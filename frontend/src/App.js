@@ -11,6 +11,7 @@ import DashboardView from './private/views/reports/DashboardView';
 import LoginView from './private/views/auth/LoginView';
 import NotFoundView from './private/views/errors/NotFoundView';
 import CategoryListView from './private/views/category/CategoryListView';
+import CategoryCreateView from './private/views/category/CategoryCreateView';
 import RegisterView from './private/views/auth/RegisterView';
 import SettingsView from './private/views/settings/SettingsView';
 import FoodListView from './private/views/food/FoodListView';
@@ -51,7 +52,7 @@ const App = () => {
         { path: 'foods/:id', element: <FoodDetails /> },
         { path: 'categories', element: <CategoryListView /> },
         { path: 'categories/:id', element: <CategoryListView /> },
-        { path: 'categories/create', element: <CategoryListView /> },
+        { path: 'categories/create', element: <CategoryCreateView /> },
         { path: 'inventory', element: <RegisterView /> },
         { path: '404', element: <NotFoundView /> },
         { path: '*', element: <Navigate to="/business/404" /> }

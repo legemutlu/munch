@@ -141,7 +141,6 @@ export const deleteFoodAction = (id) => async (dispatch, getState) => {
       }
     };
 
-
     const filteredData ={
       data: foods.filter(food => food._id !== id)
     }

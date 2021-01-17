@@ -17,7 +17,7 @@ export const deleteFood = (id, config) =>
 export const getFoodStats = () => axios.get(`${foodUrl}/food-stats`);
 
 // category api
-export const getCategories = (config) => axios.get(categoryUrl,config);
+export const getCategories = () => axios.get(categoryUrl);
 export const getCategory = (id) => axios.get(`${categoryUrl}/${id}`);
 export const createCategory = (category, config) =>
   axios.post(categoryUrl, category, config);
