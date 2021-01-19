@@ -12,6 +12,8 @@ const app = express();
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const contactRouter = require('./routes/contactRoutes');
+const reservationRouter = require('./routes/reservationRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const inventoryRouter = require('./routes/inventoryRoutes');
@@ -82,6 +84,8 @@ app.use('/api/v1/foods', foodRouter);
 app.use('/api/v1/categories', categoryRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/reservations', reservationRouter);
+app.use('/api/v1/contacts', contactRouter);
 
 // Error Handling Middleware
 app.all('*', (req, res, next) => {

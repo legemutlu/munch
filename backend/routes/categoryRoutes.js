@@ -1,10 +1,10 @@
 const express = require('express');
-const authControlller = require('../controllers/authController');
+const authController = require('../controllers/authController');
 const categoryController = require('../controllers/categoryController');
 
 const router = express.Router();
 
-const { protect, restrictTo } = authControlller;
+const { protect, restrictTo } = authController;
 
 const {
   getAllCategories,

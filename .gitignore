@@ -2,4 +2,6 @@ node_modules/
 *.env
 /frontend/build
 /frontend/node_modules
+# intellij configs
 .idea/
+debug.log
