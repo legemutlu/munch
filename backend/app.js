@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const compression = require('compression');
 
 const app = express();
 
@@ -20,6 +21,7 @@ const inventoryRouter = require('./routes/inventoryRoutes');
 const categoryRouter = require('./routes/categoryRoutes');
 const foodRouter = require('./routes/foodRoutes');
 const userRouter = require('./routes/userRoutes');
+
 
 // Middleware
 
@@ -68,7 +70,8 @@ app.use(
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
