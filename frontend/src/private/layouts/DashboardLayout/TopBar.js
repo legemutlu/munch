@@ -40,10 +40,6 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
     dispatch(logout());
   };
 
-  const navigatePublic = () =>{
-    navigate(`/`, { replace: true })
-  }
-
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
@@ -52,9 +48,11 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </Link>
         <Box flexGrow={1} />
         <Hidden mdDown>
-          <Button style={{ color: "white"}} onClick={navigatePublic}>
-            Go to Munch Public
-          </Button>
+          <Link to="/">
+            <Button style={{ color: "white"}}>
+              Go to Munch Public
+            </Button>
+          </Link>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}

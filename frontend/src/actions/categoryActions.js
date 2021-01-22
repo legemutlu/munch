@@ -77,7 +77,7 @@ export const updateCategoryAction = (id, post) => async (dispatch,getState) => {
     dispatch({ type: UPDATE_CATEGORY_REQUEST });
     const {
       login: { userInfo },
-      foodList: {foods}
+      categoryList: {categories}
     } = getState();
 
     const config = {
@@ -90,6 +90,14 @@ export const updateCategoryAction = (id, post) => async (dispatch,getState) => {
     const { data } = await api.updateCategory(id, post,config);
 
     dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: data });
+
+
+    const filteredData ={
+      data: categories.map(category => category._id === id ? {...category, name: post.name, topCategory: post.topCategory } : category)
+    }
+
+    dispatch({ type: GET_CATEGORIES_SUCCESS, payload: filteredData });
+
   } catch (error) {
     dispatch({ type: UPDATE_CATEGORY_FAIL, payload: error.message });
   }
@@ -111,15 +119,16 @@ export const deleteCategoryAction = (id) => async (dispatch,getState) => {
       }
     };
 
+    await api.deleteCategory(id,config);
+
+    dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: id });
+
     const filteredData ={
       data: categories.filter(category => category._id !== id)
     }
 
     dispatch({ type: GET_CATEGORIES_SUCCESS, payload: filteredData });
 
-    await api.deleteCategory(id,config);
-
-    dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_CATEGORY_FAIL, payload: error.message });
   }

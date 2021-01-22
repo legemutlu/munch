@@ -71,10 +71,9 @@ const FoodCreate = ({ className, ...rest }) => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(values)
-    dispatch(createCategoryAction(values));
+    await dispatch(createCategoryAction(values));
     navigate(`/business/categories`, { replace: true });
   };
 

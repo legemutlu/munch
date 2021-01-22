@@ -41,10 +41,10 @@ const Cart = () => {
         open={open}
         error="true"
         message="Item Delete From Cart"
-      ></Snackbars>
+      />
       <Header name="cart" addBasketButton={false} goBackButton={false} />
       <Row className="cart-row">
-        <Col className="empty-col"></Col>
+        <Col className="empty-col" />
         <Col className="cart-col">
           <div className="cart">
             {cartItems.length === 0 ? (

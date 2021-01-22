@@ -1,8 +1,10 @@
 const fs = require('fs');
 const Inventory = require('../models/inventoryModel');
+const Foods = require('../models/foodModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('../controllers/handlerFactory');
+const AppError = require('../utils/appError');
 
 exports.aliasTopInventories = (req, res, next) => {
   req.query.limit = '5';
@@ -16,7 +18,37 @@ exports.getAllInventories = factory.getAll(Inventory);
 exports.getInventoryById = factory.getOne(Inventory, { path: 'reviews' });
 exports.createInventory = factory.createOne(Inventory);
 exports.updateInventory = factory.updateOne(Inventory);
-exports.deleteInventory = factory.deleteOne(Inventory);
+
+
+exports.deleteInventory  = catchAsync(async (req, res, next) => {
+
+  const foods = await Foods.find()
+  if(foods){
+    for (let i = 0; i < foods.length; i++) {
+      let getFoods = foods[i];
+      if(getFoods.ingredient.length > 0){
+        for (let j = 0; j < getFoods.ingredient.length; j++) {
+          console.log(getFoods.ingredient)
+          if(getFoods.ingredient[j]._id._id.toString() === req.params.id){
+            console.log("here2")
+            await Foods.findByIdAndUpdate( { _id: getFoods._id  }, { $pull: { ingredient: getFoods.ingredient[j]  } } )
+          }
+        }
+      }
+    }
+  }
+
+  const doc = await Inventory.findByIdAndDelete(req.params.id);
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
 
 exports.getInventoryStats = catchAsync(async (req, res, next) => {
   const stats = await Inventory.aggregate([

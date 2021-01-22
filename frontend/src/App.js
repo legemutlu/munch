@@ -11,12 +11,16 @@ import DashboardView from './private/views/reports/DashboardView';
 import LoginView from './private/views/auth/LoginView';
 import NotFoundView from './private/views/errors/NotFoundView';
 import CategoryListView from './private/views/category/CategoryListView';
+import CategoryDetails from './private/views/category/CategoryDetails';
 import CategoryCreateView from './private/views/category/CategoryCreateView';
 import RegisterView from './private/views/auth/RegisterView';
 import SettingsView from './private/views/settings/SettingsView';
 import FoodListView from './private/views/food/FoodListView';
 import FoodCreate from './private/views/food/FoodCreateView';
 import FoodDetails from './private/views/food/FoodDetails';
+import InventoryListView from './private/views/inventory/InventoryListView';
+import InventoryCreate from './private/views/inventory/InventoryCreateView';
+import InventoryDetails from './private/views/inventory/InventoryDetails';
 
 //Public Routes
 import Container from './web/Container';
@@ -51,9 +55,11 @@ const App = () => {
         { path: 'foods/create', element: <FoodCreate /> },
         { path: 'foods/:id', element: <FoodDetails /> },
         { path: 'categories', element: <CategoryListView /> },
-        { path: 'categories/:id', element: <CategoryListView /> },
+        { path: 'categories/:id', element: <CategoryDetails /> },
         { path: 'categories/create', element: <CategoryCreateView /> },
-        { path: 'inventory', element: <RegisterView /> },
+        { path: 'inventories', element: <InventoryListView /> },
+        { path: 'inventories/:id', element: <InventoryDetails /> },
+        { path: 'inventories/create', element: <InventoryCreate /> },
         { path: '404', element: <NotFoundView /> },
         { path: '*', element: <Navigate to="/business/404" /> }
       ]

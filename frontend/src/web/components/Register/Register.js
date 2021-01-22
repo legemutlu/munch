@@ -46,7 +46,7 @@ const Register = () => {
     if (userData.password !== userData.passwordConfirm) {
       error = 'Passwords do not match';
     } else {
-      dispatch(register(newUser));
+      await dispatch(register(newUser));
     }
   };
 

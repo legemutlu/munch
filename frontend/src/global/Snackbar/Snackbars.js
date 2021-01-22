@@ -30,7 +30,7 @@ const Snackbars = props => {
     >
       <Alert
         onClose={handleClose}
-        severity={props.error === 'true' ? 'error' : 'success'}
+        severity={props.error ? 'error' : 'success'}
       >
         {props.message}
       </Alert>

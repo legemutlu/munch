@@ -72,8 +72,8 @@ const ProfileDetails = ({userData, className, ...rest }) => {
     });
   };
 
-  const onSubmit = async(event) => {
-    event.preventDefault();
+  const onSubmit = async(e) => {
+    e.preventDefault();
     const updatedUser = {
       name: values.firstName,
       surname: values.lastName,
@@ -81,7 +81,7 @@ const ProfileDetails = ({userData, className, ...rest }) => {
       role: values.role,
       id: values.id
     };
-    dispatch(updateUserAction(updatedUser));
+    await dispatch(updateUserAction(updatedUser));
     navigate(`/business/customers`, { replace: true });
   }
 

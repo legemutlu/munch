@@ -13,6 +13,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
+import FastfoodOutlinedIcon from '@material-ui/icons/FastfoodOutlined';
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -21,7 +23,8 @@ import {
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
-  Users as UsersIcon
+  Users as UsersIcon,
+  Layers as LayersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -31,64 +34,6 @@ const user = {
   name: 'Katarina Smith'
 };
 
-const items = [
-  {
-    href: '/business/dashboard',
-    icon: BarChartIcon,
-    title: 'Dashboard'
-  },
-  {
-    href: '/business/customers',
-    icon: UsersIcon,
-    title: 'Customers'
-  },
-
-  {
-    href: '/business/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
-  },
-  {
-    href: '/business/account',
-    icon: UserIcon,
-    title: 'Profile'
-  },
-  {
-    href: '/business/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
-  {
-    href: '/business/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/business/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/business/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
-  },
-  {
-    href: '/business/foods',
-    icon: AlertCircleIcon,
-    title: 'Food'
-  },
-  {
-    href: '/business/categories',
-    icon: AlertCircleIcon,
-    title: 'Category'
-  },
-  {
-    href: '/business/inventory',
-    icon: AlertCircleIcon,
-    title: 'Inventory'
-  }
-];
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
@@ -161,17 +106,17 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         },
         {
           href: '/business/foods',
-          icon: AlertCircleIcon,
+          icon: FastfoodOutlinedIcon,
           title: 'Food'
         },
         {
           href: '/business/categories',
-          icon: AlertCircleIcon,
+          icon: CategoryOutlinedIcon,
           title: 'Category'
         },
         {
-          href: '/business/inventory',
-          icon: AlertCircleIcon,
+          href: '/business/inventories',
+          icon: LayersIcon,
           title: 'Inventory'
         }
       ];
@@ -215,17 +160,17 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         },
         {
           href: '/business/foods',
-          icon: AlertCircleIcon,
+          icon: FastfoodOutlinedIcon,
           title: 'Food'
         },
         {
           href: '/business/categories',
-          icon: AlertCircleIcon,
+          icon: CategoryOutlinedIcon,
           title: 'Category'
         },
         {
-          href: '/business/inventory',
-          icon: AlertCircleIcon,
+          href: '/business/inventories',
+          icon: LayersIcon,
           title: 'Inventory'
         }
       ];

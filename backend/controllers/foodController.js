@@ -12,19 +12,34 @@ exports.aliasTopFoods = (req, res, next) => {
   next();
 };
 
-// Food Routes
+// Category Routes
 exports.getAllFoods = factory.getAll(Food);
 exports.getFoodById = factory.getOne(Food, { path: 'reviews' });
-exports.updateFood = factory.updateOne(Food);
+exports.createFood = factory.createOne(Food);
 
-exports.createFood = catchAsync(async (req, res, next) => {
-    const doc = await Food.create(req.body);
 
-    res.status(201).json({
-      status: 'success',
-      data: doc,
-    });
+exports.updateFood = catchAsync(async (req, res, next) => {
+  const doc = await Food.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
   });
+
+  if (!doc) {
+    return next(new AppError('No document found with that ID', 404));
+  }
+
+  if(req.body.category){
+    await Category.findByIdAndUpdate({_id :req.body.category}, {
+      $push: { foods: req.params.id }
+    })
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: doc,
+  });
+  });
+
 
 exports.deleteFood = catchAsync(async (req, res, next) => {
 

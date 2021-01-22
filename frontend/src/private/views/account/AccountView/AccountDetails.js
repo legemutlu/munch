@@ -53,8 +53,8 @@ const AccountDetails = ({ userData, loading, className, ...rest }) => {
     });
   };
 
-  const onSubmit = async(event) => {
-    event.preventDefault();
+  const onSubmit = async(e) => {
+    e.preventDefault();
     const updatedUser = {
       name: values.firstName,
       surname: values.lastName,
@@ -62,7 +62,7 @@ const AccountDetails = ({ userData, loading, className, ...rest }) => {
       role: values.role,
       id: values.id
     };
-    dispatch(updateMeAction(updatedUser));
+    await dispatch(updateMeAction(updatedUser));
     navigate(`/business`, { replace: true });
   }
 

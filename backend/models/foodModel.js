@@ -103,6 +103,7 @@ foodSchema.pre('save', function (next) {
   next();
 });
 
+
 //QUERY MIDDLEWARE
 foodSchema.pre(/^find/, function (next) {
   this.find({ secretFood: { $ne: true } });
@@ -135,6 +136,14 @@ foodSchema.pre('save', async function (next) {
   }
   next();
 });
+
+foodSchema.pre("save", async function (next) {
+  if(this.ingredient){
+    console.log(this.ingredient)
+  }
+  next();
+});
+
 
 //AGGREGATION MIDDLEWARE
 foodSchema.pre('aggregate', function (next) {

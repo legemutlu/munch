@@ -93,9 +93,9 @@ export const createFoodAction = (food) => async (dispatch, getState) => {
   }
 };
 
-export const updateFoodAction = (id, food) => async (dispatch, getState) => {
+export const updateFoodAction = (id, post) => async (dispatch, getState) => {
   try {
-
+    console.log(post)
     dispatch({ type: UPDATE_FOOD_REQUEST })
     const {
       login: { userInfo }
@@ -108,11 +108,10 @@ export const updateFoodAction = (id, food) => async (dispatch, getState) => {
       }
     };
 
-    const { data } = await api.updateFood(id, food, config);
+    const { data } = await api.updateFood(id, post, config);
 
     dispatch({ type: UPDATE_FOOD_SUCCESS, payload: data });
 
-    dispatch({type: GET_FOOD_SUCCESS, payload:data})
   } catch (error) {
     const message =
       error.response && error.response.data.message

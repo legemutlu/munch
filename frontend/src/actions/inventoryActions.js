@@ -23,6 +23,7 @@ import {
   GET_INVENTORIES_STATS,
   GET_INVENTORIES_BY_CATEGORY
 } from '../constants/inventoryConstants';
+import { GET_FOODS_SUCCESS } from '../constants/foodConstants';
 
 export const getInventoriesAction = () => async (dispatch,getState) => {
   try {
@@ -152,7 +153,8 @@ export const deleteInventoryAction = (id) => async (dispatch, getState) => {
     dispatch({ type: DELETE_INVENTORY_REQUEST })
 
     const {
-      login: { userInfo }
+      login: { userInfo },
+      inventoryList: {inventories}
     } = getState();
 
     const config = {
@@ -161,6 +163,12 @@ export const deleteInventoryAction = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     };
+
+    const filteredData ={
+      data: inventories.filter(inventory => inventory._id !== id)
+    }
+
+    dispatch({ type: GET_INVENTORY_SUCCESS, payload: filteredData });
 
     await api.deleteInventory(id, config);
 

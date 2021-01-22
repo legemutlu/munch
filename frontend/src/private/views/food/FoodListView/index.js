@@ -34,6 +34,7 @@ const CustomerListView = () => {
   const categoryListData = useSelector((state) => state.categoryList);
   const { categories } = categoryListData;
 
+  console.log(categories)
   let newArrayTopCategory = [];
   if (categories) {
     const map = new Map();
@@ -84,7 +85,7 @@ const CustomerListView = () => {
   }, []);
 
   return (
-    <Page className={classes.root} title="Customers">
+    <Page className={classes.root} title="Foods">
       <Container maxWidth={false}>
         <Toolbar />
         <Grid container>
