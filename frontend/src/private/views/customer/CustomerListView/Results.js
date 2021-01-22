@@ -21,7 +21,7 @@ import {
 } from '@material-ui/core';
 import getInitials from '../../../utils/getInitials';
 
-import { listUsers, getUserDetails } from '../../../../actions/userActions';
+import { listUsers } from '../../../../actions/userActions';
 
 const useStyles = makeStyles(theme => ({
   root: {},

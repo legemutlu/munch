@@ -12,7 +12,6 @@ import {
   Grid,
   TextField,
   makeStyles,
-  TextareaAutosize,
   TableContainer,
   Paper,
   Table,
@@ -27,6 +26,7 @@ import Select from 'react-select';
 import { getCategoriesAction } from '../../../../actions/categoryActions';
 import { getInventoriesAction } from '../../../../actions/inventoryActions';
 import { useNavigate } from 'react-router-dom';
+import { UPDATE_FOOD_RESET } from '../../../../constants/foodConstants';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -91,7 +91,7 @@ const FoodDetail = ({ food, className, ...rest }) => {
   };
 
   const foodUpdateData = useSelector((state) => state.foodUpdate);
-  const { loading, error, success } = foodUpdateData;
+  const { loading, error, success: foodUpdate } = foodUpdateData;
 
   const inventoryListData = useSelector((state) => state.inventoryList);
   const { inventories } = inventoryListData;
@@ -176,7 +176,7 @@ const FoodDetail = ({ food, className, ...rest }) => {
   };
 
   useEffect(() => {
-    if (success) {
+    if (foodUpdate) {
       setSnackbar({
         ...snackbar,
         open: true,
@@ -184,8 +184,9 @@ const FoodDetail = ({ food, className, ...rest }) => {
         message: 'Inventory Updated!'
       });
       setTimeout(function () {
+        dispatch({ type: UPDATE_FOOD_RESET });
         navigate(`/business/foods`);
-      }, 3500);
+      }, 2000);
     } else if (error) {
       setSnackbar({
         ...snackbar,
@@ -194,7 +195,7 @@ const FoodDetail = ({ food, className, ...rest }) => {
         message: error
       });
     }
-  }, [success, error]);
+  }, [foodUpdate, error]);
 
 
   useEffect(() => {

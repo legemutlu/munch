@@ -26,8 +26,7 @@ import {
 
 export const getFoodsAction = () => async (dispatch) => {
   try {
-
-    dispatch({ type: GET_FOODS_REQUEST })
+    dispatch({ type: GET_FOODS_REQUEST });
 
     const { data } = await api.getFoods();
 
@@ -38,14 +37,14 @@ export const getFoodsAction = () => async (dispatch) => {
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
-    })
+          : error.message
+    });
   }
 };
 
 export const getFoodAction = (id) => async (dispatch) => {
   try {
-    dispatch({ type: GET_FOOD_REQUEST })
+    dispatch({ type: GET_FOOD_REQUEST });
     const { data } = await api.getFood(id);
 
     dispatch({ type: GET_FOOD_SUCCESS, payload: data });
@@ -58,14 +57,13 @@ export const getFoodAction = (id) => async (dispatch) => {
     dispatch({
       type: GET_FOOD_FAIL,
       payload: message
-    })
+    });
   }
 };
 
 export const createFoodAction = (food) => async (dispatch, getState) => {
   try {
-
-    dispatch({ type: CREATE_FOOD_REQUEST })
+    dispatch({ type: CREATE_FOOD_REQUEST });
 
     const {
       login: { userInfo }
@@ -88,15 +86,15 @@ export const createFoodAction = (food) => async (dispatch, getState) => {
         : error.message;
     dispatch({
       type: CREATE_FOOD_FAIL,
-      payload: message,
-    })
+      payload: message
+    });
   }
 };
 
 export const updateFoodAction = (id, post) => async (dispatch, getState) => {
   try {
-    console.log(post)
-    dispatch({ type: UPDATE_FOOD_REQUEST })
+    console.log(post);
+    dispatch({ type: UPDATE_FOOD_REQUEST });
     const {
       login: { userInfo }
     } = getState();
@@ -111,7 +109,6 @@ export const updateFoodAction = (id, post) => async (dispatch, getState) => {
     const { data } = await api.updateFood(id, post, config);
 
     dispatch({ type: UPDATE_FOOD_SUCCESS, payload: data });
-
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -119,18 +116,18 @@ export const updateFoodAction = (id, post) => async (dispatch, getState) => {
         : error.message;
     dispatch({
       type: UPDATE_FOOD_FAIL,
-      payload: message,
-    })
+      payload: message
+    });
   }
 };
 
 export const deleteFoodAction = (id) => async (dispatch, getState) => {
   try {
-    dispatch({ type: DELETE_FOOD_REQUEST })
+    dispatch({ type: DELETE_FOOD_REQUEST });
 
     const {
       login: { userInfo },
-      foodList: {foods}
+      foodList: { foods }
     } = getState();
 
     const config = {
@@ -140,9 +137,9 @@ export const deleteFoodAction = (id) => async (dispatch, getState) => {
       }
     };
 
-    const filteredData ={
-      data: foods.filter(food => food._id !== id)
-    }
+    const filteredData = {
+      data: foods.filter((food) => food._id !== id)
+    };
 
     dispatch({ type: GET_FOODS_SUCCESS, payload: filteredData });
 
@@ -155,8 +152,8 @@ export const deleteFoodAction = (id) => async (dispatch, getState) => {
         : error.message;
     dispatch({
       type: DELETE_FOOD_FAIL,
-      payload: message,
-    })
+      payload: message
+    });
   }
 };
 
@@ -169,4 +166,3 @@ export const getFoodStatsAction = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
-

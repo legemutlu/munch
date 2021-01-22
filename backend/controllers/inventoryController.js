@@ -30,7 +30,6 @@ exports.deleteInventory  = catchAsync(async (req, res, next) => {
         for (let j = 0; j < getFoods.ingredient.length; j++) {
           console.log(getFoods.ingredient)
           if(getFoods.ingredient[j]._id._id.toString() === req.params.id){
-            console.log("here2")
             await Foods.findByIdAndUpdate( { _id: getFoods._id  }, { $pull: { ingredient: getFoods.ingredient[j]  } } )
           }
         }

@@ -12,6 +12,14 @@ import {
 } from './reducers/foods'
 
 import {
+  orderListReducer,
+  orderDetailsReducer,
+  orderDeleteReducer,
+  orderCreateReducer,
+  orderUpdateReducer,
+} from './reducers/orders'
+
+import {
   categoryListReducer,
   categoryDetailsReducer,
   categoryDeleteReducer,
@@ -55,6 +63,11 @@ const reducer = combineReducers({
   inventoryDelete: inventoryDeleteReducer,
   inventoryCreate: inventoryCreateReducer,
   inventoryUpdate: inventoryUpdateReducer,
+  orderList: orderListReducer,
+  orderDetails: orderDetailsReducer,
+  orderDelete: orderDeleteReducer,
+  orderCreate: orderCreateReducer,
+  orderUpdate: orderUpdateReducer,
   login: loginReducer,
   register: registerReducer,
   cart: cartReducer,

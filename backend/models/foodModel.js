@@ -137,19 +137,27 @@ foodSchema.pre('save', async function (next) {
   next();
 });
 
-foodSchema.pre("save", async function (next) {
-  if(this.ingredient){
-    console.log(this.ingredient)
-  }
-  next();
-});
-
-
 //AGGREGATION MIDDLEWARE
 foodSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretFood: { $ne: true } } });
   next();
 });
+
+foodSchema.methods.updateCategory = async function(){
+  if (!this.isModified('category')){
+    await Category.findByIdAndUpdate({_id :this.category._id}, {
+      $push: { foods: this._id }
+    })
+  }
+}
+
+foodSchema.methods.deleteCategory = async function(){
+  if (!this.isModified('category')){
+    await Category.findByIdAndUpdate({_id :this.category._id}, {
+      $pull: { foods: this._id }
+    })
+  }
+}
 
 const Food = mongoose.model('Food', foodSchema);
 

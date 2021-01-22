@@ -19,46 +19,38 @@ exports.createFood = factory.createOne(Food);
 
 
 exports.updateFood = catchAsync(async (req, res, next) => {
-  const doc = await Food.findByIdAndUpdate(req.params.id, req.body, {
+  const doc = await Food.findById(req.params.id)
+  const updateDoc = await Food.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
 
-  if (!doc) {
+  if (!updateDoc) {
     return next(new AppError('No document found with that ID', 404));
   }
 
   if(req.body.category){
-    await Category.findByIdAndUpdate({_id :req.body.category}, {
-      $push: { foods: req.params.id }
-    })
+    doc.deleteCategory();
+    updateDoc.updateCategory();
   }
+
 
   res.status(200).json({
     status: 'success',
-    data: doc,
+    data: updateDoc,
   });
   });
 
 
 exports.deleteFood = catchAsync(async (req, res, next) => {
+  const food = await Food.findById(req.params.id);
 
-  const category = await Category.find()
-  if(category){
-    for (let i = 0; i < category.length; i++) {
-      let getCategory = category[i];
-      if(getCategory.foods.length > 0){
-        for (let j = 0; j < getCategory.foods.length; j++) {
-          if(getCategory.foods[j].toString() === req.params.id){
-            await Category.findByIdAndUpdate( { _id: getCategory._id  }, { $pull: { foods: getCategory.foods[j]  } } )
-          }
-        }
-      }
-    }
+  if(food) {
+    food.deleteCategory();
   }
 
-  const food = await Food.findByIdAndDelete(req.params.id);
-  if (!food) {
+  const deletedFood = await Food.findByIdAndDelete(req.params.id);
+  if (!deletedFood) {
     return next(new AppError('No document found with that ID', 404));
   }
 

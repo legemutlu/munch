@@ -84,7 +84,7 @@ const AccountDetails = ({ userData, loading, className, ...rest }) => {
         <Card>
           <CardHeader
             subheader="The information can be edited"
-            title="Profile"
+            title="Order"
           />
           <Divider />
           <CardContent>

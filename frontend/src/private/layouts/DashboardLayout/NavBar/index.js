@@ -15,6 +15,8 @@ import {
 } from '@material-ui/core';
 import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
 import FastfoodOutlinedIcon from '@material-ui/icons/FastfoodOutlined';
+import EventSeatOutlinedIcon from '@material-ui/icons/EventSeatOutlined';
+import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -24,7 +26,8 @@ import {
   User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon,
-  Layers as LayersIcon
+  Layers as LayersIcon,
+  Gift as GiftIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -118,6 +121,21 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           href: '/business/inventories',
           icon: LayersIcon,
           title: 'Inventory'
+        },
+        {
+          href: '/business/orders',
+          icon: GiftIcon,
+          title: 'Order'
+        },
+        {
+          href: '/business/inventories',
+          icon: EventSeatOutlinedIcon,
+          title: 'Reservation'
+        },
+        {
+          href: '/business/inventories',
+          icon: ListAltOutlinedIcon,
+          title: 'Contact'
         }
       ];
       break;
@@ -172,6 +190,21 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           href: '/business/inventories',
           icon: LayersIcon,
           title: 'Inventory'
+        },
+        {
+          href: '/business/orders',
+          icon: GiftIcon,
+          title: 'Order'
+        },
+        {
+          href: '/business/inventories',
+          icon: EventSeatOutlinedIcon,
+          title: 'Reservation'
+        },
+        {
+          href: '/business/inventories',
+          icon: ListAltOutlinedIcon,
+          title: 'Contact'
         }
       ];
       break;

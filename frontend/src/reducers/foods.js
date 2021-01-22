@@ -127,3 +127,5 @@ export const foodUpdateReducer = (state = { food: {} }, action) => {
       return state;
   }
 };*/
+export class orderListReducer {
+}

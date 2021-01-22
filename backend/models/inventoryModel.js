@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Food = require('./foodModel');
 
 const inventorySchema = new mongoose.Schema(
   {
@@ -50,6 +51,7 @@ inventorySchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
+
 
 const Inventory = mongoose.model('Inventory', inventorySchema);
 

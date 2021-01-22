@@ -9,8 +9,10 @@ const orderSchema = new mongoose.Schema({
   },
   foods: [
     {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Food',
+      food: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Food'
+      }
     },
   ],
   orderAddress: {
@@ -53,12 +55,23 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
+
+orderSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'user',
+  }).populate({
+    path:"foods.food"
+  })
+
+  next();
+});
+
 // Calculate Total Price of Order
 orderSchema.pre('save', async function (next) {
   var newPrice = 0;
   if (this.foods.length > 0) {
     for (var i = 0; i < this.foods.length; i++) {
-      var getFoodId = this.foods[i];
+      var getFoodId = this.foods[i].food;
       var newFood = await Food.findById(getFoodId);
       newPrice = newPrice + newFood.price;
     }
@@ -80,7 +93,7 @@ orderSchema.post(/^find/, function (docs, next) {
 // Make increment in inventory by order
 orderSchema.methods.controlInventory = async function () {
   for (let i = 0; i < this.foods.length; i++) {
-    const getFoodId = this.foods[i];
+    const getFoodId = this.foods[i].food._id;
     const newFood = await Food.findById(getFoodId);
     if (newFood.ingredient && newFood.ingredient.length > 0) {
       for (var t = 0; t < newFood.ingredient.length; t++) {

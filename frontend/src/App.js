@@ -21,6 +21,8 @@ import FoodDetails from './private/views/food/FoodDetails';
 import InventoryListView from './private/views/inventory/InventoryListView';
 import InventoryCreate from './private/views/inventory/InventoryCreateView';
 import InventoryDetails from './private/views/inventory/InventoryDetails';
+import OrderListView from './private/views/order/OrderListView';
+import OrderDetails from './private/views/order/OrderDetails';
 
 //Public Routes
 import Container from './web/Container';
@@ -60,6 +62,8 @@ const App = () => {
         { path: 'inventories', element: <InventoryListView /> },
         { path: 'inventories/:id', element: <InventoryDetails /> },
         { path: 'inventories/create', element: <InventoryCreate /> },
+        { path: 'orders', element: <OrderListView /> },
+        { path: 'orders/:id', element: <OrderDetails /> },
         { path: '404', element: <NotFoundView /> },
         { path: '*', element: <Navigate to="/business/404" /> }
       ]

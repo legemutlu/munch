@@ -5,6 +5,7 @@ const foodUrl = `${base}/foods`;
 const categoryUrl = `${base}/categories`;
 const userUrl = `${base}/users`;
 const inventoryUrl = `${base}/inventories`;
+const orderUrl = `${base}/orders`;
 
 // food api
 export const getFoods = () => axios.get(foodUrl);
@@ -60,3 +61,15 @@ export const updateInventory = (id, inventory, config) =>
   axios.patch(`${inventoryUrl}/${id}`, inventory, config);
 export const deleteInventory = (id, config) =>
   axios.delete(`${inventoryUrl}/${id}`, config);
+
+// order api
+export const getAllOrdersLimit = (limit, page, config) =>
+  axios.get(`${orderUrl}?limit=${limit}&page=${page}`, config);
+export const getAllOrders = (config) => axios.get(`${orderUrl}`, config);
+export const getOrder = (id, config) => axios.get(`${orderUrl}/${id}`, config);
+export const createOrder = (order, config) =>
+  axios.post(orderUrl, order, config);
+export const updateOrder = (id, order, config) =>
+  axios.patch(`${orderUrl}/${id}`, order, config);
+export const deleteOrder = (id, config) =>
+  axios.delete(`${orderUrl}/${id}`, config);
