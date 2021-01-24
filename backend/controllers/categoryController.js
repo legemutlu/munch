@@ -3,6 +3,40 @@ const Category = require('../models/categoryModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('../controllers/handlerFactory');
+const multer = require('multer');
+const sharp = require('sharp');
+const AppError = require('../utils/appError');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images.', 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadCategoryImage = upload.single('imageCover');
+
+exports.resizeCategoryImage = catchAsync(async (req, res, next) => {
+  if (!req.file) return next();
+
+  req.body.imageCover = `category-${req.params.id}-${Date.now()}.jpeg`;
+
+  await sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`frontend/public/static/images/categories/${req.body.imageCover}`);
+
+  next();
+});
 
 exports.aliasTopCategories = (req, res, next) => {
   req.query.limit = '5';

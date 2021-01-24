@@ -81,7 +81,7 @@ const Cart = () => {
                               e.preventDefault();
                               decreaseItem(item._id, item.quantity);
                             }}
-                          ></i>
+                          />
                           <span className="cart-quantity-input">
                             {item.quantity}
                           </span>
@@ -91,7 +91,7 @@ const Cart = () => {
                               e.preventDefault();
                               increaseItem(item._id, item.quantity);
                             }}
-                          ></i>
+                          />
                         </td>
                         <td>{item.price * item.quantity} TL</td>
                         <td>
@@ -101,7 +101,7 @@ const Cart = () => {
                               e.preventDefault();
                               removeItemHandler(item._id);
                             }}
-                          ></i>
+                          />
                         </td>
                       </tr>
                     ))}

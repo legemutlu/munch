@@ -7,6 +7,7 @@ import './Menu.css';
 import burger from '../../images/RedDot_Burger.jpg';
 
 import { getCategoriesAction } from '../../../actions/categoryActions';
+import { Avatar } from '@material-ui/core';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const Menu = () => {
                             <div className="menu-item-overlay" />
                             <img
                               className="menu-item-image"
-                              src={burger}
+                              src={`/static/images/categories/${category.imageCover}`}
                               alt={burger}
                             />
                             <div className="menu-item-details fadeIn-top">

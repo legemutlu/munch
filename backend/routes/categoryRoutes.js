@@ -14,6 +14,8 @@ const {
   deleteCategory,
   loadAllData,
   deleteAllData,
+  uploadCategoryImage,
+  resizeCategoryImage,
   aliasTopCategories,
 } = categoryController;
 
@@ -21,11 +23,20 @@ router.route('/priv').post(loadAllData).delete(deleteAllData);
 router.route('/top-5-cheap').get(aliasTopCategories, getAllCategories);
 
 // Categorys Routes
-router.route('/').get(getAllCategories).post(protect, restrictTo('admin'),createCategory);
+router
+  .route('/')
+  .get(getAllCategories)
+  .post(protect, restrictTo('admin'), createCategory);
 router
   .route('/:id')
   .get(getCategoryById)
-  .patch(protect, restrictTo('admin'),updateCategory)
-  .delete(protect, restrictTo('admin'),deleteCategory);
+  .patch(
+    protect,
+    restrictTo('admin'),
+    uploadCategoryImage,
+    resizeCategoryImage,
+    updateCategory
+  )
+  .delete(protect, restrictTo('admin'), deleteCategory);
 
 module.exports = router;

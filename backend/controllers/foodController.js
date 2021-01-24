@@ -1,9 +1,62 @@
-const fs = require('fs');
+const multer = require('multer');
+const sharp = require('sharp');
 const Food = require('../models/foodModel');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('../controllers/handlerFactory');
 const AppError = require('../utils/appError');
-const Category = require('../models/categoryModel');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images.', 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadFoodImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 },
+]);
+
+exports.resizeFoodImages = catchAsync(async (req, res, next) => {
+  if (!req.files.imageCover && !req.files.images) return next();
+
+  // 1) Cover image
+  req.body.imageCover = `food-${req.params.id}-${Date.now()}-cover.jpeg`;
+
+  await sharp(req.files.imageCover[0].buffer)
+    .resize(2000, 1333)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`frontend/public/static/images/foods/${req.body.imageCover}`);
+
+  // 2) Images
+  req.body.images = [];
+  if (req.files.images) {
+    await Promise.all(
+      req.files.images.map(async (file, i) => {
+        const filename = `food-${req.params.id}-${Date.now()}-${i + 1}.jpeg`;
+
+        await sharp(file.buffer)
+          .resize(2000, 1333)
+          .toFormat('jpeg')
+          .jpeg({ quality: 90 })
+          .toFile(`frontend/public/static/images/foods/${filename}`);
+
+        req.body.images.push(filename);
+      })
+    );
+  }
+
+  next();
+});
 
 exports.aliasTopFoods = (req, res, next) => {
   req.query.limit = '5';
@@ -12,14 +65,13 @@ exports.aliasTopFoods = (req, res, next) => {
   next();
 };
 
-// Category Routes
+//  Routes
 exports.getAllFoods = factory.getAll(Food);
 exports.getFoodById = factory.getOne(Food, { path: 'reviews' });
 exports.createFood = factory.createOne(Food);
 
-
 exports.updateFood = catchAsync(async (req, res, next) => {
-  const doc = await Food.findById(req.params.id)
+  const doc = await Food.findById(req.params.id);
   const updateDoc = await Food.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -29,23 +81,21 @@ exports.updateFood = catchAsync(async (req, res, next) => {
     return next(new AppError('No document found with that ID', 404));
   }
 
-  if(req.body.category){
+  if (req.body.category) {
     doc.deleteCategory();
     updateDoc.updateCategory();
   }
-
 
   res.status(200).json({
     status: 'success',
     data: updateDoc,
   });
-  });
-
+});
 
 exports.deleteFood = catchAsync(async (req, res, next) => {
   const food = await Food.findById(req.params.id);
 
-  if(food) {
+  if (food) {
     food.deleteCategory();
   }
 
@@ -54,14 +104,11 @@ exports.deleteFood = catchAsync(async (req, res, next) => {
     return next(new AppError('No document found with that ID', 404));
   }
 
-
   res.status(204).json({
     status: 'success',
     data: null,
   });
-
-})
-
+});
 
 exports.getFoodStats = catchAsync(async (req, res, next) => {
   const stats = await Food.aggregate([

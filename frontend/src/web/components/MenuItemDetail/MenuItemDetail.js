@@ -49,9 +49,10 @@ const MenuItemDetail = () => {
 
   return (
     <section className="detail-page">
+      {console.log(open)}
       <Snackbars
         open={open}
-        error="false"
+        error={false}
         message="Item Added to Cart"
       />
       <Header

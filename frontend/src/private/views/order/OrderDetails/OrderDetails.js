@@ -140,7 +140,7 @@ const OrderDetails = ({ order, className, ...rest }) => {
       orderStatus: values.orderStatus.label,
       paymentStatus: values.paymentStatus,
     }
-    await dispatch(updateOrderAction(post));
+    await dispatch(updateOrderAction(order._id, post));
   };
 
   useEffect(() => {

@@ -16,10 +16,10 @@ const Snackbars = props => {
     setOpen(false);
   };
 
+  console.log(open)
+
   useEffect(() => {
-    if (props.open === true) {
-      setOpen(true);
-    }
+      setOpen(props.open);
   }, [props.open]);
 
   return (

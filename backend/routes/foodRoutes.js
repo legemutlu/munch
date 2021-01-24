@@ -17,6 +17,8 @@ const {
   aliasTopFoods,
   getFoodStats,
   getMonthlyPlan,
+  uploadFoodImages,
+  resizeFoodImages,
 } = foodController;
 
 router.use('/:foodId/reviews', reviewRouter);
@@ -34,7 +36,13 @@ router
 router
   .route('/:id')
   .get(getFoodById)
-  .patch(protect, restrictTo('admin'), updateFood)
+  .patch(
+    protect,
+    restrictTo('admin'),
+    uploadFoodImages,
+    resizeFoodImages,
+    updateFood
+  )
   .delete(protect, restrictTo('admin'), deleteFood);
 
 module.exports = router;

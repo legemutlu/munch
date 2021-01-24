@@ -21,8 +21,10 @@ const {
   updateUser,
   deleteUser,
   updateMe,
+  uploadUserPhoto,
+  resizeUserPhoto,
   deleteMe,
-  getMe,
+  getMe
 } = userController;
 
 // Auth Routes
@@ -34,7 +36,7 @@ router.patch('/updatePassword', protect, updatePassword);
 
 // User Routes
 router.get('/me', protect, getMe, getUserById);
-router.patch('/updateMe', protect, updateMe);
+router.patch('/updateMe', protect, uploadUserPhoto, resizeUserPhoto, updateMe);
 router.delete('/deleteMe', protect, deleteMe);
 
 // User Routes
