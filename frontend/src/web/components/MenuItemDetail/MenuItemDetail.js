@@ -8,7 +8,7 @@ import burger from '../../images/RedDot_Burger.jpg';
 import Snackbars from '../../../global/Snackbar/Snackbars';
 import './MenuItemDetail.css';
 import 'swiper/swiper.scss';
-
+import Spinner from "../Spinner/Spinner"
 import { getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 
@@ -49,12 +49,13 @@ const MenuItemDetail = () => {
 
   return (
     <section className="detail-page">
-      {console.log(open)}
       <Snackbars
         open={open}
         error={false}
         message="Item Added to Cart"
       />
+      {loading === false ? (
+        <>
       <Header
         name={food.name}
         addBasketButton={true}
@@ -70,7 +71,6 @@ const MenuItemDetail = () => {
         goBackButton={true}
         link={`/${backPath}`}
       />
-      {loading === false && (
         <div className="detail-container">
           <Row>
             <Col md={8} lg={12} xl={4}>
@@ -125,7 +125,10 @@ const MenuItemDetail = () => {
             </Col>
           </Row>
         </div>
-      )}
+          </>
+      ) :
+      <Spinner />
+      }
     </section>
   );
 };

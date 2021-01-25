@@ -26,7 +26,9 @@ exports.uploadFoodImages = upload.fields([
 ]);
 
 exports.resizeFoodImages = catchAsync(async (req, res, next) => {
+  if (typeof req.files === "undefined") return next();
   if (!req.files.imageCover && !req.files.images) return next();
+
 
   // 1) Cover image
   req.body.imageCover = `food-${req.params.id}-${Date.now()}-cover.jpeg`;
@@ -79,6 +81,11 @@ exports.updateFood = catchAsync(async (req, res, next) => {
 
   if (!updateDoc) {
     return next(new AppError('No document found with that ID', 404));
+  }
+
+  if(req.body.secretFood === true){
+    doc.deleteSecretFoodInCategory();
+    updateDoc.deleteSecretFoodInCategory();
   }
 
   if (req.body.category) {

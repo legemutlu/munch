@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './MenuItem.css';
-import burger from '../../images/RedDot_Burger.jpg';
+import Spinner from "../Spinner/Spinner"
 
 import { getFoodsAction } from '../../../actions/foodActions';
 
@@ -19,7 +19,7 @@ const MenuItem = () => {
   };
 
   const foodListData = useSelector(state => state.foodList);
-  const {foods}= foodListData;
+  const {foods, loading }= foodListData;
   let getFoodsByCategorySlug = [];
 
   if (foods) {
@@ -34,6 +34,8 @@ const MenuItem = () => {
 
   return (
     <section className="menu-item-page">
+      {!loading ?
+        <>
       <Header
         name="menu-item"
         addBasketButton={false}
@@ -41,8 +43,7 @@ const MenuItem = () => {
         link="/menu"
       />
       <Row>
-        {getFoodsByCategorySlug &&
-          getFoodsByCategorySlug.map(food => (
+      {getFoodsByCategorySlug.map(food => (
             <Col xl={6} align="center" key={food._id}>
               <div className="item">
                 <div style={{ width: ' 60%', float: 'left', height: '100%' }}>
@@ -50,20 +51,21 @@ const MenuItem = () => {
                     <Link to={`/${path}/${food.slug}/${food._id}`}>
                       <span className="item-name">{food.name}</span>
                     </Link>
-                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star" />
                     <span className="item-rate">{food.ratingsAverage}</span>
                   </div>
                   <hr style={{ borderColor: 'white' }} />
                   <div className="item-description">{food.description}</div>
                 </div>
                 <div style={{ width: ' 40%', float: 'right', height: '100%' }}>
-                  <div className="item-overlay"></div>
+                  <div className="item-overlay"/>
                   <img className="item-image" src={food.imageCover} />
                 </div>
               </div>
             </Col>
           ))}
       </Row>
+        </> : <Spinner /> }
     </section>
   );
 };

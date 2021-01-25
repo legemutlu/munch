@@ -6,7 +6,12 @@ const Spinner = () => {
     <>
       <img
         src={spinner}
-        style={{ width: "200px", margin: "auto", display: "block" }}
+        style={{ width: "100px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          marginRight: "-50%",
+          transform: "translate(-50%, -50%)" }}
         alt="Loading..."
       />
     </>

@@ -105,11 +105,11 @@ foodSchema.pre('save', function (next) {
 
 
 //QUERY MIDDLEWARE
-foodSchema.pre(/^find/, function (next) {
+/*foodSchema.pre(/^find/, function (next) {
   this.find({ secretFood: { $ne: true } });
   this.start = Date.now();
   next();
-});
+});*/
 
 foodSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
@@ -137,14 +137,17 @@ foodSchema.pre('save', async function (next) {
   next();
 });
 
-//AGGREGATION MIDDLEWARE
+/*//AGGREGATION MIDDLEWARE
 foodSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretFood: { $ne: true } } });
   next();
-});
+});*/
+
+
 
 foodSchema.methods.updateCategory = async function(){
   if (!this.isModified('category')){
+    console.log("here")
     await Category.findByIdAndUpdate({_id :this.category._id}, {
       $push: { foods: this._id }
     })
@@ -153,6 +156,14 @@ foodSchema.methods.updateCategory = async function(){
 
 foodSchema.methods.deleteCategory = async function(){
   if (!this.isModified('category')){
+    await Category.findByIdAndUpdate({_id :this.category._id}, {
+      $pull: { foods: this._id }
+    })
+  }
+}
+
+foodSchema.methods.deleteSecretFoodInCategory = async function(){
+  if(!this.isModified("secretFood")){
     await Category.findByIdAndUpdate({_id :this.category._id}, {
       $pull: { foods: this._id }
     })

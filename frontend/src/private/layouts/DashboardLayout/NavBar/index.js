@@ -37,7 +37,6 @@ const user = {
   name: 'Katarina Smith'
 };
 
-
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
     width: 256
@@ -57,14 +56,13 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
-  const user = useSelector(state => state.login);
+  const user = useSelector((state) => state.login);
   const { userInfo } = user;
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-
   }, [location.pathname]);
 
   let items = [];
@@ -216,7 +214,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src={user.avatar}
+          src={`/static/images/users/${userInfo.user.image}`}
           to="/business/account"
         />
         <Typography className={classes.name} color="textPrimary" variant="h5">
@@ -231,7 +229,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <List>
           {userInfo &&
             items.length > 0 &&
-            items.map(item => (
+            items.map((item) => (
               <NavItem
                 href={item.href}
                 key={item.title}

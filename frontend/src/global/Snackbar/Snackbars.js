@@ -16,7 +16,6 @@ const Snackbars = props => {
     setOpen(false);
   };
 
-  console.log(open)
 
   useEffect(() => {
       setOpen(props.open);

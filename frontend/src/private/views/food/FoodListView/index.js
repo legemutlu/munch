@@ -34,7 +34,6 @@ const CustomerListView = () => {
   const categoryListData = useSelector((state) => state.categoryList);
   const { categories } = categoryListData;
 
-  console.log(categories)
   let newArrayTopCategory = [];
   if (categories) {
     const map = new Map();

@@ -38,7 +38,7 @@ const Results = ({categorySelected, className, ...rest }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [selectedFoodIds, setSelectedFoodIds] = useState([]);
+
 
   const getFoodsData = () => {
     dispatch(getFoodsAction());

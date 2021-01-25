@@ -93,12 +93,12 @@ export const createFoodAction = (food) => async (dispatch, getState) => {
 
 export const updateFoodAction = (id, post) => async (dispatch, getState) => {
   try {
-    console.log(post);
+
     dispatch({ type: UPDATE_FOOD_REQUEST });
     const {
       login: { userInfo }
     } = getState();
-
+    console.log(post)
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -114,6 +114,8 @@ export const updateFoodAction = (id, post) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+
+    console.log(message);
     dispatch({
       type: UPDATE_FOOD_FAIL,
       payload: message

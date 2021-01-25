@@ -1,6 +1,5 @@
-import React, { lazy } from 'react';
-import { useRoutes } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import React from 'react';
+import { matchRoutes, Navigate, useLocation, useRoutes, useNavigate } from 'react-router-dom';
 
 //Private Routes
 import DashboardLayout from './private/layouts/DashboardLayout';
@@ -34,40 +33,18 @@ import MenuItem from './web/components/MenuItem/MenuItem';
 import MenuItemDetail from './web/components/MenuItemDetail/MenuItemDetail';
 import Cart from './web/components/Cart/Cart';
 import Order from './web/components/Order/Order';
+import { useSelector } from 'react-redux';
+
 
 const App = () => {
-  const routes = useRoutes([
-    {
-      path: 'private',
-      element: <LoginView />
-    },
-    {
-      path: 'business',
-      element: <DashboardLayout />,
-      children: [
-        { path: '/', element: <DashboardView /> },
-        { path: 'account', element: <AccountView /> },
-        { path: 'customers', element: <CustomerListView /> },
-        { path: 'customers/:id', element: <CustomerView /> },
-        { path: 'dashboard', element: <DashboardView /> },
-        { path: 'settings', element: <SettingsView /> },
-        { path: 'login', element: <LoginView /> },
-        { path: 'register', element: <RegisterView /> },
-        { path: 'foods', element: <FoodListView /> },
-        { path: 'foods/create', element: <FoodCreate /> },
-        { path: 'foods/:id', element: <FoodDetails /> },
-        { path: 'categories', element: <CategoryListView /> },
-        { path: 'categories/:id', element: <CategoryDetails /> },
-        { path: 'categories/create', element: <CategoryCreateView /> },
-        { path: 'inventories', element: <InventoryListView /> },
-        { path: 'inventories/:id', element: <InventoryDetails /> },
-        { path: 'inventories/create', element: <InventoryCreate /> },
-        { path: 'orders', element: <OrderListView /> },
-        { path: 'orders/:id', element: <OrderDetails /> },
-        { path: '404', element: <NotFoundView /> },
-        { path: '*', element: <Navigate to="/business/404" /> }
-      ]
-    },
+  const userLoginState = useSelector(state => state.login);
+  const { userInfo } = userLoginState;
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+
+  const routes = [
     {
       path: '/',
       element: <Container />,
@@ -82,8 +59,47 @@ const App = () => {
         { path: 'register', element: <Register /> }
       ]
     }
-  ]);
-  return routes;
+  ];
+
+  if(userInfo && userInfo.user && userInfo.user.role !== "customer"){
+    routes.push(
+      {
+        path: 'business',
+        element: <DashboardLayout />,
+        children: [
+          { path: '/', element: <DashboardView /> },
+          { path: 'account', element: <AccountView /> },
+          { path: 'customers', element: <CustomerListView /> },
+          { path: 'customers/:id', element: <CustomerView /> },
+          { path: 'dashboard', element: <DashboardView /> },
+          { path: 'settings', element: <SettingsView /> },
+          { path: 'login', element: <LoginView /> },
+          { path: 'register', element: <RegisterView /> },
+          { path: 'foods', element: <FoodListView /> },
+          { path: 'foods/create', element: <FoodCreate /> },
+          { path: 'foods/:id', element: <FoodDetails /> },
+          { path: 'categories', element: <CategoryListView /> },
+          { path: 'categories/:id', element: <CategoryDetails /> },
+          { path: 'categories/create', element: <CategoryCreateView /> },
+          { path: 'inventories', element: <InventoryListView /> },
+          { path: 'inventories/:id', element: <InventoryDetails /> },
+          { path: 'inventories/create', element: <InventoryCreate /> },
+          { path: 'orders', element: <OrderListView /> },
+          { path: 'orders/:id', element: <OrderDetails /> },
+          { path: '404', element: <NotFoundView /> },
+          { path: '*', element: <Navigate to="/business/404" /> }
+        ]
+      }
+    )
+  }else if((userInfo && userInfo.user.role === "customer") || !userInfo){
+    let pathName = location.pathname.split('/')[1];
+    if(pathName === "business"){
+      console.log(pathName)
+      navigate('/login')
+    }
+  }
+
+  return useRoutes(routes);
 };
 
 export default App;

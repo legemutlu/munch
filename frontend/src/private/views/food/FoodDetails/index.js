@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Account = () => {
+const FoodIndex = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -53,4 +53,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default FoodIndex;
