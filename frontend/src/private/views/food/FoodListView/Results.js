@@ -71,7 +71,7 @@ const Results = ({categorySelected, className, ...rest }) => {
                     <TableRow>
                       <TableCell>Name</TableCell>
                       <TableCell>Category</TableCell>
-                      <TableCell>Image</TableCell>
+                      <TableCell>Created At</TableCell>
                       <TableCell>Action</TableCell>
                     </TableRow>
                   </TableHead>
@@ -85,12 +85,12 @@ const Results = ({categorySelected, className, ...rest }) => {
                           <Box alignItems="center" display="flex">
                             <Avatar
                               className={classes.avatar}
-                              src={food.imageCover}
+                              src={`/static/images/foods/${food.imageCover}`}
                             >
                               {getInitials(food.name)}
                             </Avatar>
                             <Typography color="textPrimary" variant="body1">
-                              {food.name}
+                              {food.name.toUpperCase()}
                             </Typography>
                           </Box>
                         </TableCell>
@@ -129,7 +129,7 @@ const Results = ({categorySelected, className, ...rest }) => {
       </Card>
     );
   }else{
-    return (<p>Please Select Category</p>);
+    return (<p style={{textAlign: "center",  textTransform: "uppercase", fontSize: "35px" }}>Please Select Category</p>);
   }
 };
 

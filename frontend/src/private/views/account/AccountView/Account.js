@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { deleteMeAction } from '../../../../actions/userActions';
+import { deleteMeAction, updateMeAction } from '../../../../actions/userActions';
 import {
   Avatar,
   Box,
@@ -16,9 +16,13 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { logout } from '../../../../actions/authActions';
+import { updateFoodAction } from '../../../../actions/foodActions';
 
 const useStyles = makeStyles(() => ({
   root: {},
+  input: {
+    display: 'none'
+  },
   avatar: {
     height: 100,
     width: 100
@@ -29,9 +33,18 @@ const Account = ({ userData, className, ...rest }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [image, setImage] = useState({ preview: '', raw: '' });
 
 
-
+  const handleChange = async (e) => {
+    if (e.target.files.length) {
+      console.log(e.target.files);
+      setImage({
+        preview: URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0]
+      });
+    }
+  };
 
   const deleteUserAccount = (event) => {
     event.preventDefault();
@@ -40,15 +53,26 @@ const Account = ({ userData, className, ...rest }) => {
     navigate(`/`, { replace: true });
   };
 
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', image.raw);
+    await dispatch(updateMeAction(formData));
+  };
+
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
         <Box alignItems="center" display="flex" flexDirection="column">
-          <Avatar
-            className={classes.avatar}
-            src={`/static/images/users/${userData.image}`}
-          />
+          {image.preview ? (
+            <Avatar src={image.preview} className={classes.avatar} />
+          ) : (
+            <Avatar
+              className={classes.avatar}
+              src={`/static/images/users/${userData.image}`}
+            />
+          )}
           <Typography color="textPrimary" gutterBottom variant="h3">
             {userData.name}
           </Typography>
@@ -58,10 +82,41 @@ const Account = ({ userData, className, ...rest }) => {
         </Box>
       </CardContent>
       <Divider />
+      {image.preview && (
+        <Box alignItems="center" display="flex" flexDirection="column">
+          <Button
+            style={{
+              backgroundColor: '#28a745',
+              color: 'white',
+              width: '25px',
+              marginTop: '10px'
+            }}
+            onClick={handleUpload}
+          >
+            Save
+          </Button>
+        </Box>
+      )}
       <CardActions>
-        <Button color="primary" fullWidth variant="contained">
-          Upload picture
-        </Button>
+        <input
+          accept="image/*"
+          className={classes.input}
+          id="contained-button-file"
+          type="file"
+          onChange={handleChange}
+        />
+        <label htmlFor="contained-button-file" style={{ width: '100%' }}>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            component="span"
+          >
+            Upload Image
+          </Button>
+        </label>
+      </CardActions>
+      <CardActions>
         <Button
           style={{ backgroundColor: '#dc3545', color: 'white' }}
           fullWidth

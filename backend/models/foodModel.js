@@ -162,13 +162,6 @@ foodSchema.methods.deleteCategory = async function(){
   }
 }
 
-foodSchema.methods.deleteSecretFoodInCategory = async function(){
-  if(!this.isModified("secretFood")){
-    await Category.findByIdAndUpdate({_id :this.category._id}, {
-      $pull: { foods: this._id }
-    })
-  }
-}
 
 const Food = mongoose.model('Food', foodSchema);
 

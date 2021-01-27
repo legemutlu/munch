@@ -31,11 +31,6 @@ import {
 } from 'react-feather';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
@@ -56,8 +51,10 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
-  const user = useSelector((state) => state.login);
-  const { userInfo } = user;
+
+  const loginData = useSelector((state) => state.login);
+  const { userInfo } = loginData;
+
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -218,10 +215,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           to="/business/account"
         />
         <Typography className={classes.name} color="textPrimary" variant="h5">
-          {user.name}
-        </Typography>
-        <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          <br/>
+          {userInfo.user.name}
         </Typography>
       </Box>
       <Divider />

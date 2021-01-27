@@ -8,7 +8,7 @@ import burger from '../../images/RedDot_Burger.jpg';
 import Snackbars from '../../../global/Snackbar/Snackbars';
 import './MenuItemDetail.css';
 import 'swiper/swiper.scss';
-import Spinner from "../Spinner/Spinner"
+import Spinner from "../../../global/Spinner/Spinner"
 import { getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 

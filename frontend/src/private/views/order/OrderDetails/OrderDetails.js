@@ -25,6 +25,7 @@ import Snackbars from '../../../../global/Snackbar/Snackbars';
 import { updateOrderAction } from '../../../../actions/orderActions';
 import { UPDATE_ORDER_RESET } from '../../../../constants/orderConstants';
 import Select from 'react-select';
+import Spinner from '../../../../global/Spinner/Spinner';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -163,7 +164,7 @@ const OrderDetails = ({ order, className, ...rest }) => {
         {...rest}
       >
         {!order ? (
-          <h1>Loading</h1>
+          <Spinner />
         ) : (
           <Card>
             <CardHeader

@@ -46,7 +46,7 @@ const Toolbar = ({ className, ...rest }) => {
           Create Food
         </Button>
       </Box>
-      <Box mt={3}>
+     {/* <Box mt={3}>
         <Card>
           <CardContent>
             <Grid container spacing={10}>
@@ -69,7 +69,7 @@ const Toolbar = ({ className, ...rest }) => {
             </Grid>
           </CardContent>
         </Card>
-      </Box>
+      </Box>*/}
     </div>
   );
 };

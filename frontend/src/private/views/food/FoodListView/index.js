@@ -42,7 +42,7 @@ const CustomerListView = () => {
         if (!map.has(categories[item].topCategory)) {
           map.set(categories[item].topCategory, true);
           newArrayTopCategory.push({
-            label: categories[item].topCategory,
+            label: categories[item].topCategory.toUpperCase(),
             value: categories[item].topCategory
           });
         }
@@ -55,11 +55,11 @@ const CustomerListView = () => {
       const categoryArray = [];
       categories.map((element) => {
         if (
-          selectedValue.label === element.topCategory &&
+          selectedValue.value === element.topCategory &&
           element.foods.length > 0
         ) {
           categoryArray.push({
-            label: element.name,
+            label: element.name.toUpperCase(),
             value: element._id
           });
         }

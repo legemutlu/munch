@@ -119,12 +119,10 @@ const FoodDetail = ({ food, className, ...rest }) => {
 
   const deleteIngredient = (id) =>{
     if(values.ingredient.some(el=> el._id._id === id)) {
-      console.log(id)
       const deleteIngredientInArray = values.ingredient.filter((el)=> el._id._id !== id);
       setValues({
         ...values,
         ingredient: deleteIngredientInArray
-
       })
       setSnackbar({
         ...snackbar,
@@ -147,17 +145,34 @@ const FoodDetail = ({ food, className, ...rest }) => {
   };
 
   const handleClose = () => {
-    let ingredient = values.ingredient.slice(0);
     setOpen(false);
-    ingredient.push({
-      _id: values.ingredientId,
-      ingredientQuantity: values.ingredientQuantity
-    });
-    setValues({
-      ...values,
-      ingredient: ingredient
+    setSnackbar({
+      ...snackbar,
+      open: false
     });
   };
+
+  const addIngredient = () =>{
+    if(values.ingredient.some(ingredient => (ingredient._id._id === values.ingredientId) || (ingredient._id === values.ingredientId) )){
+      setSnackbar({
+        ...snackbar,
+        open: true,
+        error: true,
+        message: 'First You Delete This Item In Food!'
+      });
+    }else{
+      let ingredient = values.ingredient.slice(0);
+      setOpen(false);
+      ingredient.push({
+        _id: values.ingredientId,
+        ingredientQuantity: values.ingredientQuantity
+      });
+      setValues({
+        ...values,
+        ingredient: ingredient
+      });
+    }
+  }
 
 
   const handleChange = (event) => {
@@ -429,7 +444,7 @@ const FoodDetail = ({ food, className, ...rest }) => {
                     <Button onClick={handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={addIngredient} color="primary">
                       Add
                     </Button>
                   </DialogActions>
@@ -446,7 +461,7 @@ const FoodDetail = ({ food, className, ...rest }) => {
                     </TableHead>
                     <TableBody>
                       {values.ingredient.map((el) =>
-                        inventories.map((element)=> el._id !== null && el._id._id === element._id && (
+                        inventories.map((element)=> el._id !== null && ((el._id._id === element._id) || (el._id === element._id)) && (
                           <TableRow key={element._id}>
                             <TableCell>{element.name}</TableCell>
                             <TableCell>

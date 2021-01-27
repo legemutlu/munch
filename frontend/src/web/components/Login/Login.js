@@ -44,7 +44,7 @@ export default function Login() {
         open={error ? true : false}
         error={error ? 'true' : 'false'}
         message={error ? error.message : 'Success'}
-      ></Snackbars>
+      />
       <div className="login">
         <div className="login-header">Munch</div>
         <form onSubmit={onSubmit}>

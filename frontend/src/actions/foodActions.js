@@ -98,7 +98,6 @@ export const updateFoodAction = (id, post) => async (dispatch, getState) => {
     const {
       login: { userInfo }
     } = getState();
-    console.log(post)
     const config = {
       headers: {
         'Content-Type': 'application/json',

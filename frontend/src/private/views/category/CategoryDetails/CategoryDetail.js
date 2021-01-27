@@ -56,7 +56,6 @@ const CategoryDetail = ({ category, className, ...rest }) => {
   const [values, setValues] = useState({
     name: '',
     topCategory: '',
-    imageCover: '',
     foods: []
   });
 
@@ -65,7 +64,6 @@ const CategoryDetail = ({ category, className, ...rest }) => {
       ...values,
       name: category.name,
       topCategory: category.topCategory.toLowerCase(),
-      imageCover: category.imageCover,
       foods: category.foods
     });
   };
@@ -103,11 +101,6 @@ const CategoryDetail = ({ category, className, ...rest }) => {
           <CardHeader
             title="Category"
           />
-          <CardActions>
-            <Button color="primary" fullWidth variant="text">
-              Upload picture
-            </Button>
-          </CardActions>
           <Divider />
           <CardContent>
             <Grid container spacing={3}>

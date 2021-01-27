@@ -34,7 +34,7 @@ const FoodIndex = () => {
   }, []);
 
   return (
-    <Page className={classes.root} title="Account">
+    <Page className={classes.root} title="Foods">
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           {loading === false && (

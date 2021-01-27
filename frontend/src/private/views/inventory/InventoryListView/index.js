@@ -40,7 +40,7 @@ const CustomerListView = () => {
         if (!map.has(inventories[item].category)) {
           map.set(inventories[item].category, true);
           newCategoryArray.push({
-            label: inventories[item].category,
+            label: inventories[item].category.toUpperCase(),
             value: inventories[item].category
           });
         }
@@ -55,9 +55,9 @@ const CustomerListView = () => {
   };
 
   let newIngredientsArray = [];
-  if(selectState.selectedCategory.label !== ""){
+  if(selectState.selectedCategory.value !== ""){
     inventories.map(el => {
-      if (el.category === selectState.selectedCategory.label){
+      if (el.category === selectState.selectedCategory.value){
         newIngredientsArray.push(el)
       }
     })

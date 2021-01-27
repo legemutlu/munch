@@ -76,7 +76,7 @@ const Results = ({ className, ...rest }) => {
               <TableRow>
                 <TableCell>User Name</TableCell>
                 <TableCell>Order Status</TableCell>
-                <TableCell>Created Date</TableCell>
+                <TableCell>Created At</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
@@ -88,7 +88,7 @@ const Results = ({ className, ...rest }) => {
                       <Box alignItems="center" display="flex">
                         <Avatar
                           className={classes.avatar}
-                          src={""}
+                          src={`/static/images/users/${order.user.image}`}
                         >
                           {getInitials(order.user.name)}
                         </Avatar>
@@ -99,7 +99,7 @@ const Results = ({ className, ...rest }) => {
                     </TableCell>
                     <TableCell>{order.orderStatus}</TableCell>
                     <TableCell>
-                      {moment(order.createdAt).format('DD/MM/YYYY')}
+                      {moment(order.createdAt).format('DD/MM/YYYY, h:mm:ss a')}
                     </TableCell>
                     <TableCell>
                       <Button

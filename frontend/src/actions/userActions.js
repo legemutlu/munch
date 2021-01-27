@@ -31,6 +31,7 @@ import {
   USER_DELETE_ME_RESET,
 
 } from '../constants/userConstants';
+import { USER_LOGIN_SUCCESS } from '../constants/authConstants';
 
 export const getUserDetails = id => async (dispatch, getState) => {
   try {
@@ -80,14 +81,14 @@ export const listUsers = (limit, page) => async (dispatch, getState) => {
     };
 
     const allData = await api.getAllUsers(config);
-    let allDataLenght;
+    let allDataLength;
     if (allData.data) {
-      allDataLenght = allData.data.results;
+      allDataLength = allData.data.results;
     }
 
     dispatch({
       type: USER_LIST_REQUEST,
-      allDataLenght: allDataLenght
+      allDataLength: allDataLength
     });
 
     const { data } = await api.getUsers(limit, page, config);
@@ -95,7 +96,7 @@ export const listUsers = (limit, page) => async (dispatch, getState) => {
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data,
-      allDataLenght: allDataLenght
+      allDataLength: allDataLength
     });
   } catch (error) {
     const message =
@@ -201,11 +202,11 @@ export const updateMeAction = user => async (dispatch, getState) => {
 
     const { data } = await api.updateMe(user,config);
 
-    dispatch({ type: USER_UPDATE_ME_SUCCESS });
+    dispatch({ type: USER_UPDATE_ME_SUCCESS, payload: data});
 
-    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+    await dispatch({ type: USER_LOGIN_SUCCESS, payload: { ...userInfo, user: data && data.data ? data.data : userInfo.user}  });
 
-    dispatch({ type: USER_DETAILS_RESET });
+    localStorage.setItem('userInfo', JSON.stringify({ ...userInfo, user: data && data.data ? data.data : userInfo.user }  ));
 
   } catch (error) {
     const message =

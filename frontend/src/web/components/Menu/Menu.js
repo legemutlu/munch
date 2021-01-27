@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './Menu.css';
 import burger from '../../images/RedDot_Burger.jpg';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../../global/Spinner/Spinner';
 import { getCategoriesAction } from '../../../actions/categoryActions';
 
 const Menu = () => {
@@ -39,13 +39,13 @@ const Menu = () => {
               <div key={el}>
                 <h4 style={{ marginTop: '45px' }}>{el}</h4>
                 <hr style={{ width: '50%', margin: '0 auto' }} />
+                <Row>
                 {categories &&
                   categories.map(
                     (category) =>
                       category.foods.length > 0 &&
                       el === category.topCategory && (
-                        <Row key={category._id}>
-                          <Col sm={12} md={6} lg={4} xl={4} align="center">
+                          <Col sm={12} md={6} lg={4} xl={4} align="center" key={category._id}>
                             <div className="menu-item">
                               <Link
                                 to={`/${category.name
@@ -67,9 +67,9 @@ const Menu = () => {
                               {category.name}
                             </span>
                           </Col>
-                        </Row>
                       )
                   )}
+                </Row>
               </div>
             )
         )}

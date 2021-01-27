@@ -42,8 +42,7 @@ const App = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-
-
+  console.log(userInfo)
   const routes = [
     {
       path: '/',
@@ -91,10 +90,9 @@ const App = () => {
         ]
       }
     )
-  }else if((userInfo && userInfo.user.role === "customer") || !userInfo){
+  }else if((userInfo && userInfo.user.role === "customer" ) || !userInfo){
     let pathName = location.pathname.split('/')[1];
     if(pathName === "business"){
-      console.log(pathName)
       navigate('/login')
     }
   }

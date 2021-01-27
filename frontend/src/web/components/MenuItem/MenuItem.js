@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './MenuItem.css';
-import Spinner from "../Spinner/Spinner"
+import Spinner from "../../../global/Spinner/Spinner"
 
 import { getFoodsAction } from '../../../actions/foodActions';
 
@@ -37,7 +37,7 @@ const MenuItem = () => {
       {!loading ?
         <>
       <Header
-        name="menu-item"
+        name={path && path.toUpperCase()}
         addBasketButton={false}
         goBackButton={true}
         link="/menu"
@@ -59,7 +59,7 @@ const MenuItem = () => {
                 </div>
                 <div style={{ width: ' 40%', float: 'right', height: '100%' }}>
                   <div className="item-overlay"/>
-                  <img className="item-image" src={food.imageCover} />
+                  <img className="item-image" src={`/static/images/foods/${food.imageCover}`} />
                 </div>
               </div>
             </Col>

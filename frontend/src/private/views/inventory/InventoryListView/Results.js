@@ -92,7 +92,7 @@ const Results = ({ inventory, className, ...rest }) => {
                     <TableCell>
                       <Box alignItems="center" display="flex">
                         <Typography color="textPrimary" variant="body1">
-                          {element.name}
+                          {element.name.toUpperCase()}
                         </Typography>
                       </Box>
                     </TableCell>
@@ -135,7 +135,7 @@ const Results = ({ inventory, className, ...rest }) => {
       </Card>
     );
   } else {
-    return <p>Please Select Category</p>;
+    return <p style={{textAlign: "center",  textTransform: "uppercase", fontSize: "35px" }}>Please Select Category</p>;
   }
 };
 

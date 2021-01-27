@@ -56,6 +56,7 @@ const ProductList = () => {
       <Container maxWidth={false}>
         <Toolbar />
         <Select
+          style={{backgroundColor:"white"}}
           label="Select Category"
           variant="outlined"
           native

@@ -13,7 +13,7 @@ import {
   Grid
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
-import { useNavigate , Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Toolbar = ({ className, ...rest }) => {
   const classes = useStyles();
-  const navigate = useNavigate();
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -38,7 +37,7 @@ const Toolbar = ({ className, ...rest }) => {
           </Link>
         </Button>
       </Box>
-      <Box mt={3}>
+      {/*<Box mt={3}>
           <Card>
             <CardContent>
               <Grid container item>
@@ -59,7 +58,7 @@ const Toolbar = ({ className, ...rest }) => {
               </Grid>
             </CardContent>
           </Card>
-      </Box>
+      </Box>*/}
     </div>
   );
 };

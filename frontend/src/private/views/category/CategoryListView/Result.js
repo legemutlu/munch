@@ -94,7 +94,7 @@ const Result = ({ className, category, ...rest }) => {
                           {element.foods.length} Foods
                         </TableCell>
                         <TableCell>
-                          <img src={element.imageCover} />
+                          <img alt="dummy" width="50" height="50" src={`/static/images/categories/${element.imageCover}`} />
                         </TableCell>
                         <TableCell>
                           <Button

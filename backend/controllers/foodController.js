@@ -117,6 +117,7 @@ exports.deleteFood = catchAsync(async (req, res, next) => {
   });
 });
 
+
 exports.getFoodStats = catchAsync(async (req, res, next) => {
   const stats = await Food.aggregate([
     {

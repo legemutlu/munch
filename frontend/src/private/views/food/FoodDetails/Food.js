@@ -51,8 +51,6 @@ const Food = ({ food, className, ...rest }) => {
     await dispatch(updateFoodAction(food._id, formData));
   };
 
-  console.log(food);
-
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       {food && (
@@ -69,7 +67,6 @@ const Food = ({ food, className, ...rest }) => {
                 />
               )}
             </Box>
-
             <Box alignItems="center" display="flex" flexDirection="column">
               <br />
               <Typography color="textPrimary" gutterBottom variant="h3">
