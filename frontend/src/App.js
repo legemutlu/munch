@@ -1,5 +1,6 @@
 import React from 'react';
 import { matchRoutes, Navigate, useLocation, useRoutes, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 //Private Routes
 import DashboardLayout from './private/layouts/DashboardLayout';
@@ -22,6 +23,7 @@ import InventoryCreate from './private/views/inventory/InventoryCreateView';
 import InventoryDetails from './private/views/inventory/InventoryDetails';
 import OrderListView from './private/views/order/OrderListView';
 import OrderDetails from './private/views/order/OrderDetails';
+import ReservationListView from './private/views/reservation/ReservationListView';
 
 //Public Routes
 import Container from './web/Container';
@@ -33,16 +35,21 @@ import MenuItem from './web/components/MenuItem/MenuItem';
 import MenuItemDetail from './web/components/MenuItemDetail/MenuItemDetail';
 import Cart from './web/components/Cart/Cart';
 import Order from './web/components/Order/Order';
-import { useSelector } from 'react-redux';
+import Reservation from './web/components/Reservation/Reservation';
+import Contact from './web/components/Contact/Contact';
+
+/*
+import Profile from './web/components/Profile/Profile';
+*/
 
 
 const App = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const userLoginState = useSelector(state => state.login);
   const { userInfo } = userLoginState;
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  console.log(userInfo)
   const routes = [
     {
       path: '/',
@@ -55,7 +62,9 @@ const App = () => {
         { path: 'order', element: <Order /> },
         { path: '/', element: <Landing /> },
         { path: 'login', element: <Login /> },
-        { path: 'register', element: <Register /> }
+        { path: 'register', element: <Register /> },
+        { path: 'reservation', element: <Reservation /> },
+        { path: 'contact', element: <Contact /> }
       ]
     }
   ];
@@ -85,6 +94,7 @@ const App = () => {
           { path: 'inventories/create', element: <InventoryCreate /> },
           { path: 'orders', element: <OrderListView /> },
           { path: 'orders/:id', element: <OrderDetails /> },
+          { path: 'reservations', element: <ReservationListView /> },
           { path: '404', element: <NotFoundView /> },
           { path: '*', element: <Navigate to="/business/404" /> }
         ]

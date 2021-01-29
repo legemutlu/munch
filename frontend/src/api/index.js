@@ -6,6 +6,8 @@ const categoryUrl = `${base}/categories`;
 const userUrl = `${base}/users`;
 const inventoryUrl = `${base}/inventories`;
 const orderUrl = `${base}/orders`;
+const reservationUrl = `${base}/reservations`;
+const contactUrl = `${base}/contacts`;
 
 // food api
 export const getFoods = () => axios.get(foodUrl);
@@ -73,3 +75,23 @@ export const updateOrder = (id, order, config) =>
   axios.patch(`${orderUrl}/${id}`, order, config);
 export const deleteOrder = (id, config) =>
   axios.delete(`${orderUrl}/${id}`, config);
+
+// reservation api
+export const getAllReservations = (config) => axios.get(`${reservationUrl}`, config);
+export const getReservation = (id, config) => axios.get(`${reservationUrl}/${id}`, config);
+export const createReservation = (reservation, config) =>
+  axios.post(reservationUrl, reservation, config);
+export const updateReservation = (id, reservation, config) =>
+  axios.patch(`${reservationUrl}/${id}`, reservation, config);
+export const deleteReservation = (id, config) =>
+  axios.delete(`${reservationUrl}/${id}`, config);
+
+// contact api
+export const getAllContacts = (config) => axios.get(`${contactUrl}`, config);
+export const getContact = (id, config) => axios.get(`${contactUrl}/${id}`, config);
+export const createContact = (contact, config) =>
+  axios.post(contactUrl, contact, config);
+export const updateContact = (id, contact, config) =>
+  axios.patch(`${contactUrl}/${id}`, contact, config);
+export const deleteContact = (id, config) =>
+  axios.delete(`${contactUrl}/${id}`, config);

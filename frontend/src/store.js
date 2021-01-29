@@ -28,6 +28,22 @@ import {
 } from './reducers/categories'
 
 import {
+  reservationListReducer,
+  reservationDetailsReducer,
+  reservationDeleteReducer,
+  reservationCreateReducer,
+  reservationUpdateReducer,
+} from './reducers/reservations'
+
+import {
+  contactListReducer,
+  contactDetailsReducer,
+  contactDeleteReducer,
+  contactCreateReducer,
+  contactUpdateReducer,
+} from './reducers/contacts'
+
+import {
   inventoryListReducer,
   inventoryDetailsReducer,
   inventoryDeleteReducer,
@@ -68,6 +84,16 @@ const reducer = combineReducers({
   orderDelete: orderDeleteReducer,
   orderCreate: orderCreateReducer,
   orderUpdate: orderUpdateReducer,
+  reservationList: reservationListReducer,
+  reservationDetails: reservationDetailsReducer,
+  reservationDelete: reservationDeleteReducer,
+  reservationCreate: reservationCreateReducer,
+  reservationUpdate: reservationUpdateReducer,
+  contactList: contactListReducer,
+  contactDetails: contactDetailsReducer,
+  contactDelete: contactDeleteReducer,
+  contactCreate: contactCreateReducer,
+  contactUpdate: contactUpdateReducer,
   login: loginReducer,
   register: registerReducer,
   cart: cartReducer,

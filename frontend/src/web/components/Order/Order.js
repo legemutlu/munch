@@ -54,7 +54,7 @@ const Order = () => {
                 <div className="col-50">
                   <h3>Billing</h3>
                   <label htmlFor="fname">
-                    <i className="fa fa-user"></i> Full Name
+                    <i className="fa fa-user"/> Full Name
                   </label>
                   <input
                     className="order-input"
@@ -64,7 +64,7 @@ const Order = () => {
                     placeholder="John M. Doe"
                   />
                   <label htmlFor="adr">
-                    <i className="fas fa-map-marked"></i> Address
+                    <i className="fas fa-map-marked"/> Address
                   </label>
                   <Select
                     options={options}
@@ -72,7 +72,7 @@ const Order = () => {
                     styles={customStyles}
                   />
                   <label>
-                    <i className="fas fa-box-open"></i>Deleviry Time
+                    <i className="fas fa-box-open"/>Deleviry Time
                   </label>
                   <div className="container">
                     <div className="row">
@@ -106,19 +106,19 @@ const Order = () => {
                     <i
                       className="fab fa-cc-visa"
                       style={{ color: 'white' }}
-                    ></i>
+                    />
                     <i
                       className="fab fa-cc-amex"
                       style={{ color: 'white' }}
-                    ></i>
+                    />
                     <i
                       className="fab fa-cc-mastercard"
                       style={{ color: 'white' }}
-                    ></i>
+                    />
                     <i
                       className="fab fa-cc-discover"
                       style={{ color: 'white' }}
-                    ></i>
+                    />
                   </div>
                   <label htmlFor="cname">Name on Card</label>
                   <input
@@ -175,7 +175,7 @@ const Order = () => {
             <h4>
               Cart{' '}
               <span className="price" style={{ color: 'white' }}>
-                <i className="fa fa-shopping-cart"></i> <b>4</b>
+                <i className="fa fa-shopping-cart"/> <b>4</b>
               </span>
             </h4>
             <p>

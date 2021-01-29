@@ -153,7 +153,7 @@ export const deleteOrderAction = (id) => async (dispatch, getState) => {
 
     const {
       login: { userInfo },
-      foodList: {foods}
+      orderList: {orders}
     } = getState();
 
     const config = {
@@ -164,7 +164,7 @@ export const deleteOrderAction = (id) => async (dispatch, getState) => {
     };
 
     const filteredData ={
-      data: foods.filter(food => food._id !== id)
+      data: orders.filter(order => order._id !== id)
     }
 
     dispatch({ type: GET_ORDERS_SUCCESS, payload: filteredData });

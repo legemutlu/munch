@@ -13,11 +13,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomerListView = () => {
+const OrderListView = () => {
   const classes = useStyles();
 
   return (
-    <Page className={classes.root} title="Customers">
+    <Page className={classes.root} title="Orders">
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
@@ -28,4 +28,4 @@ const CustomerListView = () => {
   );
 };
 
-export default CustomerListView;
+export default OrderListView;

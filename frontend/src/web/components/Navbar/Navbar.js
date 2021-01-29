@@ -63,7 +63,7 @@ const Navbar = () => {
       <div className="navbar-cart">
         <Link className="navbar-cart-items" to="/cart">
           Cart
-          <i className="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart" />
           {cartItems.length > 0 && (
             <span className="cart-lenght">{cartItems.length}</span>
           )}
@@ -74,7 +74,7 @@ const Navbar = () => {
           <span style={{ cursor: 'pointer' }} onClick={logoutHandler}>
             Logout
           </span>
-          <i className="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt" />
         </div>
       )}
     </nav>

@@ -123,7 +123,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           title: 'Order'
         },
         {
-          href: '/business/inventories',
+          href: '/business/reservations',
           icon: EventSeatOutlinedIcon,
           title: 'Reservation'
         },
@@ -192,7 +192,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           title: 'Order'
         },
         {
-          href: '/business/inventories',
+          href: '/business/reservations',
           icon: EventSeatOutlinedIcon,
           title: 'Reservation'
         },
