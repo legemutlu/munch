@@ -14,14 +14,14 @@ npm install
 
 ### Unattended
 
-- Suggestion Algorithm for food suggestion (high)
-- Profile Page for customers
-- Update and Change Password Frontend
-- Reservation business hour problem
-- Create Contact from business
-- Customer review and rate frontend
-- Review page for business
-- Business dashboard
-- Payment
-- Search box for business
-- pop up for delete actions
+- Suggestion Algorithm for food suggestion (significance level: high)
+- Profile Page for customers (significance level: high)
+- Update and Change Password Frontend (significance level: high)
+- Reservation business hour problem (significance level: high)
+- Create Contact from business(significance level: high)
+- Customer review and rate frontend (significance level: high)
+- Review page for business (significance level: mid)
+- Business dashboard (significance level: high)
+- Payment (significance level: mid)
+- Search box for business (significance level: low)
+- pop up for delete actions (significance level: low)
