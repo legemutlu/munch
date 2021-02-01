@@ -38,6 +38,7 @@ import Cart from './web/components/Cart/Cart';
 import Order from './web/components/Order/Order';
 import Reservation from './web/components/Reservation/Reservation';
 import Contact from './web/components/Contact/Contact';
+import PasswordForgot from './web/components/PasswordForgot/PasswordForgot';
 
 /*
 import Profile from './web/components/Profile/Profile';
@@ -65,7 +66,8 @@ const App = () => {
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         { path: 'reservation', element: <Reservation /> },
-        { path: 'contact', element: <Contact /> }
+        { path: 'contact', element: <Contact /> },
+        { path: 'password-forgot', element: <PasswordForgot /> },
       ]
     }
   ];

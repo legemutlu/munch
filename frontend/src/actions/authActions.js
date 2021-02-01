@@ -100,9 +100,9 @@ export const resetPassword = (token, passwords) => async dispatch => {
   }
 };
 
-export const forgotPassword = email => async dispatch => {
+export const forgotPasswordAction = email => async dispatch => {
   try {
-    const { data } = await api.resetPassword(email);
+    const { data } = await api.forgotPassword(email);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data });
   } catch (error) {

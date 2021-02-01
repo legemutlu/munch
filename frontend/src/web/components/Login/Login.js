@@ -67,7 +67,7 @@ export default function Login() {
           </button>
         </form>
         <div style={{ align: 'center', padding: '25px' }}>
-          <Link to="#" className="login-footer">
+          <Link to="/password-forgot" className="login-footer">
             Forgot Password?
           </Link>
           <Link to="/register" className="login-footer">

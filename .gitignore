@@ -2,6 +2,7 @@ node_modules/
 *.env
 /frontend/build
 /frontend/node_modules
+/frontend/public/static/images
 # intellij configs
 .idea/
 debug.log
