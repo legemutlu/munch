@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -53,10 +53,10 @@ const Results = ({ className, ...rest }) => {
   const usersResponse = useSelector(state => state.userList);
   const { users, allUsersLength } = usersResponse;
 
-  let lenghtUsers = 0;
+  let lengthUsers = 0;
   if (users) {
     if (users.length !== undefined && users.length > 0) {
-      lenghtUsers = users.length;
+      lengthUsers = users.length;
     }
   }
 
@@ -118,11 +118,11 @@ const Results = ({ className, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === lenghtUsers}
+                    checked={selectedCustomerIds.length === lengthUsers}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0 &&
-                      selectedCustomerIds.length < lenghtUsers
+                      selectedCustomerIds.length < lengthUsers
                     }
                     onChange={handleSelectAll}
                   />
@@ -139,7 +139,6 @@ const Results = ({ className, ...rest }) => {
             <TableBody>
               {users &&
                 users.slice(0, limit).map(user => (
-                  user.role !== "admin" &&
                   <TableRow
                     key={user._id}
                     hover

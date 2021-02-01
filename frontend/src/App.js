@@ -24,6 +24,7 @@ import InventoryDetails from './private/views/inventory/InventoryDetails';
 import OrderListView from './private/views/order/OrderListView';
 import OrderDetails from './private/views/order/OrderDetails';
 import ReservationListView from './private/views/reservation/ReservationListView';
+import ContactView from './private/views/contact';
 
 //Public Routes
 import Container from './web/Container';
@@ -95,6 +96,7 @@ const App = () => {
           { path: 'orders', element: <OrderListView /> },
           { path: 'orders/:id', element: <OrderDetails /> },
           { path: 'reservations', element: <ReservationListView /> },
+          { path: 'contacts', element: <ContactView /> },
           { path: '404', element: <NotFoundView /> },
           { path: '*', element: <Navigate to="/business/404" /> }
         ]

@@ -204,7 +204,7 @@ export const updateMeAction = user => async (dispatch, getState) => {
 
     dispatch({ type: USER_UPDATE_ME_SUCCESS, payload: data});
 
-    await dispatch({ type: USER_LOGIN_SUCCESS, payload: { ...userInfo, user: data && data.data ? data.data : userInfo.user}  });
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: { ...userInfo, user: data && data.data ? data.data : userInfo.user}  });
 
     localStorage.setItem('userInfo', JSON.stringify({ ...userInfo, user: data && data.data ? data.data : userInfo.user }  ));
 

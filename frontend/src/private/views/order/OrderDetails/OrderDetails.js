@@ -50,6 +50,22 @@ const orderStatusOptions = [
   }
 ]
 
+const paymentStatusOptions = [
+  {
+    label:'Waiting Payment',
+    value:'Waiting Payment',
+  },
+  {
+    label:  'Canceled',
+    value:  'Canceled'
+  },
+  {
+    label:  'Paid',
+    value:  'Paid'
+  }
+]
+
+
 const OrderDetails = ({ order, className, ...rest }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -65,7 +81,10 @@ const OrderDetails = ({ order, className, ...rest }) => {
       label: "",
       value: ""
     },
-    paymentStatus: '',
+    paymentStatus: {
+      label: "",
+      value: ""
+    },
     foods: [],
     orderType: '',
     orderAddress: '',
@@ -83,7 +102,7 @@ const OrderDetails = ({ order, className, ...rest }) => {
       setValues({
         ...values,
         orderStatus: { label: order.orderStatus, value: order.orderStatus },
-        paymentStatus: order.paymentStatus,
+        paymentStatus: { label: order.paymentStatus, value: order.paymentStatus },
         foods: order.foods,
         orderType: order.orderType,
         orderAddress: order.orderAddress,
@@ -106,6 +125,13 @@ const OrderDetails = ({ order, className, ...rest }) => {
     setValues({
       ...values,
       orderStatus: { label: selectedValue.label, value: selectedValue.value }
+    });
+  };
+
+  const handleSelectPaymentStatus = (selectedValue) => {
+    setValues({
+      ...values,
+      paymentStatus: { label: selectedValue.label, value: selectedValue.value }
     });
   };
 
@@ -139,7 +165,7 @@ const OrderDetails = ({ order, className, ...rest }) => {
     e.preventDefault();
     const post = {
       orderStatus: values.orderStatus.label,
-      paymentStatus: values.paymentStatus,
+      paymentStatus: values.paymentStatus.label,
     }
     await dispatch(updateOrderAction(order._id, post));
   };
@@ -197,15 +223,15 @@ const OrderDetails = ({ order, className, ...rest }) => {
                     onChange={handleSelectOrderStatus}
                   />
                 </Grid>
+
                 <Grid item md={6} xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Payment Status"
-                    name="paymentStatus"
-                    onChange={handleChange}
-                    required
+                  <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    options={paymentStatusOptions}
+                    placeholder={'Payment Status'}
                     value={values.paymentStatus || ''}
-                    variant="outlined"
+                    onChange={handleSelectOrderStatus}
                   />
                 </Grid>
 
@@ -295,7 +321,7 @@ const OrderDetails = ({ order, className, ...rest }) => {
                           {values.foods.map((element) => (
                             <TableRow key={element._id}>
                               <TableCell>{element.food.name}</TableCell>
-                              <TableCell>{element.food.price}</TableCell>
+                              <TableCell>{element.price}</TableCell>
                               <TableCell>
                                 <Button
                                   style={{

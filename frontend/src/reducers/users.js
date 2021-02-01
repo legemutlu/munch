@@ -71,13 +71,13 @@ export const userListReducer = (
       return {
         loading: true,
         users: state.users,
-        allUsersLength: action.allDataLenght
+        allUsersLength: action.allDataLength
       };
     case USER_LIST_SUCCESS:
       return {
         loading: false,
         users: action.payload.data,
-        allUsersLength: action.allDataLenght
+        allUsersLength: action.allDataLength
       };
     case USER_LIST_FAIL:
       return { loading: false, error: action.payload };

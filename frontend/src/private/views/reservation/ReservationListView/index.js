@@ -38,7 +38,7 @@ const ReservationListView = () => {
     let newReservationArray = [];
   if(reservations){
     reservations.map((el)=>{
-      console.log(el.date)
+console.log(moment(el.date))
       newReservationArray.push({
         start: el.date,
         end: el.date,
@@ -46,9 +46,11 @@ const ReservationListView = () => {
         title:el.name,
         note:el.note,
         phone:el.phone,
-        allDay:true
+        allDay: true
       })
     })
+
+
 
   }
 
@@ -62,7 +64,6 @@ const ReservationListView = () => {
           <Calendar
             localizer={localized}
             events={newReservationArray}
-            defaultView="day"
             style={{ height: 500 }}
           />
           }

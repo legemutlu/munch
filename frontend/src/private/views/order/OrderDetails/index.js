@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomerView = (props) => {
+const OrderView = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const location = useLocation();
@@ -30,8 +30,6 @@ const CustomerView = (props) => {
   const orderDetailsData = useSelector(state => state.orderDetails);
   const { order, loading, error } = orderDetailsData;
 
-  console.log(typeof order)
-  console.log(order)
 
   useEffect(()=>{
     getUserData();
@@ -51,4 +49,4 @@ const CustomerView = (props) => {
   );
 };
 
-export default CustomerView;
+export default OrderView;
