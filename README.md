@@ -1,13 +1,19 @@
 #MUNCH
 
 ## INSTALLATION
-First run code below main directory
+First run code below in main directory
 ```bash
 npm install
 ```
-Then go /backend and run code below
+Then go /frontend and run code below
 ```bash
 npm install
+```
+
+## START
+Run code below in main directory
+```bash
+npm start
 ```
 
 ## TASKS
