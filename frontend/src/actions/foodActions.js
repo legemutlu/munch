@@ -21,8 +21,12 @@ import {
   DELETE_FOOD_FAIL,
   DELETE_FOOD_RESET,
   GET_FOODS_STATS,
-  GET_FOODS_BY_CATEGORY
+  GET_FOODS_BY_CATEGORY,
+  FOOD_CREATE_REVIEW_REQUEST,
+  FOOD_CREATE_REVIEW_SUCCESS,
+  FOOD_CREATE_REVIEW_FAIL,
 } from '../constants/foodConstants';
+import { logout } from './authActions';
 
 export const getFoodsAction = () => async (dispatch) => {
   try {
@@ -167,3 +171,43 @@ export const getFoodStatsAction = (id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const createFoodReview = (foodId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: FOOD_CREATE_REVIEW_REQUEST,
+    })
+
+    const {
+      login: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    await api.createReview(foodId,review, config);
+
+    dispatch({
+      type: FOOD_CREATE_REVIEW_SUCCESS,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: FOOD_CREATE_REVIEW_FAIL,
+      payload: message,
+    })
+  }
+}

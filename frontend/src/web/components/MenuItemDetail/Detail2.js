@@ -2,20 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
-import { getFoodAction } from '../../../actions/foodActions';
+import { createFoodReview, getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 import Spinner from '../../../global/Spinner/Spinner';
 import Snackbars from '../../../global/Snackbar/Snackbars';
 import Rating from '../../../global/Rating';
+import Message from '../../../global/Message';
+import { FOOD_CREATE_REVIEW_RESET } from '../../../constants/foodConstants';
 
 const ProductScreen = ({ history, match }) => {
-  const [open, setOpen] = useState(false);
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname.split('/')[3];
   const backPath = location.pathname.split('/')[1];
+
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
+  const [open, setOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const getFoodData = () => {
     dispatch(getFoodAction(path));
@@ -25,6 +30,26 @@ const ProductScreen = ({ history, match }) => {
   const {food, loading, error }= foodDetailData;
   const user = useSelector(state => state.login);
 
+  const foodReviewCreate = useSelector((state) => state.foodCreateReview)
+  const {
+    success: successReview,
+    loading: loadingReview,
+    error: errorReview,
+  } = foodReviewCreate
+
+  const userLogin = useSelector((state) => state.login)
+  const { userInfo } = userLogin
+
+  useEffect(() => {
+    if (successReview) {
+      setRating(0)
+      setComment('')
+    }
+    if (!food._id || food._id !== path) {
+      dispatch(getFoodAction(path))
+      dispatch({ type: FOOD_CREATE_REVIEW_RESET })
+    }
+  }, [dispatch, successReview])
 
   const addItemHandler = id => {
     setQuantity(quantity + 1);
@@ -35,6 +60,16 @@ const ProductScreen = ({ history, match }) => {
     getFoodData();
   }, []);
 
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(
+      createFoodReview(path, {
+        rating,
+        comment,
+      })
+    )
+  }
 
 
   return (
@@ -112,12 +147,12 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
-          {/*<Row>
+          <Row>
             <Col md={6}>
               <h2>Reviews</h2>
-              {food.reviews.length === 0 && <Message>No Reviews</Message>}
+              {food && food.reviews && food.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
-                {food.reviews.map((review) => (
+                {food && food.reviews && food.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
@@ -127,14 +162,14 @@ const ProductScreen = ({ history, match }) => {
                 ))}
                 <ListGroup.Item>
                   <h2>Write a Customer Review</h2>
-                  {successProductReview && (
+                  {successReview && (
                     <Message variant='success'>
                       Review submitted successfully
                     </Message>
                   )}
-                  {loadingProductReview && <Loader />}
-                  {errorProductReview && (
-                    <Message variant='danger'>{errorProductReview}</Message>
+                  {loadingReview && <Spinner />}
+                  {errorReview && (
+                    <Message variant='danger'>{errorReview}</Message>
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
@@ -163,7 +198,7 @@ const ProductScreen = ({ history, match }) => {
                         />
                       </Form.Group>
                       <Button
-                        disabled={loadingProductReview}
+                        disabled={loadingReview}
                         type='submit'
                         variant='primary'
                       >
@@ -178,7 +213,7 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-          </Row>*/}
+          </Row>
         </>
       )}
     </>

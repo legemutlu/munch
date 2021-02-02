@@ -17,7 +17,11 @@ import {
   DELETE_FOOD_SUCCESS,
   DELETE_FOOD_FAIL,
   GET_FOODS_STATS,
-  GET_FOODS_BY_CATEGORY
+  GET_FOODS_BY_CATEGORY,
+  FOOD_CREATE_REVIEW_REQUEST,
+  FOOD_CREATE_REVIEW_SUCCESS,
+  FOOD_CREATE_REVIEW_FAIL,
+  FOOD_CREATE_REVIEW_RESET,
 } from '../constants/foodConstants';
 
 
@@ -97,6 +101,21 @@ export const foodUpdateReducer = (state = { food: {} }, action) => {
   }
 }
 
+export const foodReviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FOOD_CREATE_REVIEW_REQUEST:
+      return { loading: true }
+    case FOOD_CREATE_REVIEW_SUCCESS:
+      return { loading: false, success: true }
+    case FOOD_CREATE_REVIEW_FAIL:
+      return { loading: false, error: action.payload }
+    case FOOD_CREATE_REVIEW_RESET:
+      return {}
+    default:
+      return state
+  }
+}
+
 
 
 /*export default (state = initialState, action) => {
@@ -127,5 +146,3 @@ export const foodUpdateReducer = (state = { food: {} }, action) => {
       return state;
   }
 };*/
-export class orderListReducer {
-}

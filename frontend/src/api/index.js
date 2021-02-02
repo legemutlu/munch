@@ -18,6 +18,7 @@ export const updateFood = (id, food, config) =>
 export const deleteFood = (id, config) =>
   axios.delete(`${foodUrl}/${id}`, config);
 export const getFoodStats = () => axios.get(`${foodUrl}/food-stats`);
+export const createReview = (id, review, config) => axios.post(`${foodUrl}/${id}/reviews`, review, config);
 
 // category api
 export const getCategories = () => axios.get(categoryUrl);
