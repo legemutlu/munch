@@ -19,7 +19,11 @@ import {
   DELETE_ORDER_SUCCESS,
   DELETE_ORDER_FAIL,
   DELETE_ORDER_RESET,
-  GET_ORDERS_STATS
+  GET_ORDERS_STATS,
+  ORDER_LIST_MY_REQUEST,
+  ORDER_LIST_MY_SUCCESS,
+  ORDER_LIST_MY_FAIL,
+  ORDER_LIST_MY_RESET
 } from '../constants/orderConstants';
 
 export const orderListReducer = (state = { orders: [], length: 0 }, action) => {
@@ -94,3 +98,26 @@ export const orderUpdateReducer = (state = { order: {} }, action) => {
       return state;
   }
 };
+
+export const orderListMyReducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
+    case ORDER_LIST_MY_REQUEST:
+      return {
+        loading: true,
+      }
+    case ORDER_LIST_MY_SUCCESS:
+      return {
+        loading: false,
+        orders: action.payload,
+      }
+    case ORDER_LIST_MY_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
+    case ORDER_LIST_MY_RESET:
+      return { orders: [] }
+    default:
+      return state
+  }
+}

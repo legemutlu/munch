@@ -124,7 +124,7 @@ label {
   font-size: 45px;
 }
 
-.btn {
+form .btn {
   font-size: 20px;
   text-transform: uppercase;
   padding: 1px 11px;
@@ -137,16 +137,16 @@ label {
   margin-top: 20px;
 }
 
-.btn:hover {
+form .btn:hover {
   transform: translateY(-3px);
   color: #1d1e2c;
 }
 
-.btn:focus {
+form .btn:focus {
   outline: 0;
 }
 
-.btn:active {
+form .btn:active {
   transform: translateY(-0.5px);
 }
 

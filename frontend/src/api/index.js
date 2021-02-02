@@ -68,6 +68,7 @@ export const deleteInventory = (id, config) =>
 export const getAllOrdersLimit = (limit, page, config) =>
   axios.get(`${orderUrl}?limit=${limit}&page=${page}`, config);
 export const getAllOrders = (config) => axios.get(`${orderUrl}`, config);
+export const getMyOrders = (config) => axios.get(`${orderUrl}/my-orders`, config);
 export const getOrder = (id, config) => axios.get(`${orderUrl}/${id}`, config);
 export const createOrder = (order, config) =>
   axios.post(orderUrl, order, config);

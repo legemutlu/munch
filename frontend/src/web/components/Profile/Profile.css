@@ -1,0 +1,10 @@
+.detail-button {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 2px;
+    color: white;
+    background: #383a50 ;
+    border-radius: 6px;
+}

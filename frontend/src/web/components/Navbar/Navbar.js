@@ -26,7 +26,7 @@ const Navbar = () => {
               src={logo}
               alt={logo}
             />
-            <Link style={{ left: '0' }} to="/cart">
+            <Link style={{ left: '0' }} to="/profile">
               Profile
             </Link>
           </div>

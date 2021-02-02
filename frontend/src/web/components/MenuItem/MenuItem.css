@@ -43,7 +43,7 @@
   width: 90%;
 }
 
-.fas.fa-star {
+.item-header .fas.fa-star {
   display: absolute;
   margin-left: 30px;
   margin-top: 20px;

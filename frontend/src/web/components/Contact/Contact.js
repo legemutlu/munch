@@ -33,7 +33,6 @@ const Contact = () => {
             </div>
             <div className="float-child">
                 <div className="blue">
-
                     <label>Phone</label>
                     <hr/>
                     <p>{contacts[0].phone}</p>

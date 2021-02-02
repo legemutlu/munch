@@ -34,15 +34,13 @@ import Register from './web/components/Register/Register';
 import Menu from './web/components/Menu/Menu';
 import MenuItem from './web/components/MenuItem/MenuItem';
 import MenuItemDetail from './web/components/MenuItemDetail/MenuItemDetail';
+import Detail2 from './web/components/MenuItemDetail/Detail2';
 import Cart from './web/components/Cart/Cart';
 import Order from './web/components/Order/Order';
 import Reservation from './web/components/Reservation/Reservation';
 import Contact from './web/components/Contact/Contact';
 import PasswordForgot from './web/components/PasswordForgot/PasswordForgot';
-
-/*
 import Profile from './web/components/Profile/Profile';
-*/
 
 
 const App = () => {
@@ -59,7 +57,8 @@ const App = () => {
       children: [
         { path: 'menu', element: <Menu /> },
         { path: '/:category', element: <MenuItem /> },
-        { path: '/:category/:item/:id', element: <MenuItemDetail /> },
+        /*{ path: '/:category/:item/:id', element: <MenuItemDetail /> },*/
+        { path: '/:category/:item/:id', element: <Detail2 /> },
         { path: 'cart', element: <Cart /> },
         { path: 'order', element: <Order /> },
         { path: '/', element: <Landing /> },
@@ -68,6 +67,7 @@ const App = () => {
         { path: 'reservation', element: <Reservation /> },
         { path: 'contact', element: <Contact /> },
         { path: 'password-forgot', element: <PasswordForgot /> },
+        { path: 'profile', element: <Profile /> },
       ]
     }
   ];
@@ -107,7 +107,7 @@ const App = () => {
   }else if((userInfo && userInfo.user.role === "customer" ) || !userInfo){
     let pathName = location.pathname.split('/')[1];
     if(pathName === "business"){
-      navigate('/login')
+      navigate('/',{replace: true})
     }
   }
 
