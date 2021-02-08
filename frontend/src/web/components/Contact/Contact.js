@@ -22,7 +22,7 @@ const Contact = () => {
   return (
     <section className="contact-page">
       <Header name="contact" addBasketButton={false} goBackButton={false} />
-        {contacts.length > 0 ?
+        {contacts && contacts.length > 0 ?
         <div className="float-container">
             <div className="float-child">
                 <div className="green">
@@ -57,7 +57,7 @@ const Contact = () => {
                                 </TableRow>
                             </TableHead>
             {contacts[0].workHours.map((element)=>
-                            <TableBody>
+                            <TableBody key={element._id}>
                                 <TableRow hover>
                                     <TableCell>
                                         {element.day}

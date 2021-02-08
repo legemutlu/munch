@@ -22,7 +22,7 @@ export const getContactsAction = () => async (dispatch,getState) => {
 
     dispatch({ type: GET_CONTACTS_REQUEST })
 
-    const {
+  /*  const {
       login: { userInfo }
     } = getState();
 
@@ -31,9 +31,9 @@ export const getContactsAction = () => async (dispatch,getState) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`
       }
-    };
+    };*/
 
-    const { data } = await api.getAllContacts(config);
+    const { data } = await api.getAllContacts();
 
     dispatch({ type: GET_CONTACTS_SUCCESS, payload: data });
   } catch (error) {

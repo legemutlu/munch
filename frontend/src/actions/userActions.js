@@ -111,6 +111,43 @@ export const listUsers = (limit, page) => async (dispatch, getState) => {
   }
 };
 
+export const searchUsers = (query) => async (dispatch, getState) => {
+  try {
+    const {
+      login: { userInfo }
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    };
+
+    dispatch({
+      type: USER_LIST_REQUEST,
+    });
+
+    const { data } = await api.searchUser(query, config);
+
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload: message
+    });
+  }
+};
+
+
+
 /* export const deleteUser = id => async (dispatch, getState) => {
   try {
     dispatch({
@@ -200,9 +237,15 @@ export const updateMeAction = user => async (dispatch, getState) => {
       }
     };
 
+    console.log(user)
+
     const { data } = await api.updateMe(user,config);
 
     dispatch({ type: USER_UPDATE_ME_SUCCESS, payload: data});
+
+    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+
+    dispatch({ type: USER_DETAILS_RESET });
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: { ...userInfo, user: data && data.data ? data.data : userInfo.user}  });
 

@@ -135,7 +135,7 @@ const Results = ({ inventory, className, ...rest }) => {
       </Card>
     );
   } else {
-    return <p style={{textAlign: "center",  textTransform: "uppercase", fontSize: "35px" }}>Please Select Category</p>;
+    return <p style={{textAlign: "center",  textTransform: "uppercase", fontSize: "35px" }}>Please Select Inventory</p>;
   }
 };
 

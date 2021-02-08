@@ -32,18 +32,12 @@ const Inventory = ({ inventory, className, ...rest }) => {
         <>
       <CardContent>
         <Box alignItems="center" display="flex" flexDirection="column">
-          <img src={inventory.imageCover} />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {inventory.name}
           </Typography>
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
-        <Button color="primary" fullWidth variant="text">
-          Upload picture
-        </Button>
-      </CardActions>
         </>
       }
     </Card>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom';
-import { getMeAction, getUserDetails, updateUserAction } from '../../../actions/userActions';
+import { getMeAction, getUserDetails, updateMeAction, updateUserAction } from '../../../actions/userActions';
 import { listMyOrders } from '../../../actions/orderActions';
 import { USER_UPDATE_PROFILE_RESET } from '../../../constants/userConstants';
 import Snackbars from '../../../global/Snackbar/Snackbars';
@@ -15,6 +15,8 @@ const ProfileScreen = () => {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [address, setAddress] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
@@ -48,6 +50,8 @@ const ProfileScreen = () => {
       } else {
         setName(user.name)
         setEmail(user.email)
+        setPhone(user.phone)
+        setAddress(user.address)
       }
     }
   }, [userInfo, user])
@@ -57,7 +61,7 @@ const ProfileScreen = () => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      dispatch(updateUserAction({ id: user._id, name, email, password }))
+      dispatch(updateMeAction({ id: user._id, name, email, phone, address, password }))
       setTimeout(function () {
         navigate(`/`);
       }, 2000);
@@ -96,6 +100,25 @@ const ProfileScreen = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
+            </Form.Group>
+
+            <Form.Group controlId='phone'>
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                type='phone'
+                placeholder='Enter phone'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId='address'>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter address'
+                value={address || ''}
+                onChange={(e) => setAddress(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId='password'>

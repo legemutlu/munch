@@ -6,6 +6,7 @@ import GlobalStyles from '../../components/GlobalStyles';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 import theme from '../../theme';
+import '../../style/App.css'
 
 const useStyles = makeStyles(theme => ({
   root: {

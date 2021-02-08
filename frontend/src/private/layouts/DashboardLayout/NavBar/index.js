@@ -72,17 +72,17 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           icon: BarChartIcon,
           title: 'Dashboard'
         },
-        {
+       /* {
           href: '/business/products',
           icon: ShoppingBagIcon,
           title: 'Products'
-        },
+        },*/
         {
           href: '/business/account',
           icon: UserIcon,
           title: 'Profile'
         },
-        {
+       /* {
           href: '/business/settings',
           icon: SettingsIcon,
           title: 'Settings'
@@ -101,7 +101,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           href: '/business/404',
           icon: AlertCircleIcon,
           title: 'Error'
-        },
+        },*/
         {
           href: '/business/foods',
           icon: FastfoodOutlinedIcon,
@@ -146,7 +146,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           icon: UsersIcon,
           title: 'Customers'
         },
-        {
+       /* {
           href: '/business/products',
           icon: ShoppingBagIcon,
           title: 'Products'
@@ -170,7 +170,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           href: '/business/404',
           icon: AlertCircleIcon,
           title: 'Error'
-        },
+        },*/
         {
           href: '/business/foods',
           icon: FastfoodOutlinedIcon,

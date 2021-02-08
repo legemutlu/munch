@@ -44,7 +44,8 @@ const ContactDetails = ({ className, ...rest }) => {
     workHours: [],
     address: '',
     phone: '',
-    wifi: {},
+    wifiName:'',
+    wifiPass:'',
     id:'',
     workDay:'',
     workTime:''
@@ -76,7 +77,8 @@ const ContactDetails = ({ className, ...rest }) => {
         address: contacts[0].address,
         workHours: contacts[0].workHours,
         phone: contacts[0].phone,
-        wifi: contacts[0].wifi
+        wifiName: contacts[0].wifi.name,
+        wifiPass: contacts[0].wifi.password,
       });
     }
   }
@@ -145,7 +147,17 @@ const ContactDetails = ({ className, ...rest }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(updateContactAction(values.id, values));
+    const contact = {
+      workHours: values.workHours,
+      address: values.address,
+      phone: values.phone,
+      wifi: {
+        name: values.wifiName,
+        password: values.wifiPass
+      },
+      id:values.id,
+    }
+    await dispatch(updateContactAction(values.id, contact));
   };
 
   return (
@@ -190,10 +202,10 @@ const ContactDetails = ({ className, ...rest }) => {
                   <TextField
                     fullWidth
                     label="wifi name"
-                    name="wifi"
+                    name="wifiName"
                     onChange={handleChange}
                     required
-                    value={values.wifi.name || ''}
+                    value={values.wifiName || ''}
                     variant="outlined"
                   />
                   <Divider />
@@ -201,10 +213,10 @@ const ContactDetails = ({ className, ...rest }) => {
                   <TextField
                     fullWidth
                     label="wifi password"
-                    name="wifi"
+                    name="wifiPass"
                     onChange={handleChange}
                     required
-                    value={values.wifi.password || ''}
+                    value={values.wifiPass || ''}
                     variant="outlined"
                   />
                 </Grid>

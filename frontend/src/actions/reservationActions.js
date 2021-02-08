@@ -83,18 +83,9 @@ export const createReservationAction = (post) => async (dispatch, getState) => {
 
     dispatch({ type: CREATE_RESERVATION_REQUEST })
 
-    const {
-      login: { userInfo }
-    } = getState();
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`
-      }
-    };
 
-    const { data } = await api.createReservation(post, config);
+    const { data } = await api.createReservation(post);
 
     dispatch({ type: CREATE_RESERVATION_SUCCESS, payload: data });
   } catch (error) {

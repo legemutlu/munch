@@ -43,7 +43,7 @@ const Toolbar = ({ className, ...rest }) => {
             navigate('/business/inventories/create', { replace: true });
           }}
         >
-          Create Food
+          Create Inventory
         </Button>
       </Box>
       {/*<Box mt={3}>

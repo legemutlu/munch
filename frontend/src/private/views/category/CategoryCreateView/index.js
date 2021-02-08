@@ -86,12 +86,7 @@ const FoodCreate = ({ className, ...rest }) => {
       {...rest}
     >
       <Card>
-        <CardHeader title="Category" />
-        <CardActions>
-          <Button color="primary" variant="text">
-            Upload picture
-          </Button>
-        </CardActions>
+        <CardHeader title="Create Category" />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>

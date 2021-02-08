@@ -11,13 +11,13 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'Food',
     },
-    review: {
+    comment: {
       type: String,
     },
     rating: {
       type: Number,
       min: 1,
-      max: 10,
+      max: 5,
     },
     createdAt: {
       type: Date,

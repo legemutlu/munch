@@ -22,19 +22,21 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField
+  TextField, Typography
 } from '@material-ui/core';
 import clsx from 'clsx';
 import { getCategoriesAction } from '../../../../actions/categoryActions';
 import { getInventoriesAction } from '../../../../actions/inventoryActions';
-import { createFoodAction } from '../../../../actions/foodActions';
+import { createFoodAction, updateFoodAction } from '../../../../actions/foodActions';
 import Select from 'react-select';
 
 import { useNavigate } from 'react-router-dom';
 import Snackbars from '../../../../global/Snackbar/Snackbars';
 
-const useStyles = makeStyles(() => ({
-  root: {}
+const useStyles = makeStyles((theme) => ({
+  input: {
+    display: 'none'
+  }
 }));
 
 const FoodCreate = ({ className, ...rest }) => {
@@ -47,6 +49,8 @@ const FoodCreate = ({ className, ...rest }) => {
     error: false,
     message: ''
   });
+
+  const [image, setImage] = useState({ preview: '', raw: '' });
 
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({
@@ -120,7 +124,12 @@ const FoodCreate = ({ className, ...rest }) => {
     setOpen(true);
   };
 
+
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleAdd = () => {
     let ingredient = values.ingredient.slice(0);
     setOpen(false);
     ingredient.push({
@@ -168,6 +177,8 @@ const FoodCreate = ({ className, ...rest }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('imageCover', image.raw);
     await dispatch(createFoodAction(values));
   };
 
@@ -186,12 +197,7 @@ const FoodCreate = ({ className, ...rest }) => {
         {...rest}
       >
         <Card>
-          <CardHeader subheader="The information can be edited" title="Inventory" />
-          <CardActions>
-            <Button color="primary" variant="text">
-              Upload picture
-            </Button>
-          </CardActions>
+          <CardHeader  title="Create Food" />
           <Divider />
           <CardContent>
             <Grid container spacing={3}>
@@ -297,7 +303,7 @@ const FoodCreate = ({ className, ...rest }) => {
                     <Button onClick={handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleAdd} color="primary">
                       Add
                     </Button>
                   </DialogActions>

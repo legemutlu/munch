@@ -130,8 +130,6 @@ const Results = ({ className, ...rest }) => {
                 <TableCell>Name</TableCell>
                 <TableCell>Role</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Address</TableCell>
-                <TableCell>Phone</TableCell>
                 <TableCell>Registration date</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
@@ -163,8 +161,6 @@ const Results = ({ className, ...rest }) => {
                     </TableCell>
                     <TableCell>{user.role}</TableCell>
                     <TableCell>{user.email}</TableCell>
-                    <TableCell>{`${user.address}`}</TableCell>
-                    <TableCell>{user.phone}</TableCell>
                     <TableCell>
                       {moment(user.createdAt).format('DD/MM/YYYY')}
                     </TableCell>

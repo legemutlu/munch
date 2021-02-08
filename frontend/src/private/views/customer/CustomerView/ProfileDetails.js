@@ -51,6 +51,8 @@ const ProfileDetails = ({userData, className, ...rest }) => {
     lastName: "",
     email: "",
     role: "",
+    address: "",
+    phone: "",
     id:""
   });
 
@@ -59,6 +61,8 @@ const ProfileDetails = ({userData, className, ...rest }) => {
         ...values,
         firstName: userData.name,
         lastName: userData.surname,
+        address: userData.address,
+        phone: userData.phone,
         email: userData.email,
         role: userData.role,
         id: userData._id
@@ -77,6 +81,8 @@ const ProfileDetails = ({userData, className, ...rest }) => {
     const updatedUser = {
       name: values.firstName,
       surname: values.lastName,
+      address: values.address,
+      phone: values.phone,
       email: values.email,
       role: values.role,
       id: values.id
@@ -143,6 +149,30 @@ const ProfileDetails = ({userData, className, ...rest }) => {
                   disabled
                   required
                   value={values.email || ''}
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <TextField
+                  fullWidth
+                  label="Address"
+                  name="address"
+                  onChange={handleChange}
+                  disabled
+                  required
+                  value={values.adress || ''}
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <TextField
+                  fullWidth
+                  label="Phone"
+                  name="phone"
+                  onChange={handleChange}
+                  disabled
+                  required
+                  value={values.phone || ''}
                   variant="outlined"
                 />
               </Grid>

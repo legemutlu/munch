@@ -154,7 +154,7 @@ const ProductScreen = ({ history, match }) => {
               <ListGroup variant='flush'>
                 {food && food.reviews && food.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
+                    <strong>{review.user.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
