@@ -46,7 +46,7 @@ export const forgotPassword = (email) =>
 export const getAllUsers = (config) => axios.get(userUrl, config);
 export const getUsers = (limit, page, config) =>
   axios.get(`${userUrl}?limit=${limit}&page=${page}`, config);
-export const searchUser = (query,config) => axios.get(`${userUrl}?name=${query}`, config);
+export const searchUser = (query,config) => axios.get(`${userUrl}?search=${query}`, config);
 export const updateUser = (user, config) =>
   axios.patch(`${userUrl}/${user.id}`, user, config);
 export const getUser = (id, config) => axios.get(`${userUrl}/${id}`, config);

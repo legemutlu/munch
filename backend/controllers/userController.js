@@ -49,6 +49,7 @@ exports.getMe = (req, res, next) => {
   next();
 };
 
+
 // User Routes
 exports.updateMe = catchAsync(async (req, res, next) => {
   // Create error if user POSTs password data

@@ -4,9 +4,10 @@ class APIFeatures {
     this.queryString = queryString;
   }
 
+
   filter() {
     const queryObj = { ...this.queryString };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    const excludedFields = ['page', 'sort', 'limit', 'search', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
     let queryStr = JSON.stringify(queryObj);
@@ -14,6 +15,7 @@ class APIFeatures {
     this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }
+
 
   sort() {
     if (this.queryString.sort) {
@@ -44,6 +46,7 @@ class APIFeatures {
 
     return this;
   }
+
 }
 
 module.exports = APIFeatures;

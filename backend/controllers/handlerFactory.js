@@ -63,7 +63,16 @@ exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
 
     let filter = {};
-    if (req.params.id) filter = { tour: req.params.id };
+    const search = req.query.search
+        ? {
+          name: {
+            $regex: req.query.search,
+            $options: 'i',
+          },
+        }
+        : {}
+    filter = { ...search };
+
 
     const features = new APIFeatures(Model.find(filter), req.query)
       .filter()
