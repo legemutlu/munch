@@ -24,7 +24,7 @@ import {
   GET_FOODS_BY_CATEGORY,
   FOOD_CREATE_REVIEW_REQUEST,
   FOOD_CREATE_REVIEW_SUCCESS,
-  FOOD_CREATE_REVIEW_FAIL,
+  FOOD_CREATE_REVIEW_FAIL, GET_FOODS_SEARCH_FAIL, GET_FOODS_SEARCH_REQUEST, GET_FOODS_SEARCH_SUCCESS
 } from '../constants/foodConstants';
 import { logout } from './authActions';
 
@@ -211,3 +211,20 @@ export const createFoodReview = (foodId, review) => async (
     })
   }
 }
+
+
+export const getSearchAction = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_FOODS_SEARCH_REQUEST,
+    })
+    const { data } = api.getSearch();
+
+    dispatch({ type: GET_FOODS_SEARCH_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GET_FOODS_SEARCH_FAIL,
+      payload: error.message,
+    })
+  }
+};

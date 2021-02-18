@@ -34,7 +34,7 @@ router.route('/my-orders').get(protect, getMyOrders);
 // Orders Routes
 router
   .route('/')
-  .get(protect, restrictTo('admin'), getAllOrders)
+  .get(getAllOrders)
   .post(protect, setUserID, createOrder);
 router
   .route('/:id')

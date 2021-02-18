@@ -56,9 +56,7 @@ const Toolbar = ({ className, ...rest }) => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SvgIcon fontSize="small" color="action">
-                          <SearchIcon />
-                        </SvgIcon>
+                        1
                       </InputAdornment>
                     )
                   }}

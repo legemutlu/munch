@@ -1,5 +1,7 @@
 const multer = require('multer');
 const sharp = require('sharp');
+const scheduled = require('node-schedule');
+const cron = require('node-cron');
 const Food = require('../models/foodModel');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('../controllers/handlerFactory');
@@ -185,6 +187,21 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+
+let newArr = [];
+
+cron.schedule('16 21 * * *', async callback => {
+  var foods = await Food.aggregate([{$project:{ _id:'$_id', description:'$description'}}]);
+  newArr = foods
+});
+
+exports.getSearch = catchAsync(async (req, res, next) => {
+  res.status(200).json(
+    newArr
+  );
+})
+
 
 // Do not use!
 exports.loadAllData = catchAsync(async (req, res, next) => {

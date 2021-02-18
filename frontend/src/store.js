@@ -9,7 +9,8 @@ import {
   foodDeleteReducer,
   foodCreateReducer,
   foodUpdateReducer,
-  foodReviewCreateReducer
+  foodReviewCreateReducer,
+  foodSearchReducer
 } from './reducers/foods'
 
 import {
@@ -72,6 +73,7 @@ const reducer = combineReducers({
   foodCreate: foodCreateReducer,
   foodUpdate: foodUpdateReducer,
   foodCreateReview: foodReviewCreateReducer,
+  foodSearch: foodSearchReducer,
   categoryList: categoryListReducer,
   categoryDetails: categoryDetailsReducer,
   categoryDelete: categoryDeleteReducer,

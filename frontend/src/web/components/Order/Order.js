@@ -42,11 +42,9 @@ const Order = () => {
   const [selectedDate, handleDateChange] = useState(new Date());
   const [total, setTotal] = useState()
   const [value, setValue] = useState({
-    user: '',
     foods: [],
     orderAddress: '',
     description: '',
-    price: '',
     tableNumber: '',
     orderType: '',
     paymentMethod: ''

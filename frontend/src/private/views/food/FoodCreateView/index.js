@@ -163,8 +163,11 @@ const FoodCreate = ({ className, ...rest }) => {
         message: 'Food Created!'
       });
       setTimeout(function () {
-        navigate(`/business/foods`);
-      }, 2200);
+        setSnackbar({
+          ...snackbar,
+          open:false
+        })
+      }, 1500);
     } else if (error) {
       setSnackbar({
         ...snackbar,

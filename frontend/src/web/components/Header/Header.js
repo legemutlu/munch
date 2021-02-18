@@ -11,13 +11,11 @@ const Header = props => {
           Add to Basket
         </button>
       )}
-
       {props.goBackButton && (
         <Link to={props.link} className="go-back-button">
           Go Back
         </Link>
       )}
-
       <hr />
     </>
   );

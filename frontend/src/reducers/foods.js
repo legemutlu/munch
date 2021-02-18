@@ -22,6 +22,9 @@ import {
   FOOD_CREATE_REVIEW_SUCCESS,
   FOOD_CREATE_REVIEW_FAIL,
   FOOD_CREATE_REVIEW_RESET,
+  GET_FOODS_DIC_REQUEST,
+  GET_FOODS_DIC_SUCCESS,
+  GET_FOODS_DIC_FAIL, GET_FOODS_SEARCH_REQUEST, GET_FOODS_SEARCH_SUCCESS, GET_FOODS_SEARCH_FAIL
 } from '../constants/foodConstants';
 
 
@@ -146,3 +149,20 @@ export const foodReviewCreateReducer = (state = {}, action) => {
       return state;
   }
 };*/
+
+
+export const foodSearchReducer = (state = { foodSearch: [] }, action)=>{
+  switch (action.type) {
+    case GET_FOODS_SEARCH_REQUEST:
+      return { loading: true, foodSearch: [] }
+    case GET_FOODS_SEARCH_SUCCESS:
+      return {
+        loading: false,
+        foodSearch: action.payload.data,
+      }
+    case GET_FOODS_SEARCH_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}

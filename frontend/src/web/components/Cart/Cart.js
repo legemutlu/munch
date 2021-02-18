@@ -11,10 +11,14 @@ import {
   increaseQuantity,
   clearCart
 } from '../../../actions/cartActions';
+import {checkSuggestion} from './suggestion';
+import burger from '../../images/RedDot_Burger.jpg';
+
 
 const Cart = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [suggest, setSuggest] = useState()
   const cart = useSelector(state => state.cart);
   const { cartItems } = cart;
 
@@ -34,6 +38,16 @@ const Cart = () => {
   const clearItems = () => {
     dispatch(clearCart());
   };
+
+  useEffect(()=>{
+    if(cartItems.length > 0){
+      checkSuggestion(cartItems).then(el => {
+        if(el){
+          setSuggest(el);
+        }
+      })
+    }
+  },[cartItems])
 
   return (
     <section className="cart-page">
@@ -75,6 +89,7 @@ const Cart = () => {
                         <td>{item.name}</td>
                         <td>{item.price}</td>
                         <td className="cart-quantity">
+                          {item.quantity > 1 &&
                           <i
                             className="fas fa-minus"
                             onClick={e => {
@@ -82,6 +97,7 @@ const Cart = () => {
                               decreaseItem(item._id, item.quantity);
                             }}
                           />
+                          }
                           <span className="cart-quantity-input">
                             {item.quantity}
                           </span>
@@ -117,6 +133,30 @@ const Cart = () => {
             </Link>
           )}
         </Col>
+      </Row>
+      <Row>
+        {cartItems.length > 0 && suggest &&
+          <Col sm={12} md={6} lg={4} xl={4} align="center" key={suggest._id}>
+            <div className="menu-item-suggestion">
+              {console.log(suggest)}
+              <Link
+                to={`/${suggest.category.slug}/${suggest.name  
+                  .replace(/\s+/g, '-')
+                  .toLowerCase()}/${suggest._id}`}
+              >
+                <div className="menu-item-overlay" />
+                <img
+                  className="menu-item-image"
+                  src={`/static/images/foods/${suggest.imageCover}`}
+                  alt={burger}
+                />
+              </Link>
+            </div>
+            <span className="menu-item-name">
+              {suggest.name}
+            </span>
+          </Col>
+        }
       </Row>
     </section>
   );

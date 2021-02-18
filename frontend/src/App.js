@@ -41,6 +41,7 @@ import Reservation from './web/components/Reservation/Reservation';
 import Contact from './web/components/Contact/Contact';
 import PasswordForgot from './web/components/PasswordForgot/PasswordForgot';
 import Profile from './web/components/Profile/Profile';
+import Search from './web/components/Search/Search';
 
 
 const App = () => {
@@ -68,6 +69,7 @@ const App = () => {
         { path: 'contact', element: <Contact /> },
         { path: 'password-forgot', element: <PasswordForgot /> },
         { path: 'profile', element: <Profile /> },
+        { path: 'search', element: <Search /> },
       ]
     }
   ];

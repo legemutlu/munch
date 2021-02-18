@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Navbar.css';
-import logo from '../../images/favicon.png';
+import logo from '../../images/logo.png';
 import { logout } from '../../../actions/authActions';
+import SearchBox from '../../../global/SearchBox';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,13 @@ const Navbar = () => {
       {userInfo &&
         (userInfo.user.role === 'customer' ? (
           <div className="profile-item">
+            <Link to="/" className="navbar-item" href="">
             <img
-              style={{ width: '40px', padding: '0', marginRight: '0' }}
+              style={{ width: '50px', padding: '0', marginRight: '0' }}
               src={logo}
               alt={logo}
             />
+            </Link>
             <Link style={{ left: '0' }} to="/profile">
               Profile
             </Link>
@@ -37,13 +40,10 @@ const Navbar = () => {
             </Link>
           </div>
         ))}
+      <Link to="/" className="navbar-item" href="">
       <img className="navbar-logo" src={logo} alt={logo} />
+      </Link>
       <ul className="navbar-items">
-        <li>
-          <Link to="/" className="navbar-item" href="">
-            Home
-          </Link>
-        </li>
         <li>
           <Link to="/menu" className="navbar-item" href="">
             Menu
@@ -57,6 +57,11 @@ const Navbar = () => {
         <li>
           <Link to="/contact" className="navbar-item" href="">
             Contact
+          </Link>
+        </li>
+        <li>
+          <Link to="/search" className="navbar-item" href="">
+            Search
           </Link>
         </li>
       </ul>

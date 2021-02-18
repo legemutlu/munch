@@ -19,6 +19,7 @@ const {
   getMonthlyPlan,
   uploadFoodImages,
   resizeFoodImages,
+  getSearch
 } = foodController;
 
 router.use('/:foodId/reviews', reviewRouter);
@@ -27,6 +28,7 @@ router.route('/monthly-plan/:year').get(getMonthlyPlan);
 router.route('/priv').post(loadAllData).delete(deleteAllData);
 router.route('/top-5-cheap').get(aliasTopFoods, getAllFoods);
 router.route('/food-stats').get(getFoodStats);
+router.route('/getSearch').get(getSearch);
 
 // Foods Routes
 router
