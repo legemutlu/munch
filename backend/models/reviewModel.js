@@ -57,12 +57,12 @@ reviewSchema.statics.calcAverageRatings = async function (foodId) {
 
   if (stats[0]) {
     await Food.findByIdAndUpdate(foodId, {
-      ratingsAverage: stats[0].numRatings,
-      ratingsQuantity: stats[0].avgRatings,
+      ratingsAverage: stats[0].avgRatings,
+      ratingsQuantity: stats[0].numRatings,
     });
   } else {
     await Food.findByIdAndUpdate(foodId, {
-      ratingsAverage: 4.5,
+      ratingsAverage: 2.5,
       ratingsQuantity: 0,
     });
   }

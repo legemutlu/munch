@@ -24,7 +24,13 @@ import {
   FOOD_CREATE_REVIEW_RESET,
   GET_FOODS_DIC_REQUEST,
   GET_FOODS_DIC_SUCCESS,
-  GET_FOODS_DIC_FAIL, GET_FOODS_SEARCH_REQUEST, GET_FOODS_SEARCH_SUCCESS, GET_FOODS_SEARCH_FAIL
+  GET_FOODS_DIC_FAIL,
+  GET_FOODS_SEARCH_REQUEST,
+  GET_FOODS_SEARCH_SUCCESS,
+  GET_FOODS_SEARCH_FAIL,
+  FOOD_DELETE_REVIEW_REQUEST,
+  FOOD_DELETE_REVIEW_SUCCESS,
+  FOOD_DELETE_REVIEW_FAIL, GET_FOODS_TOP5_SUCCESS, GET_FOODS_TOP5_REQUEST, GET_FOODS_TOP5_FAIL
 } from '../constants/foodConstants';
 
 
@@ -119,36 +125,20 @@ export const foodReviewCreateReducer = (state = {}, action) => {
   }
 }
 
-
-
-/*export default (state = initialState, action) => {
+export const foodReviewDeleteReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_ALL_FOODS:
-      return { ...state, foods: action.payload };
-    case GET_FOOD:
-      return { ...state, food: action.payload };
-    case CREATE_FOOD:
-      return [...state.foods, action.payload];
-    case UPDATE_FOOD:
-      return {
-        ...state,
-        foods: state.foods.map(food =>
-          food._id === action.payload._id ? action.payload : food
-        )
-      };
-    case DELETE_FOOD:
-      return {
-        ...state,
-        foods: state.foods.data.filter(food => food._id !== action.payload)
-      };
-    case GET_FOODS_STATS:
-      return { ...state, statistic: action.payload };
-    case GET_FOODS_BY_CATEGORY:
-      return { ...state, foodsByCategory: action.payload };
+    case FOOD_DELETE_REVIEW_REQUEST:
+      return { loading: true }
+    case FOOD_DELETE_REVIEW_SUCCESS:
+      return { loading: false, success: true}
+    case FOOD_DELETE_REVIEW_FAIL:
+      return { loading: false, error: action.payload }
     default:
-      return state;
+      return state
   }
-};*/
+}
+
+
 
 
 export const foodSearchReducer = (state = { foodSearch: [] }, action)=>{
@@ -161,6 +151,22 @@ export const foodSearchReducer = (state = { foodSearch: [] }, action)=>{
         foodSearch: action.payload.data,
       }
     case GET_FOODS_SEARCH_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const foodListTop5Reducer = (state = { top5Foods: [] }, action)=>{
+  switch (action.type) {
+    case GET_FOODS_TOP5_REQUEST:
+      return { loading: true, top5Foods: [] }
+    case GET_FOODS_TOP5_SUCCESS:
+      return {
+        loading: false,
+        top5Foods: action.payload.data,
+      }
+    case GET_FOODS_TOP5_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

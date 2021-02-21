@@ -44,7 +44,6 @@ const customStyles = {
 };
 
 const Order = ({ match }) => {
-  const orderId = match.params.id
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedDate, handleDateChange] = useState(new Date());
@@ -91,10 +90,10 @@ const Order = ({ match }) => {
       navigate('/login')
     }
 
-    if (!order || order._id !== orderId) {
-      dispatch(getOrderAction(orderId))
+    if (!order || order._id) {
+      dispatch(getOrderAction(order._id))
     }
-  }, [dispatch, orderId, order])
+  }, [dispatch, order])
 
 
 

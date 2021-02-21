@@ -19,7 +19,8 @@ export const deleteFood = (id, config) =>
   axios.delete(`${foodUrl}/${id}`, config);
 export const getFoodStats = () => axios.get(`${foodUrl}/food-stats`);
 export const createReview = (id, review, config) => axios.post(`${foodUrl}/${id}/reviews`, review, config);
-export const getSearch = () => axios.get(`${foodUrl}/search`);
+export const deleteReview = (id, reviewId, config) => axios.delete(`${foodUrl}/${id}/reviews/${reviewId}`, config);
+export const getTop5Foods = () => axios.get(`${foodUrl}?sort=-ratingsAverage&limit=5`);
 
 // category api
 export const getCategories = () => axios.get(categoryUrl);

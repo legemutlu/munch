@@ -24,7 +24,16 @@ import {
   GET_FOODS_BY_CATEGORY,
   FOOD_CREATE_REVIEW_REQUEST,
   FOOD_CREATE_REVIEW_SUCCESS,
-  FOOD_CREATE_REVIEW_FAIL, GET_FOODS_SEARCH_FAIL, GET_FOODS_SEARCH_REQUEST, GET_FOODS_SEARCH_SUCCESS
+  FOOD_CREATE_REVIEW_FAIL,
+  GET_FOODS_SEARCH_FAIL,
+  GET_FOODS_SEARCH_REQUEST,
+  GET_FOODS_SEARCH_SUCCESS,
+  FOOD_DELETE_REVIEW_REQUEST,
+  FOOD_DELETE_REVIEW_SUCCESS,
+  FOOD_DELETE_REVIEW_FAIL,
+  GET_FOODS_TOP5_SUCCESS,
+  GET_FOODS_TOP5_REQUEST,
+  GET_FOODS_TOP5_FAIL
 } from '../constants/foodConstants';
 import { logout } from './authActions';
 
@@ -212,19 +221,61 @@ export const createFoodReview = (foodId, review) => async (
   }
 }
 
-
-export const getSearchAction = () => async (dispatch) => {
+export const deleteFoodReviewAction = (foodId, reviewId) => async (
+  dispatch,
+  getState
+) => {
   try {
     dispatch({
-      type: GET_FOODS_SEARCH_REQUEST,
+      type: FOOD_DELETE_REVIEW_REQUEST,
     })
-    const { data } = api.getSearch();
 
-    dispatch({ type: GET_FOODS_SEARCH_SUCCESS, payload: data });
-  } catch (error) {
+    const {
+      login: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    await api.deleteReview(foodId,reviewId, config);
+
     dispatch({
-      type: GET_FOODS_SEARCH_FAIL,
-      payload: error.message,
+      type: FOOD_DELETE_REVIEW_SUCCESS,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: FOOD_DELETE_REVIEW_FAIL,
+      payload: message,
     })
   }
+}
+
+export const getTop5FoodsAction = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_FOODS_TOP5_REQUEST });
+
+    const { data } = await api.getTop5Foods();
+
+    dispatch({ type: GET_FOODS_TOP5_SUCCESS, payload: data });
+  } catch (error) {
+    console.log(error)
+    dispatch({
+      type: GET_FOODS_TOP5_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    });
+  }
 };
+
+
+

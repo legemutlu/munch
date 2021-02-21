@@ -26,19 +26,22 @@ const Search = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    checkSimilarity(keyword).then(el => {
-        let arr = [];
-        el.forEach(id => {
-          foods.forEach(food => {
-              if (food._id === id) {
-                arr.push(food);
+    console.log(keyword)
+    if(keyword !== ''){
+      checkSimilarity(keyword).then(el => {
+          let arr = [];
+          el.forEach(id => {
+            foods.forEach(food => {
+                if (food._id === id) {
+                  arr.push(food);
+                }
               }
-            }
-          );
-        });
-        setFoodsArr(arr);
-      }
-    )
+            );
+          });
+          setFoodsArr(arr);
+        }
+      )
+    }
   }
 
   useEffect(() => {

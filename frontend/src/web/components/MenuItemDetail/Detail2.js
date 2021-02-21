@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
-import { createFoodReview, getFoodAction } from '../../../actions/foodActions';
+import { createFoodReview, deleteFoodReviewAction, getFoodAction } from '../../../actions/foodActions';
 import { addToCart } from '../../../actions/cartActions';
 import Spinner from '../../../global/Spinner/Spinner';
 import Snackbars from '../../../global/Snackbar/Snackbars';
@@ -10,7 +10,7 @@ import Rating from '../../../global/Rating';
 import Message from '../../../global/Message';
 import { FOOD_CREATE_REVIEW_RESET } from '../../../constants/foodConstants';
 
-const ProductScreen = ({ history, match }) => {
+const ProductScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -153,12 +153,26 @@ const ProductScreen = ({ history, match }) => {
               {food && food.reviews && food.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
                 {food && food.reviews && food.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
+                  <Fragment key={review._id}>
+                  <ListGroup.Item>
                     <strong>{review.user.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
                   </ListGroup.Item>
+                    {userInfo && review.user._id === userInfo.user._id &&
+                      <Button
+                        onClick={(e)=>{
+                          e.preventDefault()
+                          dispatch(deleteFoodReviewAction(food._id,review._id))
+                        }
+                        }
+                        variant='danger'
+                        >
+                        Delete Review
+                        </Button>
+                    }
+                  </Fragment>
                 ))}
                 <ListGroup.Item>
                   <h2>Write a Customer Review</h2>

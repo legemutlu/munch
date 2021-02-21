@@ -19,7 +19,6 @@ const OrderListView = () => {
   return (
     <Page className={classes.root} title="Orders">
       <Container maxWidth={false}>
-        <Toolbar />
         <Box mt={3}>
           <Results />
         </Box>

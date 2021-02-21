@@ -1,19 +1,27 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import Header from '../Header/Header';
 import Select from 'react-select';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-  DatePicker
-} from '@material-ui/pickers';
 import './Order.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { createOrderAction } from '../../../actions/orderActions';
+import { clearCart } from '../../../actions/cartActions';
 
-const options = [
-  { value: 'Home', label: 'home' },
-  { value: 'work', label: 'work' }
+const optionsPaymentMethod = [
+  { value: 'Card', label: 'Card' },
+  { value: 'OnlineCard', label: 'OnlineCard' },
+  { value: 'Cash', label: 'Cash' }
+];
+
+const optionsOrderType = [
+  { value: 'TakeAway', label: 'TakeAway' },
+  { value: 'HomeDelivery', label: 'HomeDelivery' },
+  { value: 'InRestaurant', label: 'InRestaurant' }
+];
+
+const optionsOrderAddress = [
+  { value: 'Home', label: 'Home' },
+  { value: 'Work', label: 'Work' }
 ];
 
 const customStyles = {
@@ -38,6 +46,7 @@ const customStyles = {
 };
 
 const Order = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedDate, handleDateChange] = useState(new Date());
   const [total, setTotal] = useState()
@@ -58,13 +67,42 @@ const Order = () => {
 
   const getTotal = () => {
     let initTotal = 0;
+    let foodArr = [];
     if(cartItems){
       cartItems.map(el=> {
+        foodArr.push(el)
+        setValue({
+          ...value,
+          foods: foodArr
+        })
         initTotal += el.quantity * el.price;
       })
     }
     setTotal(initTotal)
   }
+
+
+
+  const handleSelectedOrderType = (selectedValue) => {
+    setValue({
+      ...value,
+      orderType: selectedValue.value
+    });
+  };
+
+  const handleSelectedOrderAddress = (selectedValue) => {
+    setValue({
+      ...value,
+      orderAddress: selectedValue.value
+    });
+  };
+
+  const handleSelectedPaymentMethod = (selectedValue) => {
+    setValue({
+      ...value,
+      paymentMethod: selectedValue.value
+    });
+  };
 
 
   useEffect(()=>{
@@ -77,6 +115,25 @@ const Order = () => {
     }
   })
 
+  const onSubmit = async(e) => {
+    e.preventDefault();
+    const newArr = [];
+    if(value.food || value.foods.length > 0){
+      for(const item in value.foods){
+        newArr.push({food:value.foods[item]})
+      }
+    }
+    const order = {
+      foods: newArr,
+      orderType:value.orderType,
+      orderAddress:value.orderAddress,
+      paymentMethod:value.paymentMethod
+    }
+    await dispatch(createOrderAction(order));
+    await dispatch(clearCart())
+    navigate('/profile')
+  }
+
   return (
     <section className="order-page">
       <Header
@@ -88,117 +145,41 @@ const Order = () => {
       <div className="full-row">
         <div className="col-65">
           <div className="container">
-            <form>
+            <form onSubmit={onSubmit}>
               <div className="row">
                 <div className="col-50">
                   <h3>Billing</h3>
-                  <label htmlFor="fname">
-                    <i className="fa fa-user"/> Full Name
-                  </label>
-                  <input
-                    className="order-input"
-                    type="text"
-                    id="fname"
-                    name="firstname"
-                    placeholder="John M. Doe"
-                  />
                   <label htmlFor="adr">
                     <i className="fas fa-map-marked"/> Address
                   </label>
                   <Select
-                    options={options}
+                    options={optionsOrderAddress}
                     placeholder="Select Address"
                     styles={customStyles}
+                    onChange={handleSelectedOrderAddress}
                   />
                   <label>
-                    <i className="fas fa-box-open"/>Deleviry Time
+                    <i className="fas fa-box-open"/>Order Type
                   </label>
-                  <div className="container">
-                    <div className="row">
-                      <div className="container-now">
-                        <input type="radio" name="sameadr" /> {'  '}
-                        Now (20-30 minutes)
-                      </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="container-future">
-                        <input type="radio" name="sameadr" /> {'  '} Future
-                      </div>
-                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DateTimePicker
-                          inputVariant="outlined"
-                          ampm={false}
-                          disablePast
-                          value={selectedDate}
-                          onChange={handleDateChange}
-                        />
-                      </MuiPickersUtilsProvider>
-                    </div>
-                  </div>
+                    <Select
+                      options={optionsOrderType}
+                      placeholder="Select Type of Order"
+                      styles={customStyles}
+                      onChange={handleSelectedOrderType}
+                    />
                 </div>
 
                 <div className="col-50">
-                  <h3>Payment</h3>
-                  <label htmlFor="fname">Accepted Cards</label>
-                  <div className="icon-container">
-                    <i
-                      className="fab fa-cc-visa"
-                      style={{ color: 'white' }}
-                    />
-                    <i
-                      className="fab fa-cc-amex"
-                      style={{ color: 'white' }}
-                    />
-                    <i
-                      className="fab fa-cc-mastercard"
-                      style={{ color: 'white' }}
-                    />
-                    <i
-                      className="fab fa-cc-discover"
-                      style={{ color: 'white' }}
-                    />
-                  </div>
-                  <label htmlFor="cname">Name on Card</label>
-                  <input
-                    className="order-input"
-                    type="text"
-                    id="cname"
-                    name="cardname"
-                    placeholder="John More Doe"
+                  <h3>Billing</h3>
+                  <label>
+                    <i className="fas fa-box-open"/>Payment Method
+                  </label>
+                  <Select
+                    options={optionsPaymentMethod}
+                    placeholder="Select Type of Payment"
+                    styles={customStyles}
+                    onChange={handleSelectedPaymentMethod}
                   />
-                  <label htmlFor="ccnum">Credit card number</label>
-                  <input
-                    className="order-input"
-                    type="text"
-                    id="ccnum"
-                    name="cardnumber"
-                    placeholder="1111-2222-3333-4444"
-                  />
-                  <div className="row">
-                    <div className="col-50">
-                      <label htmlFor="expyear">Exp Date</label>
-                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DatePicker
-                          inputVariant="outlined"
-                          disablePast
-                          views={['year', 'month']}
-                          value={selectedDate}
-                          onChange={handleDateChange}
-                        />
-                      </MuiPickersUtilsProvider>
-                    </div>
-                    <div className="col-50">
-                      <label htmlFor="cvv">CVV</label>
-                      <input
-                        className="order-input"
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        placeholder="352"
-                      />
-                    </div>
-                  </div>
                 </div>
                 <input
                   type="submit"

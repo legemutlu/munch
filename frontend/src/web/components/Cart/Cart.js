@@ -13,14 +13,19 @@ import {
 } from '../../../actions/cartActions';
 import {checkSuggestion} from './suggestion';
 import burger from '../../images/RedDot_Burger.jpg';
+import { getTop5FoodsAction } from '../../../actions/foodActions';
 
 
 const Cart = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [suggest, setSuggest] = useState()
+
   const cart = useSelector(state => state.cart);
   const { cartItems } = cart;
+
+  const topFoods = useSelector((state) => state.foodListTop5)
+  const { top5Foods } = topFoods
 
   const removeItemHandler = id => {
     dispatch(removeFromCart(id));
@@ -39,8 +44,10 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
+
   useEffect(()=>{
     if(cartItems.length > 0){
+      dispatch(getTop5FoodsAction());
       checkSuggestion(cartItems).then(el => {
         if(el){
           setSuggest(el);
@@ -48,6 +55,7 @@ const Cart = () => {
       })
     }
   },[cartItems])
+
 
   return (
     <section className="cart-page">
@@ -138,7 +146,6 @@ const Cart = () => {
         {cartItems.length > 0 && suggest &&
           <Col sm={12} md={6} lg={4} xl={4} align="center" key={suggest._id}>
             <div className="menu-item-suggestion">
-              {console.log(suggest)}
               <Link
                 to={`/${suggest.category.slug}/${suggest.name  
                   .replace(/\s+/g, '-')
@@ -156,6 +163,31 @@ const Cart = () => {
               {suggest.name}
             </span>
           </Col>
+        }
+      </Row>
+    <Row>
+        {cartItems.length > 0 && top5Foods && top5Foods.map(el =>
+          <Col sm={12} md={6} lg={4} xl={4} align="center" key={el._id}>
+            <div className="menu-item-suggestion">
+              <Link
+                to={`/${el.category.slug}/${el.name
+                  .replace(/\s+/g, '-')
+                  .toLowerCase()}/${el._id}`}
+              >
+                <div className="menu-item-overlay" />
+                <img
+                  className="menu-item-image"
+                  src={`/static/images/foods/${el.imageCover}`}
+                  alt={el.category.name}
+                />
+              </Link>
+            </div>
+            <span className="menu-item-name">
+              {el.name}
+            </span>
+          </Col>
+
+        )
         }
       </Row>
     </section>

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 function wordCountMap(str) {
-  let words = str.split(" ");
+  let newStr = str.replace(/[^a-z0-9]/gmi," ").replace(/\s+/g, " ");
+  let words = newStr.split(" ");
   let wordCount = {};
   words.forEach((w) => {
     wordCount[w] = (wordCount[w] || 0) + 1;
@@ -32,7 +33,7 @@ function similarity(vecA, vecB, txtA) {
   return dotProduct(vecA, vecB) / Object.keys(wordCountMap(txtA)).length;
 }
 
-function textCosineSimilarity(txtA, txtB) {
+function textSimilarity(txtA, txtB) {
   const wordCountA = wordCountMap(txtA);
   const wordCountB = wordCountMap(txtB);
   let dict = {};
@@ -62,7 +63,7 @@ export async function checkSimilarity(text) {
   let descriptionAndId = [];
   await getData().then(r => descriptionAndId = r );
   descriptionAndId.filter((el) => {
-      let getScore = textCosineSimilarity(text, el.description);
+      let getScore = textSimilarity(text, el.description);
       if (getSimilarityScore(getScore) >= 40) {
         sumArr.push(el._id);
       }

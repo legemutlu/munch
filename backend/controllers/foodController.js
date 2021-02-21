@@ -191,7 +191,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
 
 let newArr = [];
 
-cron.schedule('16 21 * * *', async callback => {
+cron.schedule('57 01 * * *', async callback => {
   var foods = await Food.aggregate([{$project:{ _id:'$_id', description:'$description'}}]);
   newArr = foods
 });

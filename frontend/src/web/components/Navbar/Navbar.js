@@ -22,13 +22,6 @@ const Navbar = () => {
       {userInfo &&
         (userInfo.user.role === 'customer' ? (
           <div className="profile-item">
-            <Link to="/" className="navbar-item" href="">
-            <img
-              style={{ width: '50px', padding: '0', marginRight: '0' }}
-              src={logo}
-              alt={logo}
-            />
-            </Link>
             <Link style={{ left: '0' }} to="/profile">
               Profile
             </Link>

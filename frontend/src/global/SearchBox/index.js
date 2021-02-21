@@ -18,7 +18,6 @@ const SearchBox = () => {
   const foodsListData = useSelector(state => state.foodList);
   const { foods, loading } = foodsListData;
 
-  console.log(foodsArr)
 
   const submitHandler = (e) => {
     e.preventDefault()

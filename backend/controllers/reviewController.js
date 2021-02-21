@@ -20,8 +20,8 @@ exports.setFoodUserID = (req, res, next) => {
 
 exports.checkUserIsOwner = async (req, res, next) => {
   const review = await Review.findById(req.params.id);
-  if (
-    JSON.stringify(review.user._id) === JSON.stringify(req.user._id) ||
+  if ((review && JSON.stringify(review.user._id) === JSON.stringify(req.user._id) )
+     ||
     req.user.role === 'admin'
   ) {
     next();
